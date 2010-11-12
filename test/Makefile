@@ -34,7 +34,7 @@ matrix_demo: clean matrix_io_demo
 
 matrix_io_demo:
 	$(CXX) $(CXXFLAGS) -c $(INCLUDE_FILES) matrix_io_demo.cpp  `freetype-config --cflags`
-	$(CXX) $(CXXFLAGS) -o matrix_io_demo matrix_io_demo.o ../src/libcmatrix.a -lpngwriter -lfreetype -lpng -lz
+	$(CXX) $(CXXFLAGS) -o matrix_io_demo matrix_io_demo.o ../src/libcmatrix.a ../test/pngwriter/pngwriter.cc `freetype-config --cflags` -lfreetype -lpng -lz
 
 
 clean:
