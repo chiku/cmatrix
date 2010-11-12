@@ -11,7 +11,7 @@
 ##################################################################################
 
 
-include ../make.include
+include make.include
 
 OBJECTS=pngwriter.o
 all: libpngwriter.a
@@ -23,11 +23,8 @@ libpngwriter.a: $(OBJECTS)
 pngwriter.o: pngwriter.cc pngwriter.h
 	$(CXX) $(CXXFLAGS) $(INC) -g -c -o pngwriter.o pngwriter.cc
 
-clean	:    
+clean:    
 	rm -f $(OBJECTS) libpngwriter.a pngtest.cc~ pngwriter.cc~
 	rm -f pngwriter.h~ Makefile~
 	rm -f .DS_Store
-
-
-	
 

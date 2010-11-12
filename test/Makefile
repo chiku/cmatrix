@@ -18,10 +18,12 @@ run.all: run.test run.demo
 all: clean matrix_test matrix_demo
 
 run.test: matrix_test
-	./matrix_test
+	cp matrix_test ../bin/matrix_test
+	../bin/matrix_test
 
 run.demo: matrix_demo
-	./matrix_io_demo
+	cp matrix_io_demo ../bin/matrix_io_demo
+	../bin/matrix_io_demo
 
 matrix_test: clean test_suite.o
 	$(CXX) -c $(CXXFLAGS) $(INCLUDE_FILES) $(CPPFILES)
@@ -34,7 +36,7 @@ matrix_demo: clean matrix_io_demo
 
 matrix_io_demo:
 	$(CXX) $(CXXFLAGS) -c $(INCLUDE_FILES) matrix_io_demo.cpp  `freetype-config --cflags`
-	$(CXX) $(CXXFLAGS) -o matrix_io_demo matrix_io_demo.o ../src/libcmatrix.a ../test/pngwriter/pngwriter.cc `freetype-config --cflags` -lfreetype -lpng -lz
+	$(CXX) $(CXXFLAGS) -o matrix_io_demo matrix_io_demo.o ../src/libcmatrix.a ../src/vendor/pngwriter/pngwriter.cc `freetype-config --cflags` -lfreetype -lpng -lz
 
 
 clean:

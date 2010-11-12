@@ -4,7 +4,7 @@
 // Last modified  : 28/03/2009
 
 #include <matrix.h>
-#include <pngwriter/pngwriter.h>
+#include <vendor/pngwriter/pngwriter.h>
 
 // Output to console
 template <class Type>
