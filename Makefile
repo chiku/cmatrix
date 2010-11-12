@@ -17,13 +17,12 @@ tests:
 	@cd test && make
 
 clean:
-	rm -f lib/*
+	rm -f bin/*
 	@cd src && make clean
 	@cd test && make clean
 
 install: all
-	mkdir -p lib
-	cp src/*.a lib/
+	mkdir -p bin
 
 .PHONY: all clean install
 

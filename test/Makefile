@@ -35,11 +35,10 @@ matrix_demo: clean matrix_io_demo
 
 matrix_io_demo:
 	$(CXX) $(CXXFLAGS) -c $(INCLUDE_FILES) matrix_io_demo.cpp  `freetype-config --cflags`
-	$(CXX) $(CXXFLAGS) -o matrix_io_demo matrix_io_demo.o ../src/libcmatrix.a ../src/vendor/pngwriter/pngwriter.cc `freetype-config --cflags` -lfreetype -lpng -lz
-
+	$(CXX) $(CXXFLAGS) -o matrix_io_demo matrix_io_demo.o ../bin/libcmatrix.a ../bin/libpngwriter.a -lfreetype -lpng -lz
 
 clean:
-	rm -f *.o *.a *_test *_demo *.png bin/* tmp/*
+	rm -f *.o *.a *_test *_demo
 
 .PHONY: all clean
 
