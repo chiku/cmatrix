@@ -43,16 +43,13 @@ CMatrix::Matrix<Type> CMatrix::operator * (const CMatrix::Matrix<Type> firstMatr
         throw MatrixException::IncompatibleMultiplication();
 
     CMatrix::Matrix<Type> product(firstMatrix.rows, secondMatrix.columns);
-  
+
     for(int i = 0; i < firstMatrix.rows; i++)
         for(int j = 0; j < secondMatrix.columns; j++)
-            product(i, j) = 0;
-    
-    for(int i = 0; i < firstMatrix.rows; i++)
-        for(int j = 0; j < firstMatrix.columns; j++)
         {
-            for(int k = 0; k < secondMatrix.columns; k++)
-                product(i, k) += firstMatrix(i, j) * secondMatrix(j, k);
+            product(i, j) = 0;
+            for(int k = 0; k < firstMatrix.columns; k++)
+                product(i, j) += firstMatrix(i, k) * secondMatrix(k, j);
         }
 
     return product;
