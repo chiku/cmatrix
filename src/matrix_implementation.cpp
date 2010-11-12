@@ -9,7 +9,7 @@
 #include "matrix_numerical.cpp"
 #include "matrix_advanced_numerical.cpp"
 
-template class CMatrix::Matrix<double>; 
+template class CMatrix::Matrix<double>;
 
 #endif
 

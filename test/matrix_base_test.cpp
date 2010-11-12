@@ -170,3 +170,54 @@ void MatrixTest::matricesOfEqualSizeWithSameMembersAreEqual(void)
     CPPUNIT_ASSERT (!(firstTwoByTwoMatrix != secondTwoByTwoMatrix));
 }
 
+void MatrixTest::matrixOfMatricesCanBeCreated(void)
+{
+    Matrix<double> firstMatrix(1, 1);
+    Matrix<double> secondMatrix(1, 1);
+    Matrix<Matrix <double> > matrixOfMatrices(1, 2);
+
+    firstMatrix(0, 0) = 1.0;
+    secondMatrix(0, 0) = 2.0;
+    matrixOfMatrices(0, 0) = firstMatrix;
+    matrixOfMatrices(0, 1) = secondMatrix;
+
+    CPPUNIT_ASSERT (matrixOfMatrices(0, 0)(0, 0) == 1.0);
+    CPPUNIT_ASSERT (matrixOfMatrices(0, 1)(0, 0) == 2.0);
+}
+
+void MatrixTest::matricesOfMatricesWithEqualMatrixAreEqual(void)
+{
+    Matrix<Matrix <double> > firstMatrix(1, 2);
+    Matrix<Matrix <double> > secondMatrix(1, 2);
+
+    Matrix<double> firstMatrix0x0(1, 1);    Matrix<double> firstMatrix0x1(2, 1);
+    Matrix<double> secondMatrix0x0(1, 1);   Matrix<double> secondMatrix0x1(2, 1);
+
+    firstMatrix0x0(0, 0) =  1.0; secondMatrix0x0(0, 0) =  1.0;
+    firstMatrix0x1(0, 0) =  3.0; secondMatrix0x1(0, 0) =  3.0;
+    firstMatrix0x1(1, 0) = -1.0; secondMatrix0x1(1, 0) = -1.0;
+
+    firstMatrix(0, 0) = firstMatrix0x0; secondMatrix(0, 0) = secondMatrix0x0;
+    firstMatrix(0, 1) = firstMatrix0x1; secondMatrix(0, 1) = secondMatrix0x1;
+
+    CPPUNIT_ASSERT (firstMatrix == secondMatrix);
+}
+
+void MatrixTest::matricesOfMatricesWithUnequalMatrixAreUnequal(void)
+{
+    Matrix<Matrix <double> > firstMatrix(1, 2);
+    Matrix<Matrix <double> > secondMatrix(1, 2);
+
+    Matrix<double> firstMatrix0x0(1, 1);    Matrix<double> firstMatrix0x1(2, 1);
+    Matrix<double> secondMatrix0x0(1, 1);   Matrix<double> secondMatrix0x1(2, 1);
+
+    firstMatrix0x0(0, 0) =  1.0; secondMatrix0x0(0, 0) =  1.0;
+    firstMatrix0x1(0, 0) =  3.0; secondMatrix0x1(0, 0) =  3.0;
+    firstMatrix0x1(1, 0) = -1.0; secondMatrix0x1(1, 0) =  1.0;
+
+    firstMatrix(0, 0) = firstMatrix0x0; secondMatrix(0, 0) = secondMatrix0x0;
+    firstMatrix(0, 1) = firstMatrix0x1; secondMatrix(0, 1) = secondMatrix0x1;
+
+    CPPUNIT_ASSERT (firstMatrix != secondMatrix);
+}
+

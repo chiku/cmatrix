@@ -35,6 +35,9 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     CPPUNIT_TEST (matricesOfEqualSizeWithOneDifferentMemberAreUnequal);
     CPPUNIT_TEST (matricesOfEqualSizeWithSameMembersAreEqual);
 
+    CPPUNIT_TEST (matrixOfMatricesCanBeCreated);
+    CPPUNIT_TEST (matricesOfMatricesWithEqualMatrixAreEqual);
+    CPPUNIT_TEST (matricesOfMatricesWithUnequalMatrixAreUnequal);
 
     CPPUNIT_TEST (two2x2MatricesCanBeProperlyAdded);
     CPPUNIT_TEST (three2x2MatricesCanBeProperlyAdded);
@@ -53,7 +56,8 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     CPPUNIT_TEST (one1x2AndOne2x1MatricesCanBeProperlyMultiplied);
     CPPUNIT_TEST (two1x2And1x1MatricesWhenMultipliedThrowException);
     
-    
+    CPPUNIT_TEST (twoMatrixOfMatricesCanBeProperlyAdded);
+
     CPPUNIT_TEST (a2x2MatrixOnGettingAFunctionoidForOneParameterAppliesItToAllMembers);
     CPPUNIT_TEST (a2x2MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPosition);
     CPPUNIT_TEST (a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShift);
@@ -85,6 +89,9 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void matricesOfEqualSizeWithOneDifferentMemberAreUnequal();
         void matricesOfEqualSizeWithSameMembersAreEqual();
 
+        void matrixOfMatricesCanBeCreated();
+        void matricesOfMatricesWithEqualMatrixAreEqual();
+        void matricesOfMatricesWithUnequalMatrixAreUnequal();
 
         void two2x2MatricesCanBeProperlyAdded();
         void three2x2MatricesCanBeProperlyAdded();
@@ -102,8 +109,9 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void two2x2MatricesCanBeProperlyMultiplied();
         void one1x2AndOne2x1MatricesCanBeProperlyMultiplied();
         void two1x2And1x1MatricesWhenMultipliedThrowException();
-        
-        
+
+        void twoMatrixOfMatricesCanBeProperlyAdded();
+
         void a2x2MatrixOnGettingAFunctionoidForOneParameterAppliesItToAllMembers();
         void a2x2MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPosition();
         void a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShift();

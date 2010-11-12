@@ -174,4 +174,22 @@ void MatrixTest::two1x2And1x1MatricesWhenMultipliedThrowException(void)
     CPPUNIT_ASSERT_THROW ((oneByTwoMatrix * oneByOneMatrix), MatrixException::IncompatibleMultiplication);    
 }
 
+void MatrixTest::twoMatrixOfMatricesCanBeProperlyAdded(void)
+{
+    Matrix<Matrix <double> > firstMatrixOfMatrices(1, 2);
+    Matrix<Matrix <double> > secondMatrixOfMatrices(1, 2);
+    Matrix<Matrix <double> > expectedSum(1, 2);
 
+    Matrix<double> firstMatrix0x0(1, 1);    Matrix<double> firstMatrix0x1(2, 1);
+    Matrix<double> secondMatrix0x0(1, 1);   Matrix<double> secondMatrix0x1(2, 1);
+    Matrix<double> expectedSum0x0(1, 1);    Matrix<double> expectedSum0x1(2, 1);
+
+    firstMatrix0x0(0, 0) =  1.0; secondMatrix0x0(0, 0) =  2.0; expectedSum0x0(0, 0) =  3.0;
+    firstMatrix0x1(0, 0) =  1.0; secondMatrix0x1(0, 0) = -2.0; expectedSum0x1(0, 0) = -1.0;
+    firstMatrix0x1(1, 0) = -1.0; secondMatrix0x1(1, 0) =  2.0; expectedSum0x1(1, 0) =  1.0;
+
+    firstMatrixOfMatrices(0, 0) = firstMatrix0x0; secondMatrixOfMatrices(0, 0) = secondMatrix0x0; expectedSum(0, 0) = expectedSum0x0;
+    firstMatrixOfMatrices(0, 1) = firstMatrix0x1; secondMatrixOfMatrices(0, 1) = secondMatrix0x1; expectedSum(0, 1) = expectedSum0x1;
+
+    CPPUNIT_ASSERT ((firstMatrixOfMatrices + secondMatrixOfMatrices) == expectedSum);
+}
