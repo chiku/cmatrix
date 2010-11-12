@@ -1,8 +1,6 @@
 // File           : matrix_numerical.cpp
 // Written by     : Chirantan Mitra
 // Created        : 25/03/2009
-// Last modified  : 28/03/2009
-
 #include "matrix.h"
 
 // Binary addition

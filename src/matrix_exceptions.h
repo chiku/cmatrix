@@ -1,7 +1,6 @@
 // File           : matrix_exceptions.h
 // Written by     : Chirantan Mitra
 // Created        : 26/03/2009
-// Last modified  : 27/03/2009
 
 #ifndef MATRIX_EXCEPTIONS_H
 #define MATRIX_EXCEPTIONS_H

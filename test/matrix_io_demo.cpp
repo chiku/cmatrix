@@ -1,7 +1,6 @@
 // File           : matrix_io_demo.cpp
 // Written by     : Chirantan Mitra
 // Created        : 28/03/2009
-// Last modified  : 29/03/2009
 
 #include <matrix_implementation.cpp>
 #include <matrix_io.cpp>

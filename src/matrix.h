@@ -1,8 +1,6 @@
 // File           : matrix.h
 // Written by     : Chirantan Mitra
 // Created        : 21/03/2009
-// Last modified  : 28/03/2009
-
 #ifndef MATRIX_H
 #define MATRIX_H
 

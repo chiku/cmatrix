@@ -1,7 +1,6 @@
 // File           : test_suite.cpp
 // Written by     : Chirantan Mitra
 // Created        : 21/03/2009
-// Last modified  : 26/03/2009
 
 #include <cppunit/CompilerOutputter.h>
 #include <cppunit/extensions/TestFactoryRegistry.h>

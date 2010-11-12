@@ -1,7 +1,6 @@
 # File           : Makefile
 # Written by     : Chirantan Mitra
 # Created        : 29/03/2009
-# Last modified  : 29/03/2009
 
 CC = gcc
 AR = ar

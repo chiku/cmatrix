@@ -1,7 +1,6 @@
 // File           : matrix_advanced_numerical_test.h
 // Written by     : Chirantan Mitra
 // Created        : 28/03/2009
-// Last modified  : 28/03/2009
 
 #include <matrix_test.h>
 

@@ -1,7 +1,6 @@
 // File           : matrix_implementation.cpp
 // Written by     : Chirantan Mitra
 // Created        : 21/03/2009
-// Last modified  : 29/03/2009
 
 #ifndef MATRIX_IMPLEMENTATION_CPP
 #define MATRIX_IMPLEMENTATION_CPP
