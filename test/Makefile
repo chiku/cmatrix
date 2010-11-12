@@ -18,12 +18,12 @@ run.all: run.test run.demo
 all: clean matrix_test matrix_demo
 
 run.test: matrix_test
-	cp matrix_test ../bin/matrix_test
-	../bin/matrix_test
+	mv matrix_test ../bin/matrix_test
+	cd ../bin && ./matrix_test
 
 run.demo: matrix_demo
-	cp matrix_io_demo ../bin/matrix_io_demo
-	../bin/matrix_io_demo
+	mv matrix_io_demo ../bin/matrix_io_demo
+	cd ../bin && ./matrix_io_demo
 
 matrix_test: clean test_suite.o
 	$(CXX) -c $(CXXFLAGS) $(INCLUDE_FILES) $(CPPFILES)
@@ -40,7 +40,7 @@ matrix_io_demo:
 
 
 clean:
-	rm -f *.o *.a *_test *_demo *.png
+	rm -f *.o *.a *_test *_demo *.png bin/* tmp/*
 
 .PHONY: all clean
 
