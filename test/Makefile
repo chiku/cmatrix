@@ -18,11 +18,11 @@ all: clean matrix_test matrix_demo
 
 run.test: matrix_test
 	mv matrix_test ../bin/matrix_test
-	cd ../bin && ./matrix_test
+	@cd ../bin && ./matrix_test
 
 run.demo: matrix_demo
 	mv matrix_io_demo ../bin/matrix_io_demo
-	cd ../bin && ./matrix_io_demo
+	@cd ../bin && ./matrix_io_demo
 
 matrix_test: clean test_suite.o
 	$(CXX) -c $(CXXFLAGS) $(INCLUDE_FILES) $(CPPFILES)
