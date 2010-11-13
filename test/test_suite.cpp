@@ -1,5 +1,4 @@
 // Written by     : Chirantan Mitra
-// Created        : 21/03/2009
 
 #include <cppunit/CompilerOutputter.h>
 #include <cppunit/extensions/TestFactoryRegistry.h>

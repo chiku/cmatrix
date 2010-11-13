@@ -1,5 +1,4 @@
 // Written by     : Chirantan Mitra
-// Created        : 21/03/2009
 
 #ifndef MATRIX_TEST_H
 #define MATRIX_TEST_H

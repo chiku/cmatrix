@@ -1,5 +1,4 @@
 // Written by     : Chirantan Mitra
-// Created        : 13/11/2010
 
 #include <matrix_test.h>
 

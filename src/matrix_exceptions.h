@@ -1,5 +1,4 @@
 // Written by     : Chirantan Mitra
-// Created        : 26/03/2009
 
 #ifndef MATRIX_EXCEPTIONS_H
 #define MATRIX_EXCEPTIONS_H

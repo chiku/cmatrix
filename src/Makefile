@@ -1,5 +1,4 @@
 # Written by     : Chirantan Mitra
-# Created        : 29/03/2009
 
 CC = gcc
 CXX = g++
