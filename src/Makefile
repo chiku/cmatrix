@@ -9,7 +9,7 @@ CXXFLAGS += -O2
 
 INCLUDE_FILES += .
 
-all : clean libcmatrix.a vendor
+all: libcmatrix.a vendor
 
 libcmatrix.a:
 	$(CXX) -c $(CXXFLAGS) -I $(INCLUDE_FILES) matrix_implementation.cpp -o cmatrix.o

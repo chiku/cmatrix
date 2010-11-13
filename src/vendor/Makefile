@@ -9,7 +9,7 @@ CXXFLAGS += -O2
 
 INCLUDE_FILES += .
 
-all : clean libpngwriter.a
+all: libpngwriter.a
 
 libpngwriter.a:
 	@cd pngwriter && make
