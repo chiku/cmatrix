@@ -1,4 +1,4 @@
-// File           : matrix_advanced_numerical_test.h
+// File           : matrix_advanced_numerical_test.cpp
 // Written by     : Chirantan Mitra
 // Created        : 28/03/2009
 

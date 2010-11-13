@@ -1,6 +1,7 @@
 // File           : matrix.h
 // Written by     : Chirantan Mitra
 // Created        : 21/03/2009
+
 #ifndef MATRIX_H
 #define MATRIX_H
 
@@ -58,7 +59,9 @@ namespace CMatrix
 
             Matrix<Type> operator + ();
             Matrix<Type> operator - ();
-            
+
+            bool isSquare() const;
+
             template <typename FunctObj> Matrix<Type> map(FunctObj function);
             template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, int xShift=0, int yShift=0);
             template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, int xShift, int yShift, Type xScale, Type yScale);

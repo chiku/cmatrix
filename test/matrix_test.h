@@ -63,6 +63,9 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     CPPUNIT_TEST (a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShift);
     CPPUNIT_TEST (a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShiftAndScale);
 
+    CPPUNIT_TEST (matrixWithEqualNumberOfRowsAndColumnsIsSquare);
+    CPPUNIT_TEST (matrixWithUnequalNumberOfRowsAndColumnsIsNotSquare);
+
     CPPUNIT_TEST_SUITE_END ();
 
     public:
@@ -116,6 +119,10 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void a2x2MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPosition();
         void a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShift();
         void a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShiftAndScale();
+
+        void matrixWithEqualNumberOfRowsAndColumnsIsSquare();
+        void matrixWithUnequalNumberOfRowsAndColumnsIsNotSquare();
+
 };
 
 

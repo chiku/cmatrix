@@ -8,6 +8,7 @@
 #include "matrix_base.cpp"
 #include "matrix_numerical.cpp"
 #include "matrix_advanced_numerical.cpp"
+#include "matrix_properties.cpp"
 
 template class CMatrix::Matrix<double>;
 
