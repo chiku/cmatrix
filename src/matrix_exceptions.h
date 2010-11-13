@@ -1,4 +1,3 @@
-// File           : matrix_exceptions.h
 // Written by     : Chirantan Mitra
 // Created        : 26/03/2009
 

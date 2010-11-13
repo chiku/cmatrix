@@ -1,4 +1,3 @@
-// File           : matrix_numerical_test.cpp
 // Written by     : Chirantan Mitra
 // Created        : 21/03/2009
 

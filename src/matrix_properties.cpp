@@ -1,4 +1,3 @@
-// File           : matrix_numerical.cpp
 // Written by     : Chirantan Mitra
 // Created        : 25/03/2009
 

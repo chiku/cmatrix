@@ -1,6 +1,6 @@
-// File           : matrix_io.cpp
 // Written by     : Chirantan Mitra
 // Created        : 28/03/2009
+
 #include <matrix.h>
 #include <vendor/pngwriter/pngwriter.h>
 

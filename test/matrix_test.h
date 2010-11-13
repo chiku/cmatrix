@@ -1,4 +1,3 @@
-// File           : matrix_test.h
 // Written by     : Chirantan Mitra
 // Created        : 21/03/2009
 

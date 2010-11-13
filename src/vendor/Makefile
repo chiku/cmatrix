@@ -1,4 +1,3 @@
-# File           : Makefile
 # Written by     : Chirantan Mitra
 # Created        : 23/11/2010
 

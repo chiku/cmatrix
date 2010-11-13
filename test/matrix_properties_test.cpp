@@ -1,4 +1,3 @@
-// File           : matrix_properties_test.cpp
 // Written by     : Chirantan Mitra
 // Created        : 13/11/2010
 
