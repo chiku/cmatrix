@@ -21,3 +21,51 @@ void MatrixTest::matrixWithUnequalNumberOfRowsAndColumnsIsNotSquare(void)
     CPPUNIT_ASSERT ( secondMatrix.isSquare() == false );
 }
 
+void MatrixTest::squareMatrixWithAllDiagonalElementsAsOneAndOthersAsZeroIsUnit()
+{
+    Matrix<double> firstMatrix(1, 1);
+    Matrix<double> secondMatrix(2, 2);
+
+    firstMatrix(0, 0) = 1.0;
+    secondMatrix(0, 0) = 1.0;    secondMatrix(0, 1) = 0.0;
+    secondMatrix(1, 0) = 0.0;    secondMatrix(1, 1) = 1.0;
+
+    CPPUNIT_ASSERT ( firstMatrix.isUnit() == true );
+    CPPUNIT_ASSERT ( secondMatrix.isUnit() == true );
+}
+
+void MatrixTest::squareMatrixWithNotAllDiagonalElementsAsOneOthersAsZeroIsNotUnit()
+{
+    Matrix<double> firstMatrix(1, 1);
+    Matrix<double> secondMatrix(2, 2);
+
+    firstMatrix(0, 0) = -1.0;
+    secondMatrix(0, 0) = 1.0;    secondMatrix(0, 1) = 0.0;
+    secondMatrix(1, 0) = 0.0;    secondMatrix(1, 1) = -1.0;
+
+    CPPUNIT_ASSERT ( firstMatrix.isUnit() == false );
+    CPPUNIT_ASSERT ( secondMatrix.isUnit() == false );
+}
+
+void MatrixTest::squareMatrixWithAllDiagonalElementsAsOneOthersAsNotZeroIsNotUnit()
+{
+    Matrix<double> firstMatrix(1, 1);
+    Matrix<double> secondMatrix(2, 2);
+
+    firstMatrix(0, 0) = -1.0;
+    secondMatrix(0, 0) = 1.0;    secondMatrix(0, 1) = 1.0;
+    secondMatrix(1, 0) = 0.0;    secondMatrix(1, 1) = 1.0;
+
+    CPPUNIT_ASSERT ( firstMatrix.isUnit() == false );
+    CPPUNIT_ASSERT ( secondMatrix.isUnit() == false );
+}
+
+void MatrixTest::nonSquareMatrixIsNotUnit()
+{
+    Matrix<double> matrix(1, 2);
+
+    matrix(0, 0) = 1.0;    matrix(0, 1) = 0.0;
+
+    CPPUNIT_ASSERT ( matrix.isUnit() == false );
+}
+
