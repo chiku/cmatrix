@@ -68,6 +68,8 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     CPPUNIT_TEST (squareMatrixWithNotAllDiagonalElementsAsOneOthersAsZeroIsNotUnit);
     CPPUNIT_TEST (squareMatrixWithAllDiagonalElementsAsOneOthersAsNotZeroIsNotUnit);
     CPPUNIT_TEST (nonSquareMatrixIsNotUnit);
+    CPPUNIT_TEST (matrixWithAllElementsAsZeroIsZero);
+    CPPUNIT_TEST (matrixWithOneNonZeroElementIsNotZero);
 
     CPPUNIT_TEST_SUITE_END ();
 
@@ -129,7 +131,8 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void squareMatrixWithNotAllDiagonalElementsAsOneOthersAsZeroIsNotUnit();
         void squareMatrixWithAllDiagonalElementsAsOneOthersAsNotZeroIsNotUnit();
         void nonSquareMatrixIsNotUnit();
-
+        void matrixWithAllElementsAsZeroIsZero();
+        void matrixWithOneNonZeroElementIsNotZero();
 };
 
 

@@ -61,6 +61,7 @@ namespace CMatrix
 
             bool isSquare() const;
             bool isUnit() const;
+            bool isZero() const;
 
             template <typename FunctObj> Matrix<Type> map(FunctObj function);
             template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, int xShift=0, int yShift=0);

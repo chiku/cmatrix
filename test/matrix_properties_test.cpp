@@ -69,3 +69,21 @@ void MatrixTest::nonSquareMatrixIsNotUnit()
     CPPUNIT_ASSERT ( matrix.isUnit() == false );
 }
 
+void MatrixTest::matrixWithAllElementsAsZeroIsZero()
+{
+    Matrix<double> matrix(1, 2);
+
+    matrix(0, 0) = 0.0;    matrix(0, 1) = 0.0;
+
+    CPPUNIT_ASSERT ( matrix.isZero() == true );
+}
+
+void MatrixTest::matrixWithOneNonZeroElementIsNotZero()
+{
+    Matrix<double> matrix(1, 2);
+
+    matrix(0, 0) = 0.0;    matrix(0, 1) = 1.0;
+
+    CPPUNIT_ASSERT ( matrix.isZero() == false );
+}
+
