@@ -4,9 +4,9 @@
 
 void MatrixTest::two2x2MatricesCanBeProperlyAdded(void)
 {
-    Matrix<double> firstTwoByTwoMatrix(2, 2);
-    Matrix<double> secondTwoByTwoMatrix(2, 2);
-    Matrix<double> expectedSum(2, 2);
+    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> secondTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> expectedSum(2, 2);
 
     firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = -1.0; expectedSum(0, 0) = 0.0; 
     firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) = 2.0;  expectedSum(0, 1) = 4.0;
@@ -18,10 +18,10 @@ void MatrixTest::two2x2MatricesCanBeProperlyAdded(void)
 
 void MatrixTest::three2x2MatricesCanBeProperlyAdded(void)
 {
-    Matrix<double> firstTwoByTwoMatrix(2, 2);
-    Matrix<double> secondTwoByTwoMatrix(2, 2);
-    Matrix<double> thirdTwoByTwoMatrix(2, 2);
-    Matrix<double> expectedSum(2, 2);
+    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> secondTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> thirdTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> expectedSum(2, 2);
 
     firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = -1.0; thirdTwoByTwoMatrix(0, 0) = -1.0; expectedSum(0, 0) = -1.0; 
     firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) = 2.0;  thirdTwoByTwoMatrix(0, 1) = 2.0;  expectedSum(0, 1) = 6.0;
@@ -33,8 +33,8 @@ void MatrixTest::three2x2MatricesCanBeProperlyAdded(void)
 
 void MatrixTest::two1x2And2x1MatricesWhenAddedThrowException(void)
 {
-    Matrix<double> oneByTwoMatrix(1, 2);
-    Matrix<double> twoByOneMatrix(2, 1);
+    SolidMatrix<double> oneByTwoMatrix(1, 2);
+    SolidMatrix<double> twoByOneMatrix(2, 1);
 
     CPPUNIT_ASSERT_THROW (oneByTwoMatrix + twoByOneMatrix, MatrixException::IncompatibleAddition);
 }
@@ -42,9 +42,9 @@ void MatrixTest::two1x2And2x1MatricesWhenAddedThrowException(void)
 
 void MatrixTest::two2x2MatricesCanBeProperlySubtracted(void)
 {
-    Matrix<double> firstTwoByTwoMatrix(2, 2);
-    Matrix<double> secondTwoByTwoMatrix(2, 2);
-    Matrix<double> expectedDifference(2, 2);
+    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> secondTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> expectedDifference(2, 2);
 
     firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = -1.0; expectedDifference(0, 0) = 2.0; 
     firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) = 2.0;  expectedDifference(0, 1) = 0.0;
@@ -56,8 +56,8 @@ void MatrixTest::two2x2MatricesCanBeProperlySubtracted(void)
 
 void MatrixTest::two1x2And1x1MatricesWhenSubtractedThrowException(void)
 {
-    Matrix<double> oneByTwoMatrix(1, 2);
-    Matrix<double> oneByOneMatrix(1, 1);
+    SolidMatrix<double> oneByTwoMatrix(1, 2);
+    SolidMatrix<double> oneByOneMatrix(1, 1);
 
     CPPUNIT_ASSERT_THROW (oneByTwoMatrix - oneByOneMatrix, MatrixException::IncompatibleSubtraction);
 }
@@ -65,9 +65,9 @@ void MatrixTest::two1x2And1x1MatricesWhenSubtractedThrowException(void)
 
 void MatrixTest::two2x2MatricesCanBeProperlyAddedByShortHand(void)
 {
-    Matrix<double> firstTwoByTwoMatrix(2, 2);
-    Matrix<double> secondTwoByTwoMatrix(2, 2);
-    Matrix<double> expectedSum(2, 2);
+    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> secondTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> expectedSum(2, 2);
 
     firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = -1.0; expectedSum(0, 0) = 0.0;
     firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) = 2.0;  expectedSum(0, 1) = 4.0;
@@ -80,8 +80,8 @@ void MatrixTest::two2x2MatricesCanBeProperlyAddedByShortHand(void)
 
 void MatrixTest::two1x2And2x1MatricesWhenAddedByShortHandThrowException(void)
 {
-    Matrix<double> oneByTwoMatrix(1, 2);
-    Matrix<double> twoByOneMatrix(2, 1);
+    SolidMatrix<double> oneByTwoMatrix(1, 2);
+    SolidMatrix<double> twoByOneMatrix(2, 1);
 
     CPPUNIT_ASSERT_THROW (oneByTwoMatrix += twoByOneMatrix, MatrixException::IncompatibleAddition);
 }
@@ -89,9 +89,9 @@ void MatrixTest::two1x2And2x1MatricesWhenAddedByShortHandThrowException(void)
 
 void MatrixTest::two2x2MatricesCanBeProperlySubtractedByShortHand(void)
 {
-    Matrix<double> firstTwoByTwoMatrix(2, 2);
-    Matrix<double> secondTwoByTwoMatrix(2, 2);
-    Matrix<double> expectedDifference(2, 2);
+    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> secondTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> expectedDifference(2, 2);
 
     firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = -1.0; expectedDifference(0, 0) = 2.0; 
     firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) = 2.0;  expectedDifference(0, 1) = 0.0;
@@ -104,16 +104,16 @@ void MatrixTest::two2x2MatricesCanBeProperlySubtractedByShortHand(void)
 
 void MatrixTest::two1x2And2x1MatricesWhenSubtractedByShortHandThrowException(void)
 {
-    Matrix<double> oneByTwoMatrix(1, 2);
-    Matrix<double> twoByOneMatrix(2, 1);
+    SolidMatrix<double> oneByTwoMatrix(1, 2);
+    SolidMatrix<double> twoByOneMatrix(2, 1);
 
     CPPUNIT_ASSERT_THROW (oneByTwoMatrix -= twoByOneMatrix, MatrixException::IncompatibleSubtraction);
 }
 
 void MatrixTest::a2x2MatricesReturnsItselfOnUnaryAddition(void)
 {
-    Matrix<double> firstTwoByTwoMatrix(2, 2);
-    Matrix<double> secondTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> secondTwoByTwoMatrix(2, 2);
 
     firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = 1.0;
     firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) = 2.0;
@@ -125,8 +125,8 @@ void MatrixTest::a2x2MatricesReturnsItselfOnUnaryAddition(void)
 
 void MatrixTest::a2x2MatricesReturnsAdditiveInverseOnUnarySubtraction(void)
 {
-    Matrix<double> firstTwoByTwoMatrix(2, 2);
-    Matrix<double> secondTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> secondTwoByTwoMatrix(2, 2);
 
     firstTwoByTwoMatrix(0, 0) = 1.0;  secondTwoByTwoMatrix(0, 0) = -1.0;
     firstTwoByTwoMatrix(0, 1) = 2.0;  secondTwoByTwoMatrix(0, 1) = -2.0;
@@ -139,9 +139,9 @@ void MatrixTest::a2x2MatricesReturnsAdditiveInverseOnUnarySubtraction(void)
 
 void MatrixTest::two2x2MatricesCanBeProperlyMultiplied(void)
 {    
-    Matrix<double> firstTwoByTwoMatrix(2, 2);
-    Matrix<double> secondTwoByTwoMatrix(2, 2);
-    Matrix<double> expectedProduct(2, 2);
+    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> secondTwoByTwoMatrix(2, 2);
+    SolidMatrix<double> expectedProduct(2, 2);
     
     firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = -1.0; expectedProduct(0, 0) = -7.0; 
     firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) = 2.0;  expectedProduct(0, 1) = 10.0;
@@ -153,9 +153,9 @@ void MatrixTest::two2x2MatricesCanBeProperlyMultiplied(void)
 
 void MatrixTest::one1x2AndOne2x1MatricesCanBeProperlyMultiplied(void)
 {    
-    Matrix<double> oneByTwoMatrix(1, 2);
-    Matrix<double> twoByOneMatrix(2, 1);
-    Matrix<double> expectedProduct(1, 1);
+    SolidMatrix<double> oneByTwoMatrix(1, 2);
+    SolidMatrix<double> twoByOneMatrix(2, 1);
+    SolidMatrix<double> expectedProduct(1, 1);
     
     oneByTwoMatrix(0, 0) = 1.0; oneByTwoMatrix(0, 1) = -1.0;
     twoByOneMatrix(0, 0) = 2.0; twoByOneMatrix(1, 0) = 2.0;
@@ -166,8 +166,8 @@ void MatrixTest::one1x2AndOne2x1MatricesCanBeProperlyMultiplied(void)
 
 void MatrixTest::two1x2And1x1MatricesWhenMultipliedThrowException(void)
 {    
-    Matrix<double> oneByTwoMatrix(1, 2);
-    Matrix<double> oneByOneMatrix(1, 1);
+    SolidMatrix<double> oneByTwoMatrix(1, 2);
+    SolidMatrix<double> oneByOneMatrix(1, 1);
     
     CPPUNIT_ASSERT_THROW ((oneByTwoMatrix * oneByOneMatrix), MatrixException::IncompatibleMultiplication);    
 }
@@ -178,9 +178,9 @@ void MatrixTest::twoMatrixOfMatricesCanBeProperlyAdded(void)
     Matrix<Matrix <double> > secondMatrixOfMatrices(1, 2);
     Matrix<Matrix <double> > expectedSum(1, 2);
 
-    Matrix<double> firstMatrix0x0(1, 1);    Matrix<double> firstMatrix0x1(2, 1);
-    Matrix<double> secondMatrix0x0(1, 1);   Matrix<double> secondMatrix0x1(2, 1);
-    Matrix<double> expectedSum0x0(1, 1);    Matrix<double> expectedSum0x1(2, 1);
+    SolidMatrix<double> firstMatrix0x0(1, 1);    SolidMatrix<double> firstMatrix0x1(2, 1);
+    SolidMatrix<double> secondMatrix0x0(1, 1);   SolidMatrix<double> secondMatrix0x1(2, 1);
+    SolidMatrix<double> expectedSum0x0(1, 1);    SolidMatrix<double> expectedSum0x1(2, 1);
 
     firstMatrix0x0(0, 0) =  1.0; secondMatrix0x0(0, 0) =  2.0; expectedSum0x0(0, 0) =  3.0;
     firstMatrix0x1(0, 0) =  1.0; secondMatrix0x1(0, 0) = -2.0; expectedSum0x1(0, 0) = -1.0;

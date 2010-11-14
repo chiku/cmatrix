@@ -1,5 +1,6 @@
 // Written by     : Chirantan Mitra
 
+#include <cmath>
 #include <matrix_implementation.cpp>
 #include <matrix_io.cpp>
 
