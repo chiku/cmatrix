@@ -9,7 +9,6 @@
 #include "matrix_properties.cpp"
 
 template class CMatrix::Matrix<double>;
-template class CMatrix::SolidMatrix<double>;
 
 #endif
 

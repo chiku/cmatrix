@@ -70,15 +70,6 @@ namespace CMatrix
             void pngize(const char* fileName, Type redScale, Type blueScale, Type greenScale) const;
             template <typename RedFunc, typename BlueFunc, typename GreenFunc> void pngize(const char* fileName, RedFunc redScale, BlueFunc blueScale, GreenFunc greenScale) const;
     };
-
-
-    template <class Type>
-    class SolidMatrix : public Matrix<Type>
-    {
-         public:
-             SolidMatrix() : Matrix<Type>() {}
-             SolidMatrix(unsigned int rows, unsigned int columns) : Matrix<Type>(rows, columns) {}
-    };
 }
 
 #endif

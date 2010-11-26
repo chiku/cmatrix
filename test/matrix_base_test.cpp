@@ -15,14 +15,14 @@ void MatrixTest::tearDown()
 
 void MatrixTest::matrixOfSize2x3Has2RowsAnd3ColumnsTest(void)
 {
-    SolidMatrix<double> twoByThreeMatrix(2, 3);
+    Matrix<double> twoByThreeMatrix(2, 3);
     CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.getRows(), 2);
     CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.getColumns(), 3);
 }
 
 void MatrixTest::matrixOfSize1x1CanStoreValueProperly(void)
 {
-    SolidMatrix<double> oneByOneDoubleMatrix(1, 1);
+    Matrix<double> oneByOneDoubleMatrix(1, 1);
     oneByOneDoubleMatrix(0, 0) = 10.0;
     CPPUNIT_ASSERT_EQUAL (oneByOneDoubleMatrix(0, 0), 10.0);
 
@@ -33,7 +33,7 @@ void MatrixTest::matrixOfSize1x1CanStoreValueProperly(void)
 
 void MatrixTest::matrixOfSize2x3CanStoreValueProperly(void)
 {
-    SolidMatrix<double> twoByThreeMatrix(2, 3);
+    Matrix<double> twoByThreeMatrix(2, 3);
     twoByThreeMatrix(0, 0) = -2;
     twoByThreeMatrix(0, 1) = -1;
     twoByThreeMatrix(0, 2) = 0;
@@ -50,7 +50,7 @@ void MatrixTest::matrixOfSize2x3CanStoreValueProperly(void)
 
 void MatrixTest::matrixSizeCanBeSpecifiedAfterCreation(void)
 {
-    SolidMatrix<double> oneByOneMatrix;
+    Matrix<double> oneByOneMatrix;
     oneByOneMatrix.setSize(1, 1);
     oneByOneMatrix(0, 0) = 1.0;
     CPPUNIT_ASSERT_EQUAL (oneByOneMatrix.getRows(), 1);
@@ -60,7 +60,7 @@ void MatrixTest::matrixSizeCanBeSpecifiedAfterCreation(void)
 
 void MatrixTest::attemptToAccessInvalidCellThrowsException(void)
 {
-    SolidMatrix<double> oneByTwoMatrix(1, 2);
+    Matrix<double> oneByTwoMatrix(1, 2);
     CPPUNIT_ASSERT_THROW (oneByTwoMatrix(1, 2), MatrixException::AccessOutOfBound);
     CPPUNIT_ASSERT_THROW ((oneByTwoMatrix(1, 2) = 5), MatrixException::AccessOutOfBound);
 }
@@ -68,13 +68,13 @@ void MatrixTest::attemptToAccessInvalidCellThrowsException(void)
 
 void MatrixTest::matrixCanBeProperlyAssignedUsingEqualsOperator(void)
 {
-    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
+    Matrix<double> firstTwoByTwoMatrix(2, 2);
     firstTwoByTwoMatrix(0, 0) = 1.0;
     firstTwoByTwoMatrix(0, 1) = 2.0;
     firstTwoByTwoMatrix(1, 0) = 3.0;
     firstTwoByTwoMatrix(1, 1) = 4.0;
 
-    SolidMatrix<double> secondTwoByTwoMatrix;
+    Matrix<double> secondTwoByTwoMatrix;
     secondTwoByTwoMatrix = firstTwoByTwoMatrix;
     CPPUNIT_ASSERT (firstTwoByTwoMatrix == secondTwoByTwoMatrix);
 
@@ -85,13 +85,13 @@ void MatrixTest::matrixCanBeProperlyAssignedUsingEqualsOperator(void)
 
 void MatrixTest::matrixCanBeProperlyAssignedUsingCopyConstructor(void)
 {
-    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
+    Matrix<double> firstTwoByTwoMatrix(2, 2);
     firstTwoByTwoMatrix(0, 0) = 1.0;
     firstTwoByTwoMatrix(0, 1) = 2.0;
     firstTwoByTwoMatrix(1, 0) = 3.0;
     firstTwoByTwoMatrix(1, 1) = 4.0;
 
-    SolidMatrix<double> secondTwoByTwoMatrix = firstTwoByTwoMatrix;
+    Matrix<double> secondTwoByTwoMatrix = firstTwoByTwoMatrix;
     CPPUNIT_ASSERT (firstTwoByTwoMatrix == secondTwoByTwoMatrix);
 
     secondTwoByTwoMatrix(1, 1) = -4.0;
@@ -100,32 +100,32 @@ void MatrixTest::matrixCanBeProperlyAssignedUsingCopyConstructor(void)
 
 void MatrixTest::matrixSizeNotSetAsNaturalNumbersThrowsException(void)
 {
-    CPPUNIT_ASSERT_THROW (SolidMatrix<double> firstBad0x0Matrix(0, 0), MatrixException::InvalidSizeSet);
+    CPPUNIT_ASSERT_THROW (Matrix<double> firstBad0x0Matrix(0, 0), MatrixException::InvalidSizeSet);
 
-    SolidMatrix<double> secondBad0x0Matrix;
+    Matrix<double> secondBad0x0Matrix;
     CPPUNIT_ASSERT_THROW (secondBad0x0Matrix.setSize(1, 0), MatrixException::InvalidSizeSet);
 }
 
 void MatrixTest::matrixSizeOnResettingAfterOnceSetThrowsException(void)
 {
-    SolidMatrix<double> first1x1Matrix(1, 1);
+    Matrix<double> first1x1Matrix(1, 1);
     CPPUNIT_ASSERT_THROW (first1x1Matrix.setSize(2, 2), MatrixException::SizeResetException);
 
-    SolidMatrix<double> second1x1Matrix(1, 1);
+    Matrix<double> second1x1Matrix(1, 1);
     CPPUNIT_ASSERT_THROW (second1x1Matrix.setSize(2, 0), MatrixException::SizeResetException);
 }
 
 void MatrixTest::matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException(void)
 {
-    SolidMatrix<double> first1x1Matrix(1, 1);
+    Matrix<double> first1x1Matrix(1, 1);
     CPPUNIT_ASSERT_NO_THROW (first1x1Matrix.setSize(1, 1));
 }
 
 
 void MatrixTest::matricesWithDifferentRowsAreUnequal(void)
 {
-    SolidMatrix<double> oneByTwoMatrix(1, 2);
-    SolidMatrix<double> twoByTwoMatrix(2, 2);
+    Matrix<double> oneByTwoMatrix(1, 2);
+    Matrix<double> twoByTwoMatrix(2, 2);
     
     CPPUNIT_ASSERT (!(oneByTwoMatrix == twoByTwoMatrix));
     CPPUNIT_ASSERT (oneByTwoMatrix != twoByTwoMatrix);
@@ -133,8 +133,8 @@ void MatrixTest::matricesWithDifferentRowsAreUnequal(void)
 
 void MatrixTest::matricesWithDifferentColumnsAreUnequal(void)
 {
-    SolidMatrix<double> oneByTwoMatrix(1, 2);
-    SolidMatrix<double> oneByThreeMatrix(1, 3);
+    Matrix<double> oneByTwoMatrix(1, 2);
+    Matrix<double> oneByThreeMatrix(1, 3);
     
     CPPUNIT_ASSERT (!(oneByTwoMatrix == oneByThreeMatrix));
     CPPUNIT_ASSERT (oneByTwoMatrix != oneByThreeMatrix);
@@ -142,8 +142,8 @@ void MatrixTest::matricesWithDifferentColumnsAreUnequal(void)
 
 void MatrixTest::matricesOfEqualSizeWithOneDifferentMemberAreUnequal(void)
 {
-    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
-    SolidMatrix<double> secondTwoByTwoMatrix(2, 2);
+    Matrix<double> firstTwoByTwoMatrix(2, 2);
+    Matrix<double> secondTwoByTwoMatrix(2, 2);
 
     firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = 1.0;
     firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) = 2.0;
@@ -156,8 +156,8 @@ void MatrixTest::matricesOfEqualSizeWithOneDifferentMemberAreUnequal(void)
 
 void MatrixTest::matricesOfEqualSizeWithSameMembersAreEqual(void)
 {
-    SolidMatrix<double> firstTwoByTwoMatrix(2, 2);
-    SolidMatrix<double> secondTwoByTwoMatrix(2, 2);
+    Matrix<double> firstTwoByTwoMatrix(2, 2);
+    Matrix<double> secondTwoByTwoMatrix(2, 2);
 
     firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = 1.0;
     firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) = 2.0;
@@ -170,8 +170,8 @@ void MatrixTest::matricesOfEqualSizeWithSameMembersAreEqual(void)
 
 void MatrixTest::matrixOfMatricesCanBeCreated(void)
 {
-    SolidMatrix<double> firstMatrix(1, 1);
-    SolidMatrix<double> secondMatrix(1, 1);
+    Matrix<double> firstMatrix(1, 1);
+    Matrix<double> secondMatrix(1, 1);
     Matrix<Matrix <double> > matrixOfMatrices(1, 2);
 
     firstMatrix(0, 0) = 1.0;
@@ -188,8 +188,8 @@ void MatrixTest::matricesOfMatricesWithEqualMatrixAreEqual(void)
     Matrix<Matrix <double> > firstMatrix(1, 2);
     Matrix<Matrix <double> > secondMatrix(1, 2);
 
-    SolidMatrix<double> firstMatrix0x0(1, 1);    SolidMatrix<double> firstMatrix0x1(2, 1);
-    SolidMatrix<double> secondMatrix0x0(1, 1);   SolidMatrix<double> secondMatrix0x1(2, 1);
+    Matrix<double> firstMatrix0x0(1, 1);    Matrix<double> firstMatrix0x1(2, 1);
+    Matrix<double> secondMatrix0x0(1, 1);   Matrix<double> secondMatrix0x1(2, 1);
 
     firstMatrix0x0(0, 0) =  1.0; secondMatrix0x0(0, 0) =  1.0;
     firstMatrix0x1(0, 0) =  3.0; secondMatrix0x1(0, 0) =  3.0;
@@ -206,8 +206,8 @@ void MatrixTest::matricesOfMatricesWithUnequalMatrixAreUnequal(void)
     Matrix<Matrix <double> > firstMatrix(1, 2);
     Matrix<Matrix <double> > secondMatrix(1, 2);
 
-    SolidMatrix<double> firstMatrix0x0(1, 1);    SolidMatrix<double> firstMatrix0x1(2, 1);
-    SolidMatrix<double> secondMatrix0x0(1, 1);   SolidMatrix<double> secondMatrix0x1(2, 1);
+    Matrix<double> firstMatrix0x0(1, 1);    Matrix<double> firstMatrix0x1(2, 1);
+    Matrix<double> secondMatrix0x0(1, 1);   Matrix<double> secondMatrix0x1(2, 1);
 
     firstMatrix0x0(0, 0) =  1.0; secondMatrix0x0(0, 0) =  1.0;
     firstMatrix0x1(0, 0) =  3.0; secondMatrix0x1(0, 0) =  3.0;
