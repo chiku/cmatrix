@@ -8,7 +8,7 @@ CXXFLAGS += -O2
 INCLUDE_FILES += -I.
 INCLUDE_FILES += -I../src
 
-CPPFILES = $(shell ls matrix_*_test.cpp)
+CPPFILES = $(shell ls *_test.cpp)
 
 run.all: run.test run.demo
 
@@ -24,7 +24,7 @@ run.demo: matrix_demo
 
 matrix_test: test_suite.o
 	$(CXX) -c $(CXXFLAGS) $(INCLUDE_FILES) $(CPPFILES)
-	$(CXX) -o matrix_test matrix_*_test.o test_suite.o -lstdc++ -lcppunit -ldl
+	$(CXX) -o matrix_test *_test.o test_suite.o -lstdc++ -lcppunit -ldl
 
 test_suite.o:
 	$(CXX) $(CXXFLAGS) -c test_suite.cpp

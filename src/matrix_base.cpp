@@ -53,6 +53,7 @@ void CMatrix::Matrix<Type>::setMatrixAsUnassigned()
 {
     values = NULL;
     rows = columns = 0;
+    size.set(0, 0);
 }
 
 
@@ -69,21 +70,24 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator = (const Matrix& otherMat
     return *this;
 }
 
-// Row accessor
 template <class Type>
 int CMatrix::Matrix<Type>::getRows() const
 {
-    return rows;
+    return size.getRows();
 }
 
-// Column accessor
 template <class Type>
 int CMatrix::Matrix<Type>::getColumns() const
 {
-    return columns;
+    return size.getColumns();
 }
 
-// Size modifier
+template <class Type>
+int CMatrix::Matrix<Type>::elements() const
+{
+    return size.elements();
+}
+
 template <class Type>
 void CMatrix::Matrix<Type>::setSize(unsigned int rows, unsigned int columns)
 {
@@ -97,6 +101,7 @@ void CMatrix::Matrix<Type>::setSize(unsigned int rows, unsigned int columns)
 
     (*this).rows = rows;
     (*this).columns = columns;
+    size.set(rows, columns);
 
     values = new Type[rows * columns];
 }

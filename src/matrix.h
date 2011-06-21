@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <matrix_exceptions.h>
+#include <matrix_size.h>
 
 namespace CMatrix
 {
@@ -24,6 +25,7 @@ namespace CMatrix
 
             unsigned int rows;
             unsigned int columns;
+            Size size;
 
             void clearMemory();
             void setMatrixAsUnassigned();
@@ -38,6 +40,7 @@ namespace CMatrix
 
             int getRows() const;
             int getColumns() const;
+            int elements() const;
 
             void setSize(unsigned int rows, unsigned int columns);
 

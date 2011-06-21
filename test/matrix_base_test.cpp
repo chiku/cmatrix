@@ -13,11 +13,22 @@ void MatrixTest::tearDown()
 }
 
 
-void MatrixTest::matrixOfSize2x3Has2RowsAnd3ColumnsTest(void)
+void MatrixTest::matrixOfSize2x3Has2Rows(void)
 {
     Matrix<double> twoByThreeMatrix(2, 3);
     CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.getRows(), 2);
+}
+
+void MatrixTest::matrixOfSize2x3Has3Columns(void)
+{
+    Matrix<double> twoByThreeMatrix(2, 3);
     CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.getColumns(), 3);
+}
+
+void MatrixTest::matrixOfSize2x3Has6Elements(void)
+{
+    Matrix<double> twoByThreeMatrix(2, 3);
+    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.elements(), 6);
 }
 
 void MatrixTest::matrixOfSize1x1CanStoreValueProperly(void)
@@ -79,7 +90,7 @@ void MatrixTest::matrixCanBeProperlyAssignedUsingEqualsOperator(void)
     CPPUNIT_ASSERT (firstTwoByTwoMatrix == secondTwoByTwoMatrix);
 
     secondTwoByTwoMatrix(1, 1) = -4.0;
-    CPPUNIT_ASSERT (firstTwoByTwoMatrix != secondTwoByTwoMatrix);    
+    CPPUNIT_ASSERT (firstTwoByTwoMatrix != secondTwoByTwoMatrix);
 }
 
 
@@ -95,7 +106,7 @@ void MatrixTest::matrixCanBeProperlyAssignedUsingCopyConstructor(void)
     CPPUNIT_ASSERT (firstTwoByTwoMatrix == secondTwoByTwoMatrix);
 
     secondTwoByTwoMatrix(1, 1) = -4.0;
-    CPPUNIT_ASSERT (firstTwoByTwoMatrix != secondTwoByTwoMatrix);    
+    CPPUNIT_ASSERT (firstTwoByTwoMatrix != secondTwoByTwoMatrix);
 }
 
 void MatrixTest::matrixSizeNotSetAsNaturalNumbersThrowsException(void)

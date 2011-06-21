@@ -14,7 +14,17 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
 {
     CPPUNIT_TEST_SUITE (MatrixTest);
 
-    CPPUNIT_TEST (matrixOfSize2x3Has2RowsAnd3ColumnsTest);
+    CPPUNIT_TEST (sizeIsInvalidWithRowAsZero);
+    CPPUNIT_TEST (sizeIsInvalidWithColumnAsZero);
+    CPPUNIT_TEST (sizeIsValidWithRowAndColumnGreaterThanZero);
+
+    CPPUNIT_TEST (sizeKnowsItsRows);
+    CPPUNIT_TEST (sizeKnowsItsColumns);
+    CPPUNIT_TEST (sizeKnowsItsElementCount);
+
+    CPPUNIT_TEST (matrixOfSize2x3Has2Rows);
+    CPPUNIT_TEST (matrixOfSize2x3Has3Columns);
+    CPPUNIT_TEST (matrixOfSize2x3Has6Elements);
     CPPUNIT_TEST (matrixOfSize1x1CanStoreValueProperly);
     CPPUNIT_TEST (matrixOfSize2x3CanStoreValueProperly);
     CPPUNIT_TEST (matrixSizeCanBeSpecifiedAfterCreation);
@@ -77,7 +87,17 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void tearDown();
 
     protected:
-        void matrixOfSize2x3Has2RowsAnd3ColumnsTest();
+        void sizeIsInvalidWithRowAsZero();
+        void sizeIsInvalidWithColumnAsZero();
+        void sizeIsValidWithRowAndColumnGreaterThanZero();
+
+        void sizeKnowsItsRows();
+        void sizeKnowsItsColumns();
+        void sizeKnowsItsElementCount();
+
+        void matrixOfSize2x3Has2Rows();
+        void matrixOfSize2x3Has3Columns();
+        void matrixOfSize2x3Has6Elements();
         void matrixOfSize1x1CanStoreValueProperly();
         void matrixOfSize2x3CanStoreValueProperly();
         void matrixSizeCanBeSpecifiedAfterCreation();
