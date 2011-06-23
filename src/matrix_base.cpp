@@ -22,10 +22,10 @@ template <class Type>
 CMatrix::Matrix<Type>::Matrix(const Matrix& otherMatrix)
 {
     setMatrixAsUnassigned();
-    setSize(otherMatrix.rows, otherMatrix.columns);
+    setSize(otherMatrix.rows(), otherMatrix.columns());
 
-    for(int i = 0; i < rows; i++)
-        for (int j = 0; j < columns; j++)
+    for(int i = 0; i < rows(); i++)
+        for (int j = 0; j < columns(); j++)
             (*this)(i, j) = otherMatrix(i, j);
 }
 
@@ -52,7 +52,6 @@ template <class Type>
 void CMatrix::Matrix<Type>::setMatrixAsUnassigned()
 {
     values = NULL;
-    rows = columns = 0;
     size.set(0, 0);
 }
 
@@ -61,23 +60,23 @@ void CMatrix::Matrix<Type>::setMatrixAsUnassigned()
 template <class Type>
 CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator = (const Matrix& otherMatrix)
 {
-    setSize(otherMatrix.rows, otherMatrix.columns);
+    setSize(otherMatrix.rows(), otherMatrix.columns());
 
-    for(int i = 0; i < rows; i++)
-        for (int j = 0; j < columns; j++)
+    for(int i = 0; i < rows(); i++)
+        for (int j = 0; j < columns(); j++)
             (*this)(i, j) = otherMatrix(i, j);
 
     return *this;
 }
 
 template <class Type>
-int CMatrix::Matrix<Type>::getRows() const
+int CMatrix::Matrix<Type>::rows() const
 {
     return size.getRows();
 }
 
 template <class Type>
-int CMatrix::Matrix<Type>::getColumns() const
+int CMatrix::Matrix<Type>::columns() const
 {
     return size.getColumns();
 }
@@ -91,7 +90,7 @@ int CMatrix::Matrix<Type>::elements() const
 template <class Type>
 void CMatrix::Matrix<Type>::setSize(unsigned int rows, unsigned int columns)
 {
-    if ((*this).rows != 0 && (*this).columns != 0 && (*this).rows != rows && (*this).columns != columns)
+    if ((*this).rows() != 0 && (*this).columns() != 0 && (*this).rows() != rows && (*this).columns() != columns)
         throw MatrixException::SizeResetException();
 
     if (rows == 0 || columns == 0)
@@ -99,8 +98,6 @@ void CMatrix::Matrix<Type>::setSize(unsigned int rows, unsigned int columns)
 
     clearMemory();
 
-    (*this).rows = rows;
-    (*this).columns = columns;
     size.set(rows, columns);
 
     values = new Type[rows * columns];
@@ -110,31 +107,31 @@ void CMatrix::Matrix<Type>::setSize(unsigned int rows, unsigned int columns)
 template <class Type>
 Type& CMatrix::Matrix<Type>::operator()(unsigned int row, unsigned int column)
 {
-    if (row >= rows || column >= columns)
+    if (row >= rows() || column >= columns())
         throw MatrixException::AccessOutOfBound();
 
-    return values[row * columns + column];
+    return values[row * columns() + column];
 }
 
 // Rvalue element accessor (const)
 template <class Type>
 Type CMatrix::Matrix<Type>::operator()(unsigned int row, unsigned int column) const
 {
-    if (row >= rows || column >= columns)
+    if (row >= rows() || column >= columns())
         throw MatrixException::AccessOutOfBound();
 
-    return values[row * columns + column];
+    return values[row * columns() + column];
 }
 
 // Overloaded equality operator
 template <class Type>
 bool CMatrix::Matrix<Type>::operator==(const Matrix& otherMatrix) const
 {
-    if (rows != otherMatrix.rows || columns != otherMatrix.columns)
+    if (rows() != otherMatrix.rows() || columns() != otherMatrix.columns())
         return false;
 
-    for(int i = 0; i < rows; i++)
-        for(int j = 0; j < columns; j++)
+    for(int i = 0; i < rows(); i++)
+        for(int j = 0; j < columns(); j++)
             if((*this)(i, j) != otherMatrix(i, j))
                 return false;
 

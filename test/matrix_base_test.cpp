@@ -16,13 +16,13 @@ void MatrixTest::tearDown()
 void MatrixTest::matrixOfSize2x3Has2Rows(void)
 {
     Matrix<double> twoByThreeMatrix(2, 3);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.getRows(), 2);
+    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.rows(), 2);
 }
 
 void MatrixTest::matrixOfSize2x3Has3Columns(void)
 {
     Matrix<double> twoByThreeMatrix(2, 3);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.getColumns(), 3);
+    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.columns(), 3);
 }
 
 void MatrixTest::matrixOfSize2x3Has6Elements(void)
