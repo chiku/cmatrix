@@ -64,8 +64,8 @@ void MatrixTest::matrixSizeCanBeSpecifiedAfterCreation(void)
     Matrix<double> oneByOneMatrix;
     oneByOneMatrix.setSize(1, 1);
     oneByOneMatrix(0, 0) = 1.0;
-    CPPUNIT_ASSERT_EQUAL (oneByOneMatrix.getRows(), 1);
-    CPPUNIT_ASSERT_EQUAL (oneByOneMatrix.getColumns(), 1);
+    CPPUNIT_ASSERT_EQUAL (oneByOneMatrix.rows(), 1);
+    CPPUNIT_ASSERT_EQUAL (oneByOneMatrix.columns(), 1);
     CPPUNIT_ASSERT_EQUAL (oneByOneMatrix(0, 0), 1.0);
 }
 

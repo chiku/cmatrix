@@ -23,10 +23,6 @@ namespace CMatrix
         private:
             Type* values;
 
-            /******* DEPRECATED *******/
-            unsigned int _rows;
-            unsigned int _columns;
-            /******* DEPRECATED *******/
             Size size;
 
             void clearMemory();
@@ -43,11 +39,6 @@ namespace CMatrix
             int rows() const;
             int columns() const;
             int elements() const;
-
-            /******* DEPRECATED *******/
-            int getRows() const { return rows(); }
-            int getColumns() const { return columns(); }
-            /******* DEPRECATED *******/
 
             void setSize(unsigned int rows, unsigned int columns);
 
