@@ -6,7 +6,7 @@
 template <class Type>
 CMatrix::Matrix<Type> CMatrix::operator + (const CMatrix::Matrix<Type> firstMatrix, const CMatrix::Matrix<Type> secondMatrix)
 {
-    if (firstMatrix.rows() != secondMatrix.rows() || firstMatrix.columns() != secondMatrix.columns())
+    if (firstMatrix.size != secondMatrix.size)
         throw MatrixException::IncompatibleAddition();
 
     CMatrix::Matrix<Type> sum(firstMatrix.rows(), firstMatrix.columns());
@@ -22,7 +22,7 @@ CMatrix::Matrix<Type> CMatrix::operator + (const CMatrix::Matrix<Type> firstMatr
 template <class Type>
 CMatrix::Matrix<Type> CMatrix::operator - (const CMatrix::Matrix<Type> firstMatrix, const CMatrix::Matrix<Type> secondMatrix)
 {
-    if (firstMatrix.rows() != secondMatrix.rows() || firstMatrix.columns() != secondMatrix.columns())
+    if (firstMatrix.size != secondMatrix.size)
         throw MatrixException::IncompatibleSubtraction();
 
     CMatrix::Matrix<Type> difference(firstMatrix.rows(), firstMatrix.columns());
@@ -59,7 +59,7 @@ CMatrix::Matrix<Type> CMatrix::operator * (const CMatrix::Matrix<Type> firstMatr
 template <class Type>
 CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator += (const CMatrix::Matrix<Type> secondMatrix)
 {
-    if (rows() != secondMatrix.rows() || columns() != secondMatrix.columns())
+    if (size != secondMatrix.size)
         throw MatrixException::IncompatibleAddition();
     
     for(int i = 0; i < rows(); i++)
@@ -73,7 +73,7 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator += (const CMatrix::Matrix
 template <class Type>
 CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator -= (const CMatrix::Matrix<Type> secondMatrix)
 {
-    if (rows() != secondMatrix.rows() || columns() != secondMatrix.columns())
+    if (size != secondMatrix.size)
         throw MatrixException::IncompatibleSubtraction();
     
     for(int i = 0; i < rows(); i++)

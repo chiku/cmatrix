@@ -8,9 +8,8 @@ template <typename FunctObj>
 CMatrix::Matrix<Type> CMatrix::Matrix<Type>::map(FunctObj function)
 {
     CMatrix::Matrix<Type> result(rows(), columns());
-    for (int i = 0; i < rows(); i++)
-        for (int j = 0; j < columns(); j++)
-            result(i, j) = (*function)((*this)(i, j));
+    for(int i = 0; i < elements(); i++)
+        result.values[i] = (*function)(values[i]);
 
     return result;
 }

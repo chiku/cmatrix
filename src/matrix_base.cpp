@@ -22,9 +22,8 @@ CMatrix::Matrix<Type>::Matrix(const Matrix& otherMatrix)
     setMatrixAsUnassigned();
     setSize(otherMatrix.rows(), otherMatrix.columns());
 
-    for(int i = 0; i < rows(); i++)
-        for (int j = 0; j < columns(); j++)
-            (*this)(i, j) = otherMatrix(i, j);
+    for(int i = 0; i < elements(); i++)
+        values[i] = otherMatrix.values[i];
 }
 
 template <class Type>
@@ -57,9 +56,8 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator = (const Matrix& otherMat
 {
     setSize(otherMatrix.rows(), otherMatrix.columns());
 
-    for(int i = 0; i < rows(); i++)
-        for (int j = 0; j < columns(); j++)
-            (*this)(i, j) = otherMatrix(i, j);
+    for(int i = 0; i < elements(); i++)
+        values[i] = otherMatrix.values[i];
 
     return *this;
 }
@@ -122,13 +120,12 @@ Type CMatrix::Matrix<Type>::operator()(unsigned int row, unsigned int column) co
 template <class Type>
 bool CMatrix::Matrix<Type>::operator==(const Matrix& otherMatrix) const
 {
-    if (rows() != otherMatrix.rows() || columns() != otherMatrix.columns())
+    if (size != otherMatrix.size)
         return false;
 
-    for(int i = 0; i < rows(); i++)
-        for(int j = 0; j < columns(); j++)
-            if((*this)(i, j) != otherMatrix(i, j))
-                return false;
+    for(int i = 0; i < elements(); i++)
+        if(values[i] != otherMatrix.values[i])
+            return false;
 
     return true;
 }
