@@ -5,7 +5,7 @@
 
 #include <iostream>
 #include <matrix_exceptions.h>
-#include <matrix_size.h>
+#include <size.h>
 
 namespace CMatrix
 {
