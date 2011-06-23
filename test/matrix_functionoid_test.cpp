@@ -32,18 +32,18 @@ void MatrixTest::a2x2MatrixOnGettingAFunctionoidForOneParameterAppliesItToAllMem
     expectedMatrix(1, 0) = 4.0; expectedMatrix(1, 1) = 5.0;
      
     CPPUNIT_ASSERT (twoByTwoMatrix.map(new testFunctionoidWithOneParameter) == expectedMatrix);    
-    CPPUNIT_ASSERT (twoByTwoMatrix != expectedMatrix);    
+    CPPUNIT_ASSERT (twoByTwoMatrix != expectedMatrix);
 }
  
 void MatrixTest::a2x2MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPosition()
 {
-    Matrix<double> twoByTwoMatrix(2, 2);    
+    Matrix<double> twoByTwoMatrix(2, 2);
     Matrix<double> expectedMatrix(2, 2);
     expectedMatrix(0, 0) = 0.0; expectedMatrix(0, 1) = 1.0;
     expectedMatrix(1, 0) = 1.0; expectedMatrix(1, 1) = 2.0;
      
     CPPUNIT_ASSERT (twoByTwoMatrix.fillByPosition(new testFunctionoidWithTwoParameters) == expectedMatrix);    
-    CPPUNIT_ASSERT (twoByTwoMatrix == expectedMatrix);    
+    CPPUNIT_ASSERT (twoByTwoMatrix == expectedMatrix);
 }
  
 void MatrixTest::a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShift()
@@ -55,7 +55,7 @@ void MatrixTest::a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMe
     expectedMatrix(2, 0) =  0.0; expectedMatrix(2, 1) =  1.0; expectedMatrix(2, 2) = 2.0;
      
     CPPUNIT_ASSERT (threeByThreeMatrix.fillByPosition(new testFunctionoidWithTwoParameters, 1, 1) == expectedMatrix);    
-    CPPUNIT_ASSERT (threeByThreeMatrix == expectedMatrix);    
+    CPPUNIT_ASSERT (threeByThreeMatrix == expectedMatrix);
 }
  
 void MatrixTest::a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShiftAndScale()
@@ -67,6 +67,6 @@ void MatrixTest::a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMe
     expectedMatrix(2, 0) = 5.0; expectedMatrix(2, 1) =  2.0; expectedMatrix(2, 2) =  -1.0;
      
     CPPUNIT_ASSERT (threeByThreeMatrix.fillByPosition(new testFunctionoidWithTwoParameters, 1, 1, 2.0, -3.0) == expectedMatrix);    
-    CPPUNIT_ASSERT (threeByThreeMatrix == expectedMatrix);    
+    CPPUNIT_ASSERT (threeByThreeMatrix == expectedMatrix);
 }
 

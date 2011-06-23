@@ -43,3 +43,30 @@ void MatrixTest::sizeKnowsItIsSquareWhenRowsAndColumnsAreNotEqual(void)
     CPPUNIT_ASSERT (! Size(2, 3).isSquare());
 }
 
+void MatrixTest::sizesWithDifferentRowsAreUnequal(void)
+{
+    Size twoByTwo = Size(2, 2);
+    Size oneByTwo = Size(1, 2);
+
+    CPPUNIT_ASSERT (! (twoByTwo == oneByTwo));
+    CPPUNIT_ASSERT (twoByTwo != oneByTwo);
+}
+
+void MatrixTest::sizesWithDifferentColumnsAreUnequal(void)
+{
+    Size twoByTwo = Size(2, 2);
+    Size twoByOne = Size(2, 1);
+
+    CPPUNIT_ASSERT (! (twoByTwo == twoByOne));
+    CPPUNIT_ASSERT (twoByTwo != twoByOne);
+}
+
+void MatrixTest::sizesWithSameRowsAndColumnsAreEqual(void)
+{
+    Size firstTwoByTwo  = Size(2, 2);
+    Size secondTwoByTwo = Size(2, 2);
+
+    CPPUNIT_ASSERT (firstTwoByTwo == secondTwoByTwo);
+    CPPUNIT_ASSERT (! (firstTwoByTwo != secondTwoByTwo));
+}
+

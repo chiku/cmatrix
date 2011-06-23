@@ -2,14 +2,12 @@
 
 #include "matrix.h"
 
-// Test matrix is square
 template <class Type>
 bool CMatrix::Matrix<Type>::isSquare() const
 {
     return size.isSquare();
 }
 
-// Test matrix is unit
 template <class Type>
 bool CMatrix::Matrix<Type>::isUnit() const
 {
@@ -24,7 +22,6 @@ bool CMatrix::Matrix<Type>::isUnit() const
     return true;
 }
 
-// Test matrix is zero
 template <class Type>
 bool CMatrix::Matrix<Type>::isZero() const
 {

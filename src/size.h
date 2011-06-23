@@ -53,6 +53,18 @@ namespace CMatrix
             {
                 return getRows() == getColumns();
             }
+            
+            // Overloaded equality operator
+            bool operator==(const Size& otherSize) const
+            {
+                return (getRows() == otherSize.getRows() && getColumns() == otherSize.getColumns());
+            }
+
+            // Overloaaded not-equals operator
+            bool operator != (const Size& otherSize) const
+            {
+                return !operator == (otherSize);
+            }
     };
 }
 

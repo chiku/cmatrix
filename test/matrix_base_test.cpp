@@ -47,16 +47,16 @@ void MatrixTest::matrixOfSize2x3CanStoreValueProperly(void)
     Matrix<double> twoByThreeMatrix(2, 3);
     twoByThreeMatrix(0, 0) = -2;
     twoByThreeMatrix(0, 1) = -1;
-    twoByThreeMatrix(0, 2) = 0;
-    twoByThreeMatrix(1, 0) = 1;
-    twoByThreeMatrix(1, 1) = 2;
-    twoByThreeMatrix(1, 2) = 3;
+    twoByThreeMatrix(0, 2) =  0;
+    twoByThreeMatrix(1, 0) =  1;
+    twoByThreeMatrix(1, 1) =  2;
+    twoByThreeMatrix(1, 2) =  3;
     CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(0, 0), -2.0);
     CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(0, 1), -1.0);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(0, 2), 0.0);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(1, 0), 1.0);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(1, 1), 2.0);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(1, 2), 3.0);
+    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(0, 2),  0.0);
+    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(1, 0),  1.0);
+    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(1, 1),  2.0);
+    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(1, 2),  3.0);
 }
 
 void MatrixTest::matrixSizeCanBeSpecifiedAfterCreation(void)
@@ -156,10 +156,10 @@ void MatrixTest::matricesOfEqualSizeWithOneDifferentMemberAreUnequal(void)
     Matrix<double> firstTwoByTwoMatrix(2, 2);
     Matrix<double> secondTwoByTwoMatrix(2, 2);
 
-    firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = 1.0;
-    firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) = 2.0;
+    firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) =  1.0;
+    firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) =  2.0;
     firstTwoByTwoMatrix(1, 0) = 3.0; secondTwoByTwoMatrix(1, 0) = -3.0;
-    firstTwoByTwoMatrix(1, 1) = 4.0; secondTwoByTwoMatrix(1, 1) = 4.0;
+    firstTwoByTwoMatrix(1, 1) = 4.0; secondTwoByTwoMatrix(1, 1) =  4.0;
     
     CPPUNIT_ASSERT (!(firstTwoByTwoMatrix == secondTwoByTwoMatrix));
     CPPUNIT_ASSERT (firstTwoByTwoMatrix != secondTwoByTwoMatrix);

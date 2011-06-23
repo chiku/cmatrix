@@ -2,14 +2,12 @@
 
 #include "matrix.h"
 
-// Default constructor
 template <class Type>
 CMatrix::Matrix<Type>::Matrix()
 {
     setMatrixAsUnassigned();
 }
 
-// Constructor
 template <class Type>
 CMatrix::Matrix<Type>::Matrix(unsigned int rows, unsigned int columns)
 {
@@ -29,14 +27,12 @@ CMatrix::Matrix<Type>::Matrix(const Matrix& otherMatrix)
             (*this)(i, j) = otherMatrix(i, j);
 }
 
-// Destructor
 template <class Type>
 CMatrix::Matrix<Type>::~Matrix()
 {
     clearMemory();
 }
 
-// Clear memory for value
 template <class Type>
 void CMatrix::Matrix<Type>::clearMemory()
 {
@@ -47,7 +43,6 @@ void CMatrix::Matrix<Type>::clearMemory()
     }
 }
 
-// Clear Out matrix
 template <class Type>
 void CMatrix::Matrix<Type>::setMatrixAsUnassigned()
 {
