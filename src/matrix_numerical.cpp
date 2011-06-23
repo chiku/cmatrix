@@ -10,10 +10,9 @@ CMatrix::Matrix<Type> CMatrix::operator + (const CMatrix::Matrix<Type> firstMatr
         throw MatrixException::IncompatibleAddition();
 
     CMatrix::Matrix<Type> sum(firstMatrix.rows(), firstMatrix.columns());
-    
-    for(int i = 0; i < firstMatrix.rows(); i++)
-        for(int j = 0; j< firstMatrix.columns(); j++)
-            sum(i, j) = firstMatrix(i, j) + secondMatrix(i, j);
+
+    for(int i = 0; i < firstMatrix.elements(); i++)
+        sum.values[i] = firstMatrix.values[i] + secondMatrix.values[i];
 
     return sum;
 }
@@ -26,10 +25,9 @@ CMatrix::Matrix<Type> CMatrix::operator - (const CMatrix::Matrix<Type> firstMatr
         throw MatrixException::IncompatibleSubtraction();
 
     CMatrix::Matrix<Type> difference(firstMatrix.rows(), firstMatrix.columns());
-    
-    for(int i = 0; i < firstMatrix.rows(); i++)
-        for(int j = 0; j< firstMatrix.columns(); j++)
-            difference(i, j) = firstMatrix(i, j) - secondMatrix(i, j);
+
+    for(int i = 0; i < firstMatrix.elements(); i++)
+        difference.values[i] = firstMatrix.values[i] - secondMatrix.values[i];
 
     return difference;
 }
@@ -61,10 +59,9 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator += (const CMatrix::Matrix
 {
     if (size != secondMatrix.size)
         throw MatrixException::IncompatibleAddition();
-    
-    for(int i = 0; i < rows(); i++)
-        for(int j = 0; j< columns(); j++)
-            (*this)(i, j) = (*this)(i, j) + secondMatrix(i, j);
+
+    for(int i = 0; i < elements(); i++)
+        values[i] = values[i] + secondMatrix.values[i];
 
     return (*this);
 }
@@ -75,10 +72,9 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator -= (const CMatrix::Matrix
 {
     if (size != secondMatrix.size)
         throw MatrixException::IncompatibleSubtraction();
-    
-    for(int i = 0; i < rows(); i++)
-        for(int j = 0; j< columns(); j++)
-            (*this)(i, j) = (*this)(i, j) - secondMatrix(i, j);
+
+    for(int i = 0; i < elements(); i++)
+        values[i] = values[i] - secondMatrix.values[i];
 
     return (*this);
 }
@@ -98,9 +94,8 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::operator - ()
 {
     Matrix<Type> result(rows(), columns());
 
-    for (int i = 0; i < rows(); i++)
-        for (int j = 0; j < columns(); j++)
-            result(i, j) = - (*this)(i, j);
+    for(int i = 0; i < elements(); i++)
+        result.values[i] = -values[i];
 
     return result;
 }
