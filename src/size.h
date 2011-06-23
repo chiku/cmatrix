@@ -48,6 +48,11 @@ namespace CMatrix
             {
                 return getRows() * getColumns();
             }
+
+            int isSquare() const
+            {
+                return getRows() == getColumns();
+            }
     };
 }
 

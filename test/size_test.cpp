@@ -33,3 +33,13 @@ void MatrixTest::sizeKnowsItsElementCount(void)
     CPPUNIT_ASSERT (Size(2, 0).elements() == 0);
 }
 
+void MatrixTest::sizeKnowsItIsSquareWhenRowsAndColumnsAreEqual(void)
+{
+    CPPUNIT_ASSERT (Size(2, 2).isSquare());
+}
+
+void MatrixTest::sizeKnowsItIsSquareWhenRowsAndColumnsAreNotEqual(void)
+{
+    CPPUNIT_ASSERT (! Size(2, 3).isSquare());
+}
+

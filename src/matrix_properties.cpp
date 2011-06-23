@@ -6,7 +6,7 @@
 template <class Type>
 bool CMatrix::Matrix<Type>::isSquare() const
 {
-    return rows() == columns();
+    return size.isSquare();
 }
 
 // Test matrix is unit
