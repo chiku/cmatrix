@@ -22,7 +22,7 @@ namespace CMatrix
 
             class AccessOutOfBound : public std::runtime_error
             {
-                public: AccessOutOfBound() : std::runtime_error("Attempt to access out of bound") {}
+                public: AccessOutOfBound(std::string message) : std::runtime_error(message) {}
             };
 
             class IncompatibleAddition : public std::runtime_error

@@ -4,6 +4,7 @@
 #define MATRIX_H
 
 #include <iostream>
+#include <sstream>
 #include <matrix_exceptions.h>
 #include <size.h>
 

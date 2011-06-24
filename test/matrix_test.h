@@ -65,9 +65,11 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     CPPUNIT_TEST (matrixSizeCanBeSpecifiedAfterCreation);
 
     CPPUNIT_TEST (attemptToAccessOutsizeRowBoundsThrowsException);
-    CPPUNIT_TEST (attemptToAssignOutsizeRowBoundsThrowsException);
     CPPUNIT_TEST (attemptToAccessOutsizeColumnBoundsThrowsException);
+    CPPUNIT_TEST (attemptToAccessOutsizeBoundsThrowsExceptionWithProperMessage);
+    CPPUNIT_TEST (attemptToAssignOutsizeRowBoundsThrowsException);
     CPPUNIT_TEST (attemptToAssignOutsizeColumnBoundsThrowsException);
+    CPPUNIT_TEST (attemptToAssignOutsizeBoundsThrowsExceptionWithProperMessage);
 
     CPPUNIT_TEST (matrixCanBeProperlyAssignedUsingEqualsOperator);
     CPPUNIT_TEST (matrixCanBeProperlyAssignedUsingCopyConstructor);
@@ -149,9 +151,11 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void matrixSizeCanBeSpecifiedAfterCreation();
 
         void attemptToAccessOutsizeRowBoundsThrowsException();
-        void attemptToAssignOutsizeRowBoundsThrowsException();
         void attemptToAccessOutsizeColumnBoundsThrowsException();
+        void attemptToAccessOutsizeBoundsThrowsExceptionWithProperMessage();
+        void attemptToAssignOutsizeRowBoundsThrowsException();
         void attemptToAssignOutsizeColumnBoundsThrowsException();
+        void attemptToAssignOutsizeBoundsThrowsExceptionWithProperMessage();
 
         void matrixCanBeProperlyAssignedUsingEqualsOperator();
         void matrixCanBeProperlyAssignedUsingCopyConstructor();
