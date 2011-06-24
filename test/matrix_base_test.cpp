@@ -16,30 +16,30 @@ void MatrixTest::tearDown()
 void MatrixTest::matrixOfSize2x3Has2Rows(void)
 {
     Matrix<double> twoByThreeMatrix(2, 3);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.rows(), 2);
+    CPPUNIT_ASSERT_EQUAL (2, twoByThreeMatrix.rows());
 }
 
 void MatrixTest::matrixOfSize2x3Has3Columns(void)
 {
     Matrix<double> twoByThreeMatrix(2, 3);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.columns(), 3);
+    CPPUNIT_ASSERT_EQUAL (3, twoByThreeMatrix.columns());
 }
 
 void MatrixTest::matrixOfSize2x3Has6Elements(void)
 {
     Matrix<double> twoByThreeMatrix(2, 3);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix.elements(), 6);
+    CPPUNIT_ASSERT_EQUAL (6, twoByThreeMatrix.elements());
 }
 
 void MatrixTest::matrixOfSize1x1CanStoreValueProperly(void)
 {
     Matrix<double> oneByOneDoubleMatrix(1, 1);
     oneByOneDoubleMatrix(0, 0) = 10.0;
-    CPPUNIT_ASSERT_EQUAL (oneByOneDoubleMatrix(0, 0), 10.0);
+    CPPUNIT_ASSERT_EQUAL (10.0, oneByOneDoubleMatrix(0, 0));
 
     Matrix<int> oneByOneIntMatrix(1, 1);
     oneByOneIntMatrix(0, 0) = 10;
-    CPPUNIT_ASSERT_EQUAL (oneByOneIntMatrix(0, 0), 10);
+    CPPUNIT_ASSERT_EQUAL (10, oneByOneIntMatrix(0, 0));
 }
 
 void MatrixTest::matrixOfSize2x3CanStoreValueProperly(void)
@@ -51,12 +51,12 @@ void MatrixTest::matrixOfSize2x3CanStoreValueProperly(void)
     twoByThreeMatrix(1, 0) =  1;
     twoByThreeMatrix(1, 1) =  2;
     twoByThreeMatrix(1, 2) =  3;
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(0, 0), -2.0);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(0, 1), -1.0);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(0, 2),  0.0);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(1, 0),  1.0);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(1, 1),  2.0);
-    CPPUNIT_ASSERT_EQUAL (twoByThreeMatrix(1, 2),  3.0);
+    CPPUNIT_ASSERT_EQUAL (-2.0, twoByThreeMatrix(0, 0));
+    CPPUNIT_ASSERT_EQUAL (-1.0, twoByThreeMatrix(0, 1));
+    CPPUNIT_ASSERT_EQUAL ( 0.0, twoByThreeMatrix(0, 2));
+    CPPUNIT_ASSERT_EQUAL ( 1.0, twoByThreeMatrix(1, 0));
+    CPPUNIT_ASSERT_EQUAL ( 2.0, twoByThreeMatrix(1, 1));
+    CPPUNIT_ASSERT_EQUAL ( 3.0, twoByThreeMatrix(1, 2));
 }
 
 void MatrixTest::matrixSizeCanBeSpecifiedAfterCreation(void)
@@ -64,9 +64,10 @@ void MatrixTest::matrixSizeCanBeSpecifiedAfterCreation(void)
     Matrix<double> oneByOneMatrix;
     oneByOneMatrix.setSize(1, 1);
     oneByOneMatrix(0, 0) = 1.0;
-    CPPUNIT_ASSERT_EQUAL (oneByOneMatrix.rows(), 1);
-    CPPUNIT_ASSERT_EQUAL (oneByOneMatrix.columns(), 1);
-    CPPUNIT_ASSERT_EQUAL (oneByOneMatrix(0, 0), 1.0);
+    CPPUNIT_ASSERT_EQUAL (1, oneByOneMatrix.rows());
+    CPPUNIT_ASSERT_EQUAL (1, oneByOneMatrix.columns());
+
+    CPPUNIT_ASSERT_EQUAL (1.0, oneByOneMatrix(0, 0));
 }
 
 void MatrixTest::attemptToAccessInvalidCellThrowsException(void)
