@@ -70,11 +70,31 @@ void MatrixTest::matrixSizeCanBeSpecifiedAfterCreation(void)
     CPPUNIT_ASSERT_EQUAL (1.0, oneByOneMatrix(0, 0));
 }
 
-void MatrixTest::attemptToAccessInvalidCellThrowsException(void)
+
+void MatrixTest::attemptToAccessOutsizeRowBoundsThrowsException(void)
 {
     Matrix<double> oneByTwoMatrix(1, 2);
-    CPPUNIT_ASSERT_THROW (oneByTwoMatrix(1, 2), MatrixException::AccessOutOfBound);
-    CPPUNIT_ASSERT_THROW ((oneByTwoMatrix(1, 2) = 5), MatrixException::AccessOutOfBound);
+    CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( oneByTwoMatrix(1, 1),
+                                        MatrixException::AccessOutOfBound,
+                                        "Attempt to access out of bound" );
+}
+
+void MatrixTest::attemptToAssignOutsizeRowBoundsThrowsException(void)
+{
+    Matrix<double> oneByTwoMatrix(1, 2);
+    CPPUNIT_ASSERT_THROW ((oneByTwoMatrix(1, 1) = 5), MatrixException::AccessOutOfBound);
+}
+
+void MatrixTest::attemptToAccessOutsizeColumnBoundsThrowsException(void)
+{
+    Matrix<double> oneByTwoMatrix(1, 2);
+    CPPUNIT_ASSERT_THROW (oneByTwoMatrix(0, 2), MatrixException::AccessOutOfBound);
+}
+
+void MatrixTest::attemptToAssignOutsizeColumnBoundsThrowsException(void)
+{
+    Matrix<double> oneByTwoMatrix(1, 2);
+    CPPUNIT_ASSERT_THROW ((oneByTwoMatrix(0, 2) = 5), MatrixException::AccessOutOfBound);
 }
 
 

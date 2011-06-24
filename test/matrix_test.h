@@ -8,6 +8,34 @@
 
 #include <matrix_implementation.cpp>
 
+#define CPPUNIT_ASSERT_THROW_WITH_MESSAGE(expression, ExceptionType, expectedExceptionMessage) do   \
+{                                                                                                   \
+    std::string actualExceptionMessage;                                                             \
+    bool cpputExceptionThrown = false;                                                              \
+    try {                                                                                           \
+        expression;                                                                                 \
+    }                                                                                               \
+    catch ( const ExceptionType &exception ) {                                                      \
+        cpputExceptionThrown = true;                                                                \
+        actualExceptionMessage = exception.what();                                                  \
+    }                                                                                               \
+                                                                                                    \
+     if ( cpputExceptionThrown ) {                                                                  \
+        std::string quotes("\"");                                                                   \
+        CPPUNIT_NS::Message message( std::string("Expected the exception message to be ")           \
+                                    + quotes + expectedExceptionMessage + quotes                    \
+                                    + std::string(" but was ") + quotes                             \
+                                    + actualExceptionMessage + quotes);                             \
+        CPPUNIT_NS::Asserter::failIf( !(expectedExceptionMessage == actualExceptionMessage),        \
+                                      CPPUNIT_NS::Message( message ),                               \
+                                      CPPUNIT_SOURCELINE() );                                       \
+        break;                                                                                      \
+    }                                                                                               \
+    CPPUNIT_NS::Asserter::fail("Expected exception: " #ExceptionType " not thrown.",                \
+                                CPPUNIT_SOURCELINE() );                                             \
+} while ( false )
+
+
 using namespace CMatrix;
 
 class MatrixTest : public CPPUNIT_NS :: TestFixture
@@ -35,7 +63,11 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     CPPUNIT_TEST (matrixOfSize1x1CanStoreValueProperly);
     CPPUNIT_TEST (matrixOfSize2x3CanStoreValueProperly);
     CPPUNIT_TEST (matrixSizeCanBeSpecifiedAfterCreation);
-    CPPUNIT_TEST (attemptToAccessInvalidCellThrowsException);
+
+    CPPUNIT_TEST (attemptToAccessOutsizeRowBoundsThrowsException);
+    CPPUNIT_TEST (attemptToAssignOutsizeRowBoundsThrowsException);
+    CPPUNIT_TEST (attemptToAccessOutsizeColumnBoundsThrowsException);
+    CPPUNIT_TEST (attemptToAssignOutsizeColumnBoundsThrowsException);
 
     CPPUNIT_TEST (matrixCanBeProperlyAssignedUsingEqualsOperator);
     CPPUNIT_TEST (matrixCanBeProperlyAssignedUsingCopyConstructor);
@@ -115,7 +147,11 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void matrixOfSize1x1CanStoreValueProperly();
         void matrixOfSize2x3CanStoreValueProperly();
         void matrixSizeCanBeSpecifiedAfterCreation();
-        void attemptToAccessInvalidCellThrowsException();
+
+        void attemptToAccessOutsizeRowBoundsThrowsException();
+        void attemptToAssignOutsizeRowBoundsThrowsException();
+        void attemptToAccessOutsizeColumnBoundsThrowsException();
+        void attemptToAssignOutsizeColumnBoundsThrowsException();
 
         void matrixCanBeProperlyAssignedUsingEqualsOperator();
         void matrixCanBeProperlyAssignedUsingCopyConstructor();
