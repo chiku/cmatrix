@@ -7,7 +7,7 @@
 
 namespace CMatrix
 {
-    class MatrixException
+    class Exception
     {
         public:
             class InvalidSizeSet : public std::runtime_error

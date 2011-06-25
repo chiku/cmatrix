@@ -5,7 +5,8 @@
 
 #include <iostream>
 #include <sstream>
-#include <matrix_exceptions.h>
+
+#include <exception.h>
 #include <size.h>
 
 namespace CMatrix
@@ -79,10 +80,10 @@ namespace CMatrix
 #include "matrix/properties.cpp"
 #include "matrix/numerical.cpp"
 #include "matrix/functionoid.cpp"
-#include "matrix/io.cpp"
 
+#include "matrix/io/stream.cpp"
 #ifdef WITH_PNG
-    #include "matrix/io_png.cpp"
+    #include "matrix/io/png.cpp"
 #endif
 
 #endif

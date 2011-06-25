@@ -36,7 +36,7 @@ void MatrixTest::two1x2And2x1MatricesWhenAddedThrowException(void)
     Matrix<double> oneByTwoMatrix(1, 2);
     Matrix<double> twoByOneMatrix(2, 1);
 
-    CPPUNIT_ASSERT_THROW (oneByTwoMatrix + twoByOneMatrix, MatrixException::IncompatibleAddition);
+    CPPUNIT_ASSERT_THROW (oneByTwoMatrix + twoByOneMatrix, Exception::IncompatibleAddition);
 }
 
 
@@ -59,7 +59,7 @@ void MatrixTest::two1x2And1x1MatricesWhenSubtractedThrowException(void)
     Matrix<double> oneByTwoMatrix(1, 2);
     Matrix<double> oneByOneMatrix(1, 1);
 
-    CPPUNIT_ASSERT_THROW (oneByTwoMatrix - oneByOneMatrix, MatrixException::IncompatibleSubtraction);
+    CPPUNIT_ASSERT_THROW (oneByTwoMatrix - oneByOneMatrix, Exception::IncompatibleSubtraction);
 }
 
 
@@ -83,7 +83,7 @@ void MatrixTest::two1x2And2x1MatricesWhenAddedByShortHandThrowException(void)
     Matrix<double> oneByTwoMatrix(1, 2);
     Matrix<double> twoByOneMatrix(2, 1);
 
-    CPPUNIT_ASSERT_THROW (oneByTwoMatrix += twoByOneMatrix, MatrixException::IncompatibleAddition);
+    CPPUNIT_ASSERT_THROW (oneByTwoMatrix += twoByOneMatrix, Exception::IncompatibleAddition);
 }
 
 
@@ -107,7 +107,7 @@ void MatrixTest::two1x2And2x1MatricesWhenSubtractedByShortHandThrowException(voi
     Matrix<double> oneByTwoMatrix(1, 2);
     Matrix<double> twoByOneMatrix(2, 1);
 
-    CPPUNIT_ASSERT_THROW (oneByTwoMatrix -= twoByOneMatrix, MatrixException::IncompatibleSubtraction);
+    CPPUNIT_ASSERT_THROW (oneByTwoMatrix -= twoByOneMatrix, Exception::IncompatibleSubtraction);
 }
 
 void MatrixTest::a2x2MatricesReturnsItselfOnUnaryAddition(void)
@@ -169,7 +169,7 @@ void MatrixTest::two1x2And1x1MatricesWhenMultipliedThrowException(void)
     Matrix<double> oneByTwoMatrix(1, 2);
     Matrix<double> oneByOneMatrix(1, 1);
     
-    CPPUNIT_ASSERT_THROW ((oneByTwoMatrix * oneByOneMatrix), MatrixException::IncompatibleMultiplication);    
+    CPPUNIT_ASSERT_THROW ((oneByTwoMatrix * oneByOneMatrix), Exception::IncompatibleMultiplication);
 }
 
 void MatrixTest::twoMatrixOfMatricesCanBeProperlyAdded(void)
@@ -191,3 +191,4 @@ void MatrixTest::twoMatrixOfMatricesCanBeProperlyAdded(void)
 
     CPPUNIT_ASSERT ((firstMatrixOfMatrices + secondMatrixOfMatrices) == expectedSum);
 }
+

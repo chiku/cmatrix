@@ -74,13 +74,13 @@ void MatrixTest::matrixSizeCanBeSpecifiedAfterCreation(void)
 void MatrixTest::attemptToAccessOutsizeRowBoundsThrowsException(void)
 {
     Matrix<double> oneByTwoMatrix(1, 2);
-    CPPUNIT_ASSERT_THROW (oneByTwoMatrix(1, 1), MatrixException::AccessOutOfBound);
+    CPPUNIT_ASSERT_THROW (oneByTwoMatrix(1, 1), Exception::AccessOutOfBound);
 }
 
 void MatrixTest::attemptToAssignOutsizeRowBoundsThrowsException(void)
 {
     Matrix<double> oneByTwoMatrix(1, 2);
-    CPPUNIT_ASSERT_THROW ((oneByTwoMatrix(1, 1) = 5), MatrixException::AccessOutOfBound);
+    CPPUNIT_ASSERT_THROW ((oneByTwoMatrix(1, 1) = 5), Exception::AccessOutOfBound);
 }
 
 void MatrixTest::attemptToAccessOutsizeBoundsThrowsExceptionWithProperMessage(void)
@@ -88,20 +88,20 @@ void MatrixTest::attemptToAccessOutsizeBoundsThrowsExceptionWithProperMessage(vo
     Matrix<double> oneByTwoMatrix(1, 2);
     std::string expectedMessage = "Attempt to access out of bound. (1, 1) lies outside [1, 2]";
     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( oneByTwoMatrix(1, 1),
-                                        MatrixException::AccessOutOfBound,
+                                        Exception::AccessOutOfBound,
                                         expectedMessage );
 }
 
 void MatrixTest::attemptToAccessOutsizeColumnBoundsThrowsException(void)
 {
     Matrix<double> oneByTwoMatrix(1, 2);
-    CPPUNIT_ASSERT_THROW (oneByTwoMatrix(0, 2), MatrixException::AccessOutOfBound);
+    CPPUNIT_ASSERT_THROW (oneByTwoMatrix(0, 2), Exception::AccessOutOfBound);
 }
 
 void MatrixTest::attemptToAssignOutsizeColumnBoundsThrowsException(void)
 {
     Matrix<double> oneByTwoMatrix(1, 2);
-    CPPUNIT_ASSERT_THROW ((oneByTwoMatrix(0, 2) = 5), MatrixException::AccessOutOfBound);
+    CPPUNIT_ASSERT_THROW ((oneByTwoMatrix(0, 2) = 5), Exception::AccessOutOfBound);
 }
 
 void MatrixTest::attemptToAssignOutsizeBoundsThrowsExceptionWithProperMessage(void)
@@ -109,7 +109,7 @@ void MatrixTest::attemptToAssignOutsizeBoundsThrowsExceptionWithProperMessage(vo
     Matrix<double> oneByTwoMatrix(1, 2);
     std::string expectedMessage = "Attempt to access out of bound. (1, 1) lies outside [1, 2]";
     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( oneByTwoMatrix(1, 1) = 5,
-                                        MatrixException::AccessOutOfBound,
+                                        Exception::AccessOutOfBound,
                                         expectedMessage );
 }
 
@@ -147,19 +147,19 @@ void MatrixTest::matrixCanBeProperlyAssignedUsingCopyConstructor(void)
 
 void MatrixTest::matrixSizeNotSetAsNaturalNumbersThrowsException(void)
 {
-    CPPUNIT_ASSERT_THROW (Matrix<double> firstBad0x0Matrix(0, 0), MatrixException::InvalidSizeSet);
+    CPPUNIT_ASSERT_THROW (Matrix<double> firstBad0x0Matrix(0, 0), Exception::InvalidSizeSet);
 
     Matrix<double> secondBad0x0Matrix;
-    CPPUNIT_ASSERT_THROW (secondBad0x0Matrix.setSize(1, 0), MatrixException::InvalidSizeSet);
+    CPPUNIT_ASSERT_THROW (secondBad0x0Matrix.setSize(1, 0), Exception::InvalidSizeSet);
 }
 
 void MatrixTest::matrixSizeOnResettingAfterOnceSetThrowsException(void)
 {
     Matrix<double> first1x1Matrix(1, 1);
-    CPPUNIT_ASSERT_THROW (first1x1Matrix.setSize(2, 2), MatrixException::SizeResetException);
+    CPPUNIT_ASSERT_THROW (first1x1Matrix.setSize(2, 2), Exception::SizeResetException);
 
     Matrix<double> second1x1Matrix(1, 1);
-    CPPUNIT_ASSERT_THROW (second1x1Matrix.setSize(2, 0), MatrixException::SizeResetException);
+    CPPUNIT_ASSERT_THROW (second1x1Matrix.setSize(2, 0), Exception::SizeResetException);
 }
 
 void MatrixTest::matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException(void)

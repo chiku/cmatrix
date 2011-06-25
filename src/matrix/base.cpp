@@ -82,10 +82,10 @@ template <class Type>
 void CMatrix::Matrix<Type>::setSize(unsigned int rows, unsigned int columns)
 {
     if ((*this).rows() != 0 && (*this).columns() != 0 && (*this).rows() != rows && (*this).columns() != columns)
-        throw MatrixException::SizeResetException();
+        throw Exception::SizeResetException();
 
     if (rows == 0 || columns == 0)
-        throw MatrixException::InvalidSizeSet();
+        throw Exception::InvalidSizeSet();
 
     clearMemory();
 
@@ -103,7 +103,7 @@ Type& CMatrix::Matrix<Type>::operator()(unsigned int row, unsigned int column)
         std::stringstream message;
         message << "Attempt to access out of bound. (" << row << ", " << column
                 <<  ") lies outside [" << rows() << ", " << columns() << "]";
-        throw MatrixException::AccessOutOfBound(message.str());
+        throw Exception::AccessOutOfBound(message.str());
     }
 
     return values[row * columns() + column];
@@ -118,7 +118,7 @@ Type CMatrix::Matrix<Type>::operator()(unsigned int row, unsigned int column) co
         std::stringstream message;
         message << "Attempt to access out of bound. (" << row << ", " << column
                 <<  ") lies outside [" << rows() << ", " << columns() << "]";
-        throw MatrixException::AccessOutOfBound(message.str());
+        throw Exception::AccessOutOfBound(message.str());
     }
 
     return values[row * columns() + column];
