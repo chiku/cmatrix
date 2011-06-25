@@ -8,7 +8,7 @@ CXXFLAGS += -O2
 INCLUDE_FILES += -I.
 INCLUDE_FILES += -I../src
 
-CPPFILES = $(shell ls *_test.cpp)
+CPPFILES = $(shell ls */*_test.cpp *_test.cpp)
 
 run.all: run.test run.demo
 
