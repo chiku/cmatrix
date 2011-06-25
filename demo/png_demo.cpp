@@ -4,7 +4,8 @@
 
 #include <matrix.h>
 
-class testFunctionoid {
+class testFunctionoid
+{
     public:
         double operator() (double x, double y)
         {
@@ -12,8 +13,8 @@ class testFunctionoid {
         }
 };
 
-
-class testRedScale {
+class testRedScale
+{
     public:
         double operator() (double x, double y)
         {
@@ -21,7 +22,8 @@ class testRedScale {
         }
 };
 
-class testBlueScale {
+class testBlueScale
+{
     public:
         double operator() (double x, double y)
         {
@@ -29,7 +31,8 @@ class testBlueScale {
         }
 };
 
-class testGreenScale {
+class testGreenScale
+{
     public:
         double operator() (double x, double y)
         {
@@ -41,11 +44,11 @@ using namespace CMatrix;
 
 int main()
 {
-    int size = 1001;
-    Matrix<double> first300x300Matrix(size, size);
-    Matrix<double> second300x300Matrix = first300x300Matrix.fillByPosition(new testFunctionoid, size/2, size/2, 1.0/size, 1.0/size);
+    int size = 301;
+    Matrix<double> firstMatrix(size, size);
+    Matrix<double> secondMatrix = firstMatrix.fillByPosition(new testFunctionoid, size/2, size/2, 1.0/size, 1.0/size);
 
-    second300x300Matrix.pngize("test1.png", 0.3, 0.1, 0.4);
-    second300x300Matrix.pngize("test2.png", (new testRedScale), (new testBlueScale), (new testGreenScale));
+    secondMatrix.pngize("test1.png", 0.3, 0.1, 0.4);
+    secondMatrix.pngize("test2.png", (new testRedScale), (new testBlueScale), (new testGreenScale));
 }
 
