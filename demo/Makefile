@@ -23,7 +23,10 @@ run:
 	./launch
 
 png_demo:
-	$(CXX) $(CXXFLAGS) `freetype-config --cflags` -o png_demo png_demo.cpp ../bin/libpngwriter.a -lfreetype -lpng -lz
+	$(CXX) $(CXXFLAGS) `freetype-config --cflags` -o png_demo png_demo.cpp ../bin/libpngwriter.a ../bin/libcmatrix.a -lfreetype -lpng -lz
+
+io_demo:
+	$(CXX) $(CXXFLAGS) -o io_demo io_demo.cpp ../bin/libcmatrix.a -lfreetype -lpng -lz
 
 clean:
 	rm -rf *.o *.a *.png

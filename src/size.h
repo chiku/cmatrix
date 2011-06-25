@@ -12,59 +12,16 @@ namespace CMatrix
             unsigned int columns;
 
         public:
-            Size()
-            {
-                rows    = 0;
-                columns = 0;
-            }
-
-            Size(int rows, int columns)
-            {
-                set(rows, columns);
-            }
-
-            void set(int rows, int columns)
-            {
-                (*this).rows    = rows;
-                (*this).columns = columns;
-            }
-
-            bool isValid() const
-            {
-                return rows > 0 && columns > 0;
-            }
-
-            int getRows() const
-            {
-                return rows;
-            }
-
-            int getColumns() const
-            {
-                return columns;
-            }
-
-            int elements() const
-            {
-                return getRows() * getColumns();
-            }
-
-            int isSquare() const
-            {
-                return getRows() == getColumns();
-            }
-            
-            // Overloaded equality operator
-            bool operator==(const Size& otherSize) const
-            {
-                return (getRows() == otherSize.getRows() && getColumns() == otherSize.getColumns());
-            }
-
-            // Overloaaded not-equals operator
-            bool operator != (const Size& otherSize) const
-            {
-                return !operator == (otherSize);
-            }
+            Size();
+            Size(int rows, int columns);
+            void set(int rows, int columns);
+            bool isValid() const;
+            int getRows() const;
+            int getColumns() const;
+            int elements() const;
+            int isSquare() const;
+            bool operator==(const Size& otherSize) const;
+            bool operator != (const Size& otherSize) const;
     };
 }
 

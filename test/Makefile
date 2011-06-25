@@ -14,7 +14,7 @@ all: compile run
 
 compile: test_suite.o
 	$(CXX) -c $(CXXFLAGS) $(INCLUDE_FILES) $(CPPFILES)
-	$(CXX) -o matrix_test *_test.o test_suite.o -lstdc++ -lcppunit -ldl
+	$(CXX) -o matrix_test *_test.o test_suite.o ../bin/libcmatrix.a -lstdc++ -lcppunit -ldl
 
 run:
 	mv matrix_test ../bin/matrix_test
