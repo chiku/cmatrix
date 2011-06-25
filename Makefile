@@ -18,7 +18,7 @@ demo:
 	@cd demo && make
 
 clean:
-	rm -f bin/*
+	rm -rf bin/*
 	@cd src && make clean
 	@cd test && make clean
 	@cd demo && make clean

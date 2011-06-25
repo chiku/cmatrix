@@ -1,0 +1,13 @@
+#!/bin/bash
+# Written by     : Chirantan Mitra
+
+cd ../bin/demo
+FILES=$(ls *_demo)
+
+for file in $FILES
+do
+    echo -e "\nStart execute ${file}\n"
+    ./${file}
+    echo -e "\nFinish execute ${file}\n"
+done
+

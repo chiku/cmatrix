@@ -24,7 +24,7 @@ test_suite.o:
 	$(CXX) $(CXXFLAGS) -c test_suite.cpp
 
 clean:
-	rm -f *.o *.a *test *demo
+	rm -f *.o *.a *_test *_demo
 
-.PHONY: all run clean
+.PHONY: all run compile clean
 
