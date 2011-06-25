@@ -7,6 +7,7 @@
 #include "matrix_numerical.cpp"
 #include "matrix_functionoid.cpp"
 #include "matrix_properties.cpp"
+#include "matrix_io.cpp"
 
 template class CMatrix::Matrix<double>;
 

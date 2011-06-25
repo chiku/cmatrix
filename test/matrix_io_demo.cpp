@@ -1,7 +1,7 @@
 // Written by     : Chirantan Mitra
 
 #include <matrix_implementation.cpp>
-#include <matrix_io.cpp>
+#include <matrix_io_png.cpp>
 
 class testFunctionoid {
     public:
