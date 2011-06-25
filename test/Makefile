@@ -10,33 +10,21 @@ INCLUDE_FILES += -I../src
 
 CPPFILES = $(shell ls */*_test.cpp *_test.cpp)
 
-run.all: run.test run.demo
+all: compile run
 
-all: matrix_test matrix_demo
-
-run.test: matrix_test
-	mv matrix_test ../bin/matrix_test
-	@cd ../bin && ./matrix_test
-
-run.demo: matrix_demo
-	mv matrix_io_demo ../bin/matrix_io_demo
-	@cd ../bin && ./matrix_io_demo
-
-matrix_test: test_suite.o
+compile: test_suite.o
 	$(CXX) -c $(CXXFLAGS) $(INCLUDE_FILES) $(CPPFILES)
 	$(CXX) -o matrix_test *_test.o test_suite.o -lstdc++ -lcppunit -ldl
+
+run:
+	mv matrix_test ../bin/matrix_test
+	@cd ../bin && ./matrix_test
 
 test_suite.o:
 	$(CXX) $(CXXFLAGS) -c test_suite.cpp
 
-matrix_demo: matrix_io_demo
-
-matrix_io_demo:
-	$(CXX) $(CXXFLAGS) -c $(INCLUDE_FILES) matrix_io_demo.cpp `freetype-config --cflags`
-	$(CXX) $(CXXFLAGS) -o matrix_io_demo matrix_io_demo.o ../bin/libpngwriter.a -lfreetype -lpng -lz
-
 clean:
 	rm -f *.o *.a *_test *_demo
 
-.PHONY: all clean
+.PHONY: run run.test all clean
 

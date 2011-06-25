@@ -6,21 +6,22 @@ CFLAGS += -O2
 CXXFLAGS += -O2
 
 
-all: clean sources tests
+all: clean compile test demo
 
-sources:
+compile:
 	@cd src && make
 
-tests:
+test:
 	@cd test && make
+
+demo:
+	@cd demo && make
 
 clean:
 	rm -f bin/*
 	@cd src && make clean
 	@cd test && make clean
+	@cd demo && make clean
 
-install: all
-	mkdir -p bin
-
-.PHONY: all clean install
+.PHONY: all compile test demo clean
 

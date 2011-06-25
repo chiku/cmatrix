@@ -6,7 +6,8 @@
 
 class testFunctionoid {
     public:
-        double operator() (double x, double y) { 
+        double operator() (double x, double y)
+        {
             return (sin(x * y) + 1.0) / 2.0;
         }
 };
@@ -14,21 +15,24 @@ class testFunctionoid {
 
 class testRedScale {
     public:
-        double operator() (double x, double y) { 
+        double operator() (double x, double y)
+        {
             return (3.0 * sin(x + y) + 1.0) / 2.0;
         }
 };
 
 class testBlueScale {
     public:
-        double operator() (double x, double y) { 
+        double operator() (double x, double y)
+        {
             return (3.0 * sin(x * y) + 1.0) / 2.0;
         }
 };
 
 class testGreenScale {
     public:
-        double operator() (double x, double y) { 
+        double operator() (double x, double y)
+        {
             return (3.0 * sin(x - y) + 1.0) / 2.0;
         }
 };
