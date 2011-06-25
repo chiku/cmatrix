@@ -1,10 +1,8 @@
 // Written by     : Chirantan Mitra
 
-#include "matrix.h"
-
 // Per-element function passing
 template <class Type>
-template <typename FunctObj> 
+template <typename FunctObj>
 CMatrix::Matrix<Type> CMatrix::Matrix<Type>::map(FunctObj function)
 {
     CMatrix::Matrix<Type> result(rows(), columns());
@@ -16,7 +14,7 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::map(FunctObj function)
 
 // Per-element filling by position
 template <class Type>
-template <typename FunctObj> 
+template <typename FunctObj>
 CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, int xShift, int yShift)
 {
     for (int i = 0; i < rows(); i++)
@@ -28,7 +26,7 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, 
 
 // Per-element filling by position with scaling and position shift
 template <class Type>
-template <typename FunctObj> 
+template <typename FunctObj>
 CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, int xShift, int yShift, Type xScale, Type yScale)
 {
     for (int i = 0; i < rows(); i++)

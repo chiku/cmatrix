@@ -1,7 +1,5 @@
 // Written by     : Chirantan Mitra
 
-#include "matrix.h"
-
 // Binary addition
 template <class Type>
 CMatrix::Matrix<Type> CMatrix::operator + (const CMatrix::Matrix<Type> firstMatrix, const CMatrix::Matrix<Type> secondMatrix)

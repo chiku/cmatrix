@@ -1,6 +1,5 @@
 // Written by     : Chirantan Mitra
 
-#include <matrix.h>
 #include <vendor/pngwriter/pngwriter.h>
 
 // Output a png using constant colour scale applied for all colors

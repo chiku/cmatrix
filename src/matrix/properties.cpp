@@ -1,7 +1,5 @@
 // Written by     : Chirantan Mitra
 
-#include "matrix.h"
-
 template <class Type>
 bool CMatrix::Matrix<Type>::isSquare() const
 {

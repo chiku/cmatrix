@@ -32,8 +32,8 @@ test_suite.o:
 matrix_demo: matrix_io_demo
 
 matrix_io_demo:
-	$(CXX) $(CXXFLAGS) -c $(INCLUDE_FILES) matrix_io_demo.cpp  `freetype-config --cflags`
-	$(CXX) $(CXXFLAGS) -o matrix_io_demo matrix_io_demo.o ../bin/libcmatrix.a ../bin/libpngwriter.a -lfreetype -lpng -lz
+	$(CXX) $(CXXFLAGS) -c $(INCLUDE_FILES) matrix_io_demo.cpp `freetype-config --cflags`
+	$(CXX) $(CXXFLAGS) -o matrix_io_demo matrix_io_demo.o ../bin/libpngwriter.a -lfreetype -lpng -lz
 
 clean:
 	rm -f *.o *.a *_test *_demo

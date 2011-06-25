@@ -6,7 +6,7 @@
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
 
-#include <matrix_implementation.cpp>
+#include <matrix.h>
 
 #define CPPUNIT_ASSERT_THROW_WITH_MESSAGE(expression, ExceptionType, expectedExceptionMessage) do   \
 {                                                                                                   \

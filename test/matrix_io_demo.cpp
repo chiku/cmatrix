@@ -1,7 +1,8 @@
 // Written by     : Chirantan Mitra
 
-#include <matrix_implementation.cpp>
-#include <matrix_io_png.cpp>
+#define WITH_PNG
+
+#include <matrix.h>
 
 class testFunctionoid {
     public:

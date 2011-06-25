@@ -75,5 +75,15 @@ namespace CMatrix
     };
 }
 
+#include "matrix/base.cpp"
+#include "matrix/properties.cpp"
+#include "matrix/numerical.cpp"
+#include "matrix/functionoid.cpp"
+#include "matrix/io.cpp"
+
+#ifdef WITH_PNG
+    #include "matrix/io_png.cpp"
+#endif
+
 #endif
 
