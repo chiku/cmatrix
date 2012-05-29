@@ -1,6 +1,7 @@
 # Written by     : Chirantan Mitra
 
 CC = gcc
+CXX = g++
 AR=ar
 CFLAGS += -O2
 CXXFLAGS += -O2

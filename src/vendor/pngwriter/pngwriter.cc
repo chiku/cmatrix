@@ -637,7 +637,7 @@ void pngwriter::plot(int x, int y, int red, int green, int blue)
 	blue = 0;
      }
 
-   if((bit_depth_ == 16))
+   if(bit_depth_ == 16)
      {
 	//	if( (height_-y >-1) && (height_-y <height_) && (6*(x-1) >-1) && (6*(x-1)+5<6*width_) )
 	if( (y<=height_) && (y>0) && (x>0) && (x<=width_) )
@@ -660,7 +660,7 @@ void pngwriter::plot(int x, int y, int red, int green, int blue)
 	 */
      }
 
-   if((bit_depth_ == 8))
+   if(bit_depth_ == 8)
      {
 	//	 if( (height_-y >-1) && (height_-y <height_) && (3*(x-1) >-1) && (3*(x-1)+5<3*width_) )
 	if( (y<height_+1) && (y>0) && (x>0) && (x<width_+1) )
@@ -883,7 +883,7 @@ void pngwriter::pngwriter_rename(long unsigned int index)
 
    //   %[flags][width][.precision][modifiers]type
    //
-   if((index > 999999999)||(index < 0))
+   if(index > 999999999)
      {
 	std::cerr << " PNGwriter::pngwriter_rename - ERROR **: Numerical name is out of 0 - 999 999 999 range (" << index <<")." << std::endl;
 	return;
@@ -998,7 +998,7 @@ void pngwriter::close()
    text_ptr[2].text = textdescription_;
    text_ptr[2].compression = PNG_TEXT_COMPRESSION_NONE;
    text_ptr[3].key = (char*)"Creation Time";
-   text_ptr[3].text = png_convert_to_rfc1123(png_ptr, &mod_time);
+   text_ptr[3].text = (char*)png_convert_to_rfc1123(png_ptr, &mod_time);
    text_ptr[3].compression = PNG_TEXT_COMPRESSION_NONE;
    text_ptr[4].key = (char*)"Software";
    text_ptr[4].text = textsoftware_;
