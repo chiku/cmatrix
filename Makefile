@@ -1,11 +1,26 @@
 # Written by     : Chirantan Mitra
 
+ifndef CC
 CC = gcc
+endif
+
+ifndef CXX
 CXX = g++
-AR=ar
+endif
+
+ifndef ar
+AR = ar
+endif
+
 CFLAGS += -O2
+
 CXXFLAGS += -O2
 
+export CC
+export CXX
+export AR
+export CFLAGS
+export CXXFLAGS
 
 all: clean compile test demo
 
@@ -25,4 +40,3 @@ clean:
 	@cd demo && make clean
 
 .PHONY: all compile test demo clean
-

@@ -1,10 +1,5 @@
 # Written by     : Chirantan Mitra
 
-CC = gcc
-AR = ar
-CFLAGS += -O2
-CXXFLAGS += -O2
-
 INCLUDE_FILES += -I.
 INCLUDE_FILES += -I../src
 

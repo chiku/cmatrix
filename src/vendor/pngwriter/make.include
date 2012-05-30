@@ -30,7 +30,9 @@ else
 FT_ARG = `freetype-config --cflags` `freetype-config --libs`
 endif
 
+ifndef CXX
 CXX=g++
+endif
 
 CXXFLAGS+= $(FT_ARG)
 CXXFLAGS= $(FT_ARG)

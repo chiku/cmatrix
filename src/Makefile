@@ -1,11 +1,5 @@
 # Written by     : Chirantan Mitra
 
-CC = gcc
-CXX = g++
-AR = ar
-CFLAGS += -O2
-CXXFLAGS += -O2
-
 INCLUDE_FILES += .
 CPPFILES = $(shell ls size/*.cpp)
 
@@ -28,4 +22,3 @@ clean:
 	@cd vendor && make clean
 
 .PHONY: all prepare compile clean vendor
-
