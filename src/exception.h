@@ -29,17 +29,17 @@ namespace CMatrix
 
             class IncompatibleAddition : public std::runtime_error
             {
-                public: IncompatibleAddition() : std::runtime_error("Incompatible addition") {}
+                public: IncompatibleAddition(std::string message) : std::runtime_error(message) {}
             };
 
             class IncompatibleSubtraction : public std::runtime_error
             {
-                public: IncompatibleSubtraction() : std::runtime_error("Incompatible subtraction") {}
+                public: IncompatibleSubtraction(std::string message) : std::runtime_error(message) {}
             };
 
             class IncompatibleMultiplication : public std::runtime_error
             {
-                public: IncompatibleMultiplication() : std::runtime_error("Incompatible multiplication") {}
+                public: IncompatibleMultiplication(std::string message) : std::runtime_error(message) {}
             };
     };
 
@@ -66,6 +66,30 @@ namespace CMatrix
                 std::stringstream message;
                 message << "Invalid attempt to access (" << row << ", " << column << ") which lies "
                         <<  "outside bounds [" << bound.getRows() << ", " << bound.getColumns() << "]";
+                return message.str();
+            }
+
+            static std::basic_string<char> IncompatibleAddition(Size first, Size second)
+            {
+                std::stringstream message;
+                message << "Cannot add [" << first.getRows() << ", " << first.getColumns() << "] "
+                        <<  "and [" << second.getRows() << ", " << second.getColumns() << "]";
+                return message.str();
+            }
+
+            static std::basic_string<char> IncompatibleSubtraction(Size first, Size second)
+            {
+                std::stringstream message;
+                message << "Cannot subtract [" << second.getRows() << ", " << second.getColumns() << "] "
+                        <<  "from [" << first.getRows() << ", " << first.getColumns() << "]";
+                return message.str();
+            }
+
+            static std::basic_string<char> IncompatibleMultiplication(Size first, Size second)
+            {
+                std::stringstream message;
+                message << "Cannot multiply [" << first.getRows() << ", " << first.getColumns() << "] "
+                        <<  "with [" << second.getRows() << ", " << second.getColumns() << "]";
                 return message.str();
             }
     };

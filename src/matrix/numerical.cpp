@@ -5,7 +5,7 @@ template <class Type>
 CMatrix::Matrix<Type> CMatrix::operator + (const CMatrix::Matrix<Type> firstMatrix, const CMatrix::Matrix<Type> secondMatrix)
 {
     if (firstMatrix.size != secondMatrix.size)
-        throw Exception::IncompatibleAddition();
+        throw Exception::IncompatibleAddition(ExceptionBody::IncompatibleAddition(firstMatrix.size, secondMatrix.size));
 
     CMatrix::Matrix<Type> sum(firstMatrix.rows(), firstMatrix.columns());
 
@@ -20,7 +20,7 @@ template <class Type>
 CMatrix::Matrix<Type> CMatrix::operator - (const CMatrix::Matrix<Type> firstMatrix, const CMatrix::Matrix<Type> secondMatrix)
 {
     if (firstMatrix.size != secondMatrix.size)
-        throw Exception::IncompatibleSubtraction();
+        throw Exception::IncompatibleSubtraction(ExceptionBody::IncompatibleSubtraction(firstMatrix.size, secondMatrix.size));
 
     CMatrix::Matrix<Type> difference(firstMatrix.rows(), firstMatrix.columns());
 
@@ -35,7 +35,7 @@ template <class Type>
 CMatrix::Matrix<Type> CMatrix::operator * (const CMatrix::Matrix<Type> firstMatrix, const CMatrix::Matrix<Type> secondMatrix)
 {
     if (firstMatrix.columns() != secondMatrix.rows())
-        throw Exception::IncompatibleMultiplication();
+        throw Exception::IncompatibleMultiplication(ExceptionBody::IncompatibleMultiplication(firstMatrix.size, secondMatrix.size));
 
     CMatrix::Matrix<Type> product(firstMatrix.rows(), secondMatrix.columns());
 
@@ -56,7 +56,7 @@ template <class Type>
 CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator += (const CMatrix::Matrix<Type> secondMatrix)
 {
     if (size != secondMatrix.size)
-        throw Exception::IncompatibleAddition();
+        throw Exception::IncompatibleAddition(ExceptionBody::IncompatibleAddition(size, secondMatrix.size));
 
     for(int i = 0; i < elements(); i++)
         values[i] = values[i] + secondMatrix.values[i];
@@ -69,7 +69,7 @@ template <class Type>
 CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator -= (const CMatrix::Matrix<Type> secondMatrix)
 {
     if (size != secondMatrix.size)
-        throw Exception::IncompatibleSubtraction();
+        throw Exception::IncompatibleSubtraction(ExceptionBody::IncompatibleSubtraction(size, secondMatrix.size));
 
     for(int i = 0; i < elements(); i++)
         values[i] = values[i] - secondMatrix.values[i];
