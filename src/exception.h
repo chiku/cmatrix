@@ -14,12 +14,12 @@ namespace CMatrix
         public:
             class InvalidSizeSet : public std::runtime_error
             {
-                public: InvalidSizeSet() : std::runtime_error("Invalid size set") {}
+                public: InvalidSizeSet(std::string message) : std::runtime_error(message) {}
             };
 
-            class SizeResetException : public std::runtime_error
+            class InvalidSizeReset : public std::runtime_error
             {
-                public: SizeResetException() : std::runtime_error("Invalid size set") {}
+                public: InvalidSizeReset(std::string message) : std::runtime_error(message) {}
             };
 
             class AccessOutOfBound : public std::runtime_error
@@ -46,13 +46,28 @@ namespace CMatrix
     class ExceptionBody
     {
         public:
+            static std::basic_string<char> InvalidSizeSet(unsigned int rows, unsigned int columns)
+            {
+                std::stringstream message;
+                message << "Invalid attempt to set rows to " << rows << " and columns to " << columns;
+                return message.str();
+            }
+
+            static std::basic_string<char> BadSizeReset(Size bound, unsigned int rows, unsigned int columns)
+            {
+                std::stringstream message;
+                message << "Invalid attempt to reset rows to " << rows << " and columns to " << columns
+                        << " from [" << bound.getRows() << ", " << bound.getColumns() << "]";
+                return message.str();
+            }
+
             static std::basic_string<char> AccessOutOfBound(Size bound, unsigned int row, unsigned int column)
             {
                 std::stringstream message;
-                message << "Attempt to access out of bound. (" << row << ", " << column << ")"
-                        <<  " lies outside [" << bound.getRows() << ", " << bound.getColumns() << "]";
+                message << "Invalid attempt to access (" << row << ", " << column << ") which lies "
+                        <<  "outside bounds [" << bound.getRows() << ", " << bound.getColumns() << "]";
                 return message.str();
-            };
+            }
     };
 }
 

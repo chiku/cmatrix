@@ -66,15 +66,14 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
 
     CPPUNIT_TEST (attemptToAccessOutsizeRowBoundsThrowsException);
     CPPUNIT_TEST (attemptToAccessOutsizeColumnBoundsThrowsException);
-    CPPUNIT_TEST (attemptToAccessOutsizeBoundsThrowsExceptionWithProperMessage);
     CPPUNIT_TEST (attemptToAssignOutsizeRowBoundsThrowsException);
     CPPUNIT_TEST (attemptToAssignOutsizeColumnBoundsThrowsException);
-    CPPUNIT_TEST (attemptToAssignOutsizeBoundsThrowsExceptionWithProperMessage);
 
     CPPUNIT_TEST (matrixCanBeProperlyAssignedUsingEqualsOperator);
     CPPUNIT_TEST (matrixCanBeProperlyAssignedUsingCopyConstructor);
 
-    CPPUNIT_TEST (matrixSizeNotSetAsNaturalNumbersThrowsException);
+    CPPUNIT_TEST (matrixSizeNotSetAsNaturalNumbersDuringCreationThrowsException);
+    CPPUNIT_TEST (matrixSizeNotSetAsNaturalNumbersWhenSettingSizeAftferCreationThrowsException);
     CPPUNIT_TEST (matrixSizeOnResettingAfterOnceSetThrowsException);
     CPPUNIT_TEST (matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException);
 
@@ -152,15 +151,14 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
 
         void attemptToAccessOutsizeRowBoundsThrowsException();
         void attemptToAccessOutsizeColumnBoundsThrowsException();
-        void attemptToAccessOutsizeBoundsThrowsExceptionWithProperMessage();
         void attemptToAssignOutsizeRowBoundsThrowsException();
         void attemptToAssignOutsizeColumnBoundsThrowsException();
-        void attemptToAssignOutsizeBoundsThrowsExceptionWithProperMessage();
 
         void matrixCanBeProperlyAssignedUsingEqualsOperator();
         void matrixCanBeProperlyAssignedUsingCopyConstructor();
 
-        void matrixSizeNotSetAsNaturalNumbersThrowsException();
+        void matrixSizeNotSetAsNaturalNumbersDuringCreationThrowsException();
+        void matrixSizeNotSetAsNaturalNumbersWhenSettingSizeAftferCreationThrowsException();
         void matrixSizeOnResettingAfterOnceSetThrowsException();
         void matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException();
 
