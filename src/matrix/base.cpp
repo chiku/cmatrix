@@ -99,12 +99,7 @@ template <class Type>
 Type& CMatrix::Matrix<Type>::operator()(unsigned int row, unsigned int column)
 {
     if (row >= rows() || column >= columns())
-    {
-        std::stringstream message;
-        message << "Attempt to access out of bound. (" << row << ", " << column
-                <<  ") lies outside [" << rows() << ", " << columns() << "]";
-        throw Exception::AccessOutOfBound(message.str());
-    }
+        throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
 
     return values[row * columns() + column];
 }
@@ -114,12 +109,7 @@ template <class Type>
 Type CMatrix::Matrix<Type>::operator()(unsigned int row, unsigned int column) const
 {
     if (row >= rows() || column >= columns())
-    {
-        std::stringstream message;
-        message << "Attempt to access out of bound. (" << row << ", " << column
-                <<  ") lies outside [" << rows() << ", " << columns() << "]";
-        throw Exception::AccessOutOfBound(message.str());
-    }
+        throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
 
     return values[row * columns() + column];
 }

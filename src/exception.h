@@ -5,6 +5,8 @@
 
 #include <stdexcept>
 
+#include "size.h"
+
 namespace CMatrix
 {
     class Exception
@@ -38,6 +40,18 @@ namespace CMatrix
             class IncompatibleMultiplication : public std::runtime_error
             {
                 public: IncompatibleMultiplication() : std::runtime_error("Incompatible multiplication") {}
+            };
+    };
+
+    class ExceptionBody
+    {
+        public:
+            static std::basic_string<char> AccessOutOfBound(Size bound, unsigned int row, unsigned int column)
+            {
+                std::stringstream message;
+                message << "Attempt to access out of bound. (" << row << ", " << column << ")"
+                        <<  " lies outside [" << bound.getRows() << ", " << bound.getColumns() << "]";
+                return message.str();
             };
     };
 }
