@@ -128,7 +128,7 @@ bool CMatrix::Matrix<Type>::operator==(const Matrix& otherMatrix) const
     return true;
 }
 
-// Overloaaded not-equals operator
+// Overloaded not-equals operator
 template <class Type>
 bool CMatrix::Matrix<Type>::operator != (const Matrix& otherMatrix) const
 {
