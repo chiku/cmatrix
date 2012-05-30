@@ -1530,7 +1530,7 @@ int pngwriter::read_png_info(FILE *fp, png_structp *png_ptr, png_infop *info_ptr
 	fclose(fp);
 	return 0;
      }
-   if (setjmp(png_jmpbuf(*png_ptr))) /*(setjmp(png_jmpbuf(*png_ptr)) )*//////////////////////////////////////
+   if (setjmp(png_jmpbuf(*png_ptr))) /////////////////////////////////////
      {
 	png_destroy_read_struct(png_ptr, info_ptr, (png_infopp)NULL);
 	std::cerr << " PNGwriter::read_png_info - ERROR **: This file may be a corrupted PNG file. (setjmp(*png_ptr)->jmpbf) failed)." << std::endl;

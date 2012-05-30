@@ -48,7 +48,7 @@ void CMatrix::Matrix<Type>::setMatrixAsUnassigned()
 }
 
 
-// Overloaded equals operator
+// Overloaded assignment operator
 template <class Type>
 CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator = (const Matrix& otherMatrix)
 {
