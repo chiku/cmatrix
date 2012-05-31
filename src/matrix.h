@@ -33,23 +33,23 @@ namespace CMatrix
 
         public:
             Matrix();
-            Matrix(unsigned int rows, unsigned int columns);
+            Matrix(long int rows, long int columns);
             Matrix(const Matrix& otherMatrix);
             ~Matrix();
 
             Matrix<Type>& operator=(const Matrix& otherMatrix);
 
-            int rows() const;
-            int columns() const;
-            int elements() const;
+            long int rows() const;
+            long int columns() const;
+            long int elements() const;
 
-            void setSize(unsigned int rows, unsigned int columns);
+            void setSize(long int rows, long int columns);
 
             bool operator==(const Matrix& otherMatrix) const;
             bool operator!=(const Matrix& otherMatrix) const;
 
-            Type& operator()(unsigned int row, unsigned int column);
-            Type operator()(unsigned int row, unsigned int column) const;
+            Type& operator()(long int row, long int column);
+            Type operator()(long int row, long int column) const;
 
             friend Matrix<Type> operator + <>(const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
             friend Matrix<Type> operator - <>(const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
@@ -67,8 +67,8 @@ namespace CMatrix
             bool isZero() const;
 
             template <typename FunctObj> Matrix<Type> map(FunctObj function);
-            template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, int xShift=0, int yShift=0);
-            template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, int xShift, int yShift, Type xScale, Type yScale);
+            template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, long int xShift=0, long int yShift=0);
+            template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, long int xShift, long int yShift, Type xScale, Type yScale);
             
             friend std::ostream& operator << <>(std::ostream& outputStream, const Matrix<Type>& firstMatrix);
             void pngize(const char* fileName, Type redScale, Type blueScale, Type greenScale) const;

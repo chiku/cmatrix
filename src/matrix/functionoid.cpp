@@ -15,7 +15,7 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::map(FunctObj function)
 // Per-element filling by position
 template <class Type>
 template <typename FunctObj>
-CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, int xShift, int yShift)
+CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, long int xShift, long int yShift)
 {
     for (int i = 0; i < rows(); i++)
         for (int j = 0; j < columns(); j++)
@@ -27,7 +27,7 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, 
 // Per-element filling by position with scaling and position shift
 template <class Type>
 template <typename FunctObj>
-CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, int xShift, int yShift, Type xScale, Type yScale)
+CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, long int xShift, long int yShift, Type xScale, Type yScale)
 {
     for (int i = 0; i < rows(); i++)
         for (int j = 0; j < columns(); j++)

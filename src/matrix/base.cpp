@@ -7,7 +7,7 @@ CMatrix::Matrix<Type>::Matrix()
 }
 
 template <class Type>
-CMatrix::Matrix<Type>::Matrix(unsigned int rows, unsigned int columns)
+CMatrix::Matrix<Type>::Matrix(long int rows, long int columns)
 {
     setMatrixAsUnassigned();
     setSize(rows, columns);
@@ -61,25 +61,25 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator = (const Matrix& otherMat
 }
 
 template <class Type>
-int CMatrix::Matrix<Type>::rows() const
+long int CMatrix::Matrix<Type>::rows() const
 {
     return size.getRows();
 }
 
 template <class Type>
-int CMatrix::Matrix<Type>::columns() const
+long int CMatrix::Matrix<Type>::columns() const
 {
     return size.getColumns();
 }
 
 template <class Type>
-int CMatrix::Matrix<Type>::elements() const
+long int CMatrix::Matrix<Type>::elements() const
 {
     return size.elements();
 }
 
 template <class Type>
-void CMatrix::Matrix<Type>::setSize(unsigned int rows, unsigned int columns)
+void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
 {
     if ((*this).rows() != 0 && (*this).columns() != 0 && (*this).rows() != rows && (*this).columns() != columns)
         throw Exception::InvalidSizeReset(ExceptionBody::BadSizeReset(size, rows, columns));
@@ -96,7 +96,7 @@ void CMatrix::Matrix<Type>::setSize(unsigned int rows, unsigned int columns)
 
 // Lvalue element accessor
 template <class Type>
-Type& CMatrix::Matrix<Type>::operator()(unsigned int row, unsigned int column)
+Type& CMatrix::Matrix<Type>::operator()(long int row, long int column)
 {
     if (row >= rows() || column >= columns())
         throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
@@ -106,7 +106,7 @@ Type& CMatrix::Matrix<Type>::operator()(unsigned int row, unsigned int column)
 
 // Rvalue element accessor (const)
 template <class Type>
-Type CMatrix::Matrix<Type>::operator()(unsigned int row, unsigned int column) const
+Type CMatrix::Matrix<Type>::operator()(long int row, long int column) const
 {
     if (row >= rows() || column >= columns())
         throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));

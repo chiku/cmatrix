@@ -8,18 +8,18 @@ namespace CMatrix
     class Size
     {
         private:
-            unsigned int rows;
-            unsigned int columns;
+            long int rows;
+            long int columns;
 
         public:
             Size();
-            Size(int rows, int columns);
-            void set(int rows, int columns);
+            Size(long int rows, long int columns);
+            void set(long int rows, long int columns);
             bool isValid() const;
-            int getRows() const;
-            int getColumns() const;
-            int elements() const;
-            int isSquare() const;
+            long int getRows() const;
+            long int getColumns() const;
+            long int elements() const;
+            bool isSquare() const;
             bool operator==(const Size& otherSize) const;
             bool operator != (const Size& otherSize) const;
     };
