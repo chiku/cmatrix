@@ -42,21 +42,6 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
 {
     CPPUNIT_TEST_SUITE (MatrixTest);
 
-    CPPUNIT_TEST (sizeIsInvalidWithRowAsZero);
-    CPPUNIT_TEST (sizeIsInvalidWithColumnAsZero);
-    CPPUNIT_TEST (sizeIsValidWithRowAndColumnGreaterThanZero);
-
-    CPPUNIT_TEST (sizeKnowsItsRows);
-    CPPUNIT_TEST (sizeKnowsItsColumns);
-    CPPUNIT_TEST (sizeKnowsItsElementCount);
-
-    CPPUNIT_TEST (sizeKnowsItIsSquareWhenRowsAndColumnsAreEqual);
-    CPPUNIT_TEST (sizeKnowsItIsSquareWhenRowsAndColumnsAreNotEqual);
-
-    CPPUNIT_TEST (sizesWithDifferentRowsAreUnequal);
-    CPPUNIT_TEST (sizesWithDifferentColumnsAreUnequal);
-    CPPUNIT_TEST (sizesWithSameRowsAndColumnsAreEqual);
-
     CPPUNIT_TEST (matrixOfSize2x3Has2Rows);
     CPPUNIT_TEST (matrixOfSize2x3Has3Columns);
     CPPUNIT_TEST (matrixOfSize2x3Has6Elements);
@@ -127,21 +112,6 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void tearDown();
 
     protected:
-        void sizeIsInvalidWithRowAsZero();
-        void sizeIsInvalidWithColumnAsZero();
-        void sizeIsValidWithRowAndColumnGreaterThanZero();
-
-        void sizeKnowsItsRows();
-        void sizeKnowsItsColumns();
-        void sizeKnowsItsElementCount();
-
-        void sizeKnowsItIsSquareWhenRowsAndColumnsAreEqual();
-        void sizeKnowsItIsSquareWhenRowsAndColumnsAreNotEqual();
-
-        void sizesWithDifferentRowsAreUnequal();
-        void sizesWithDifferentColumnsAreUnequal();
-        void sizesWithSameRowsAndColumnsAreEqual();
-
         void matrixOfSize2x3Has2Rows();
         void matrixOfSize2x3Has3Columns();
         void matrixOfSize2x3Has6Elements();
