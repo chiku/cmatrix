@@ -91,11 +91,6 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     
     CPPUNIT_TEST (twoMatrixOfMatricesCanBeProperlyAdded);
 
-    CPPUNIT_TEST (a2x2MatrixOnGettingAFunctionoidForOneParameterAppliesItToAllMembers);
-    CPPUNIT_TEST (a2x2MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPosition);
-    CPPUNIT_TEST (a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShift);
-    CPPUNIT_TEST (a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShiftAndScale);
-
     CPPUNIT_TEST_SUITE_END ();
 
     public:
@@ -151,11 +146,6 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void two1x2And1x1MatricesWhenMultipliedThrowException();
 
         void twoMatrixOfMatricesCanBeProperlyAdded();
-
-        void a2x2MatrixOnGettingAFunctionoidForOneParameterAppliesItToAllMembers();
-        void a2x2MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPosition();
-        void a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShift();
-        void a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShiftAndScale();
 };
 
 
