@@ -1,88 +1,100 @@
 // Written by     : Chirantan Mitra
 
-#include <matrix_test.h>
+#include <igloo/igloo_alt.h>
+#include <matrix.h>
 
-void MatrixTest::matrixWithEqualNumberOfRowsAndColumnsIsSquare(void)
+using namespace igloo;
+using namespace CMatrix;
+
+Describe(CMatrix_Properties)
 {
-    Matrix<double> firstMatrix(1, 1);
-    Matrix<double> secondMatrix(3, 3);
+    It(IsSquareWhenNumberOfRowsAndColumnsAreEqual)
+    {
+        Matrix<double> firstMatrix(1, 1);
+        Matrix<double> secondMatrix(3, 3);
 
-    CPPUNIT_ASSERT ( firstMatrix.isSquare() );
-    CPPUNIT_ASSERT ( secondMatrix.isSquare() );
-}
+        Assert::That(firstMatrix.isSquare(), IsTrue());
+        Assert::That(secondMatrix.isSquare(), IsTrue());
+    }
 
-void MatrixTest::matrixWithUnequalNumberOfRowsAndColumnsIsNotSquare(void)
-{
-    Matrix<double> firstMatrix(1, 2);
-    Matrix<double> secondMatrix(3, 2);
+    It(IsNotSquareWhenNumberOfRowsAndColumnsAreUnequal)
+    {
+        Matrix<double> firstMatrix(1, 2);
+        Matrix<double> secondMatrix(3, 2);
 
-    CPPUNIT_ASSERT ( !firstMatrix.isSquare() );
-    CPPUNIT_ASSERT ( !secondMatrix.isSquare() );
-}
+        Assert::That(firstMatrix.isSquare(), IsFalse());
+        Assert::That(secondMatrix.isSquare(), IsFalse());
+    }
 
-void MatrixTest::squareMatrixWithAllDiagonalElementsAsOneAndOthersAsZeroIsUnit()
-{
-    Matrix<double> firstMatrix(1, 1);
-    Matrix<double> secondMatrix(2, 2);
+    Describe(When_Square)
+    {
+        It(IsUnitIfAllDiagonalElementsAreOneAndOthersAreZero)
+        {
+            Matrix<double> firstMatrix(1, 1);
+            Matrix<double> secondMatrix(2, 2);
 
-    firstMatrix(0, 0) = 1.0;
-    secondMatrix(0, 0) = 1.0;    secondMatrix(0, 1) = 0.0;
-    secondMatrix(1, 0) = 0.0;    secondMatrix(1, 1) = 1.0;
+            firstMatrix(0, 0) = 1.0;
+            secondMatrix(0, 0) = 1.0;    secondMatrix(0, 1) = 0.0;
+            secondMatrix(1, 0) = 0.0;    secondMatrix(1, 1) = 1.0;
 
-    CPPUNIT_ASSERT ( firstMatrix.isUnit() );
-    CPPUNIT_ASSERT ( secondMatrix.isUnit() );
-}
+            Assert::That(firstMatrix.isUnit(), IsTrue());
+            Assert::That(secondMatrix.isUnit(), IsTrue());
+        }
 
-void MatrixTest::squareMatrixWithNotAllDiagonalElementsAsOneOthersAsZeroIsNotUnit()
-{
-    Matrix<double> firstMatrix(1, 1);
-    Matrix<double> secondMatrix(2, 2);
+        It(IsNotUnitIfSomeDiagonalElementsAreNotOne)
+        {
+            Matrix<double> firstMatrix(1, 1);
+            Matrix<double> secondMatrix(2, 2);
 
-    firstMatrix(0, 0) = -1.0;
-    secondMatrix(0, 0) = 1.0;    secondMatrix(0, 1) = 0.0;
-    secondMatrix(1, 0) = 0.0;    secondMatrix(1, 1) = -1.0;
+            firstMatrix(0, 0) = -1.0;
+            secondMatrix(0, 0) = 1.0;    secondMatrix(0, 1) = 0.0;
+            secondMatrix(1, 0) = 0.0;    secondMatrix(1, 1) = -1.0;
 
-    CPPUNIT_ASSERT ( !firstMatrix.isUnit() );
-    CPPUNIT_ASSERT ( !secondMatrix.isUnit() );
-}
+            Assert::That(firstMatrix.isUnit(), IsFalse());
+            Assert::That(secondMatrix.isUnit(), IsFalse());
+        }
 
-void MatrixTest::squareMatrixWithAllDiagonalElementsAsOneOthersAsNotZeroIsNotUnit()
-{
-    Matrix<double> firstMatrix(1, 1);
-    Matrix<double> secondMatrix(2, 2);
+        It(IsNotUnitIfSomeNonDiagonalElementsAreNotZero)
+        {
+            Matrix<double> firstMatrix(1, 1);
+            Matrix<double> secondMatrix(2, 2);
 
-    firstMatrix(0, 0) = -1.0;
-    secondMatrix(0, 0) = 1.0;    secondMatrix(0, 1) = 1.0;
-    secondMatrix(1, 0) = 0.0;    secondMatrix(1, 1) = 1.0;
+            firstMatrix(0, 0) = -1.0;
+            secondMatrix(0, 0) = 1.0;    secondMatrix(0, 1) = 1.0;
+            secondMatrix(1, 0) = 0.0;    secondMatrix(1, 1) = 1.0;
 
-    CPPUNIT_ASSERT ( !firstMatrix.isUnit() );
-    CPPUNIT_ASSERT ( !secondMatrix.isUnit() );
-}
+            Assert::That(firstMatrix.isUnit(), IsFalse());
+            Assert::That(secondMatrix.isUnit(), IsFalse());
+        }
+    };
 
-void MatrixTest::nonSquareMatrixIsNotUnit()
-{
-    Matrix<double> matrix(1, 2);
+    Describe(When_Not_Square)
+    {
+        It(IsNotUnit)
+        {
+            Matrix<double> matrix(1, 2);
 
-    matrix(0, 0) = 1.0;    matrix(0, 1) = 0.0;
+            matrix(0, 0) = 1.0;    matrix(0, 1) = 0.0;
 
-    CPPUNIT_ASSERT ( !matrix.isUnit() );
-}
+            Assert::That(matrix.isUnit(), IsFalse());
+        }
+    };
 
-void MatrixTest::matrixWithAllElementsAsZeroIsZero()
-{
-    Matrix<double> matrix(1, 2);
+    It(IsZeroIfAllElementsAreZero)
+    {
+        Matrix<double> matrix(1, 2);
 
-    matrix(0, 0) = 0.0;    matrix(0, 1) = 0.0;
+        matrix(0, 0) = 0.0;    matrix(0, 1) = 0.0;
 
-    CPPUNIT_ASSERT ( matrix.isZero() );
-}
+        Assert::That(matrix.isZero(), IsTrue());
+    }
 
-void MatrixTest::matrixWithOneNonZeroElementIsNotZero()
-{
-    Matrix<double> matrix(1, 2);
+    It(IsNotZeroIfOneElementIsNotZero)
+    {
+        Matrix<double> matrix(1, 2);
 
-    matrix(0, 0) = 0.0;    matrix(0, 1) = 1.0;
+        matrix(0, 0) = 0.0;    matrix(0, 1) = 1.0;
 
-    CPPUNIT_ASSERT ( !matrix.isZero() );
-}
-
+        Assert::That(matrix.isZero(), IsFalse());
+    }
+};

@@ -4,8 +4,8 @@ INCLUDE_FILES += -I.
 INCLUDE_FILES += -I../src
 
 # CPPFILES = $(shell ls */*_test.cpp *_test.cpp)
-CPPFILES = size_test.cpp test_runner.cpp
-CPPFILES_UNCONVERTED = matrix/base_test.cpp matrix/functionoid_test.cpp  matrix/numerical_test.cpp  matrix/properties_test.cpp
+CPPFILES = size_test.cpp matrix/properties_test.cpp test_runner.cpp
+CPPFILES_UNCONVERTED = matrix/base_test.cpp matrix/functionoid_test.cpp matrix/numerical_test.cpp
 
 all: compile run
 
