@@ -42,24 +42,12 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
 {
     CPPUNIT_TEST_SUITE (MatrixTest);
 
-    CPPUNIT_TEST (two1x2And2x1MatricesWhenAddedThrowException);
-    CPPUNIT_TEST (two1x2And2x1MatricesWhenAddedByShortHandThrowException);
-
-    CPPUNIT_TEST (two1x2And1x1MatricesWhenSubtractedThrowException);
-    CPPUNIT_TEST (two1x2And2x1MatricesWhenSubtractedByShortHandThrowException);
-
-    CPPUNIT_TEST (two1x2And1x1MatricesWhenMultipliedThrowException);
+    CPPUNIT_TEST (noop);
     
     CPPUNIT_TEST_SUITE_END ();
 
     protected:
-        void two1x2And2x1MatricesWhenAddedThrowException();
-        void two1x2And2x1MatricesWhenAddedByShortHandThrowException();
-
-        void two1x2And1x1MatricesWhenSubtractedThrowException();
-        void two1x2And2x1MatricesWhenSubtractedByShortHandThrowException();
-
-        void two1x2And1x1MatricesWhenMultipliedThrowException();
+        void noop();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION (MatrixTest);

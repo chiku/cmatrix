@@ -39,16 +39,15 @@ Describe(CMatrix_Numerical)
             Assert::That(firstTwoByTwoMatrix + secondTwoByTwoMatrix + thirdTwoByTwoMatrix, Equals(expectedSum));
         }
 
-        // void MatrixTest::two1x2And2x1MatricesWhenAddedThrowException(void)
-        // {
-        //     Matrix<double> oneByTwoMatrix(1, 2);
-        //     Matrix<double> twoByOneMatrix(2, 1);
+        It(Two1x2And2x1MatricesThrowsException)
+        {
+            Matrix<double> oneByTwoMatrix(1, 2);
+            Matrix<double> twoByOneMatrix(2, 1);
 
-        //     std::string expectedMessage = "Cannot add [1, 2] and [2, 1]";
-        //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( oneByTwoMatrix + twoByOneMatrix,
-        //                                         Exception::IncompatibleAddition,
-        //                                         expectedMessage );
-        // }
+            std::string expectedMessage = "Cannot add [1, 2] and [2, 1]";
+            AssertThrows(Exception::IncompatibleAddition, oneByTwoMatrix + twoByOneMatrix);
+            Assert::That(LastException<Exception::IncompatibleAddition>().what(), Equals(expectedMessage));
+        }
 
         It(TwoMatrixOfMatricesHasAResultantWithEachPositionTheSumOfTheComponentMatrices)
         {
@@ -87,16 +86,14 @@ Describe(CMatrix_Numerical)
             Assert::That(firstTwoByTwoMatrix - secondTwoByTwoMatrix, Equals(expectedDifference));
         }
 
-        // void MatrixTest::two1x2And1x1MatricesWhenSubtractedThrowException(void)
-        // {
-        //     Matrix<double> oneByTwoMatrix(1, 2);
-        //     Matrix<double> oneByOneMatrix(1, 1);
-
-        //     std::string expectedMessage = "Cannot subtract [1, 1] from [1, 2]";
-        //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( oneByTwoMatrix - oneByOneMatrix,
-        //                                         Exception::IncompatibleSubtraction,
-        //                                         expectedMessage );
-        // }
+        It(A1x2MatrixFromA1x1MatrixThrowsException)
+        {
+            Matrix<double> oneByTwoMatrix(1, 2);
+            Matrix<double> oneByOneMatrix(1, 1);
+            std::string expectedMessage = "Cannot subtract [1, 1] from [1, 2]";
+            AssertThrows(Exception::IncompatibleSubtraction, oneByTwoMatrix - oneByOneMatrix);
+            Assert::That(LastException<Exception::IncompatibleSubtraction>().what(), Equals(expectedMessage));
+        }
     };
 
     Describe(When_Adding_By_Short_Hand)
@@ -128,16 +125,15 @@ Describe(CMatrix_Numerical)
             Assert::That(firstTwoByTwoMatrix, Equals(expectedSum));
         }
 
-        // void MatrixTest::two1x2And2x1MatricesWhenAddedByShortHandThrowException(void)
-        // {
-        //     Matrix<double> oneByTwoMatrix(1, 2);
-        //     Matrix<double> twoByOneMatrix(2, 1);
+        It(A1x2MatrixAndA2x1MatrixThrowsException)
+        {
+            Matrix<double> oneByTwoMatrix(1, 2);
+            Matrix<double> twoByOneMatrix(2, 1);
 
-        //     std::string expectedMessage = "Cannot add [1, 2] and [2, 1]";
-        //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( oneByTwoMatrix += twoByOneMatrix,
-        //                                         Exception::IncompatibleAddition,
-        //                                         expectedMessage );
-        // }
+            std::string expectedMessage = "Cannot add [1, 2] and [2, 1]";
+            AssertThrows(Exception::IncompatibleAddition, oneByTwoMatrix += twoByOneMatrix);
+            Assert::That(LastException<Exception::IncompatibleAddition>().what(), Equals(expectedMessage));
+        }
     };
 
     Describe(When_Subtracting_By_Short_Hand)
@@ -169,16 +165,15 @@ Describe(CMatrix_Numerical)
             Assert::That(firstTwoByTwoMatrix, Equals(expectedDifference));
         }
 
-        // void MatrixTest::two1x2And2x1MatricesWhenAddedByShortHandThrowException(void)
-        // {
-        //     Matrix<double> oneByTwoMatrix(1, 2);
-        //     Matrix<double> twoByOneMatrix(2, 1);
+        It(A2x1MatrixFromA1x2MatrixThrowsException)
+        {
+            Matrix<double> oneByTwoMatrix(1, 2);
+            Matrix<double> twoByOneMatrix(2, 1);
 
-        //     std::string expectedMessage = "Cannot add [1, 2] and [2, 1]";
-        //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( oneByTwoMatrix += twoByOneMatrix,
-        //                                         Exception::IncompatibleAddition,
-        //                                         expectedMessage );
-        // }
+            std::string expectedMessage = "Cannot subtract [2, 1] from [1, 2]";
+            AssertThrows(Exception::IncompatibleSubtraction, oneByTwoMatrix -= twoByOneMatrix);
+            Assert::That(LastException<Exception::IncompatibleSubtraction>().what(), Equals(expectedMessage));
+        }
     };
 
     Describe(When_Unary_Adding)
@@ -209,7 +204,7 @@ Describe(CMatrix_Numerical)
             firstTwoByTwoMatrix(1, 0) = -3.0; secondTwoByTwoMatrix(1, 0) =  3.0;
             firstTwoByTwoMatrix(1, 1) =  4.0; secondTwoByTwoMatrix(1, 1) = -4.0;
 
-        Assert::That(-firstTwoByTwoMatrix, Equals(secondTwoByTwoMatrix));
+            Assert::That(-firstTwoByTwoMatrix, Equals(secondTwoByTwoMatrix));
         }
     };
 
@@ -242,15 +237,14 @@ Describe(CMatrix_Numerical)
             Assert::That(oneByTwoMatrix * twoByOneMatrix, Equals(expectedProduct));
         }
 
-        // void MatrixTest::two1x2And1x1MatricesWhenMultipliedThrowException(void)
-        // {
-        //     Matrix<double> oneByTwoMatrix(1, 2);
-        //     Matrix<double> oneByOneMatrix(1, 1);
+        It(A1x2MatrixWithA1x1MatrixThrowsException)
+        {
+            Matrix<double> oneByTwoMatrix(1, 2);
+            Matrix<double> oneByOneMatrix(1, 1);
 
-        //     std::string expectedMessage = "Cannot multiply [1, 2] with [1, 1]";
-        //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( oneByTwoMatrix * oneByOneMatrix,
-        //                                         Exception::IncompatibleMultiplication,
-        //                                         expectedMessage );
-        // }
+            std::string expectedMessage = "Cannot multiply [1, 2] with [1, 1]";
+            AssertThrows(Exception::IncompatibleMultiplication, oneByTwoMatrix * oneByOneMatrix);
+            Assert::That(LastException<Exception::IncompatibleMultiplication>().what(), Equals(expectedMessage));
+        }
     };
 };
