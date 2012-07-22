@@ -42,20 +42,10 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
 {
     CPPUNIT_TEST_SUITE (MatrixTest);
 
-    CPPUNIT_TEST (matrixOfSize2x3Has2Rows);
-    CPPUNIT_TEST (matrixOfSize2x3Has3Columns);
-    CPPUNIT_TEST (matrixOfSize2x3Has6Elements);
-    CPPUNIT_TEST (matrixOfSize1x1CanStoreValueProperly);
-    CPPUNIT_TEST (matrixOfSize2x3CanStoreValueProperly);
-    CPPUNIT_TEST (matrixSizeCanBeSpecifiedAfterCreation);
-
     CPPUNIT_TEST (attemptToAccessOutsizeRowBoundsThrowsException);
     CPPUNIT_TEST (attemptToAccessOutsizeColumnBoundsThrowsException);
     CPPUNIT_TEST (attemptToAssignOutsizeRowBoundsThrowsException);
     CPPUNIT_TEST (attemptToAssignOutsizeColumnBoundsThrowsException);
-
-    CPPUNIT_TEST (matrixCanBeProperlyAssignedUsingEqualsOperator);
-    CPPUNIT_TEST (matrixCanBeProperlyAssignedUsingCopyConstructor);
 
     CPPUNIT_TEST (matrixSizeNotSetAsNaturalNumbersDuringCreationThrowsException);
     CPPUNIT_TEST (matrixSizeNotSetAsNaturalNumbersWhenSettingSizeAftferCreationThrowsException);
@@ -63,34 +53,14 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     CPPUNIT_TEST (matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException);
 
 
-    CPPUNIT_TEST (matricesWithDifferentRowsAreUnequal);
-    CPPUNIT_TEST (matricesWithDifferentColumnsAreUnequal);
-    CPPUNIT_TEST (matricesOfEqualSizeWithOneDifferentMemberAreUnequal);
-    CPPUNIT_TEST (matricesOfEqualSizeWithSameMembersAreEqual);
-
-    CPPUNIT_TEST (matrixOfMatricesCanBeCreated);
-    CPPUNIT_TEST (matricesOfMatricesWithEqualMatrixAreEqual);
-    CPPUNIT_TEST (matricesOfMatricesWithUnequalMatrixAreUnequal);
-
-    CPPUNIT_TEST (two2x2MatricesCanBeProperlyAdded);
-    CPPUNIT_TEST (three2x2MatricesCanBeProperlyAdded);
     CPPUNIT_TEST (two1x2And2x1MatricesWhenAddedThrowException);
-    CPPUNIT_TEST (two2x2MatricesCanBeProperlyAddedByShortHand);
     CPPUNIT_TEST (two1x2And2x1MatricesWhenAddedByShortHandThrowException);
-    CPPUNIT_TEST (a2x2MatricesReturnsItselfOnUnaryAddition);
 
-    CPPUNIT_TEST (two2x2MatricesCanBeProperlySubtracted);
     CPPUNIT_TEST (two1x2And1x1MatricesWhenSubtractedThrowException);
-    CPPUNIT_TEST (two2x2MatricesCanBeProperlySubtractedByShortHand);
     CPPUNIT_TEST (two1x2And2x1MatricesWhenSubtractedByShortHandThrowException);
-    CPPUNIT_TEST (a2x2MatricesReturnsAdditiveInverseOnUnarySubtraction);
 
-    CPPUNIT_TEST (two2x2MatricesCanBeProperlyMultiplied);
-    CPPUNIT_TEST (one1x2AndOne2x1MatricesCanBeProperlyMultiplied);
     CPPUNIT_TEST (two1x2And1x1MatricesWhenMultipliedThrowException);
     
-    CPPUNIT_TEST (twoMatrixOfMatricesCanBeProperlyAdded);
-
     CPPUNIT_TEST_SUITE_END ();
 
     public:
@@ -98,54 +68,23 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void tearDown();
 
     protected:
-        void matrixOfSize2x3Has2Rows();
-        void matrixOfSize2x3Has3Columns();
-        void matrixOfSize2x3Has6Elements();
-        void matrixOfSize1x1CanStoreValueProperly();
-        void matrixOfSize2x3CanStoreValueProperly();
-        void matrixSizeCanBeSpecifiedAfterCreation();
-
         void attemptToAccessOutsizeRowBoundsThrowsException();
         void attemptToAccessOutsizeColumnBoundsThrowsException();
         void attemptToAssignOutsizeRowBoundsThrowsException();
         void attemptToAssignOutsizeColumnBoundsThrowsException();
-
-        void matrixCanBeProperlyAssignedUsingEqualsOperator();
-        void matrixCanBeProperlyAssignedUsingCopyConstructor();
 
         void matrixSizeNotSetAsNaturalNumbersDuringCreationThrowsException();
         void matrixSizeNotSetAsNaturalNumbersWhenSettingSizeAftferCreationThrowsException();
         void matrixSizeOnResettingAfterOnceSetThrowsException();
         void matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException();
 
-
-        void matricesWithDifferentRowsAreUnequal();
-        void matricesWithDifferentColumnsAreUnequal();
-        void matricesOfEqualSizeWithOneDifferentMemberAreUnequal();
-        void matricesOfEqualSizeWithSameMembersAreEqual();
-
-        void matrixOfMatricesCanBeCreated();
-        void matricesOfMatricesWithEqualMatrixAreEqual();
-        void matricesOfMatricesWithUnequalMatrixAreUnequal();
-
-        void two2x2MatricesCanBeProperlyAdded();
-        void three2x2MatricesCanBeProperlyAdded();
         void two1x2And2x1MatricesWhenAddedThrowException();
-        void two2x2MatricesCanBeProperlyAddedByShortHand();
         void two1x2And2x1MatricesWhenAddedByShortHandThrowException();
-        void a2x2MatricesReturnsItselfOnUnaryAddition();
 
-        void two2x2MatricesCanBeProperlySubtracted();
         void two1x2And1x1MatricesWhenSubtractedThrowException();
-        void two2x2MatricesCanBeProperlySubtractedByShortHand();
         void two1x2And2x1MatricesWhenSubtractedByShortHandThrowException();
-        void a2x2MatricesReturnsAdditiveInverseOnUnarySubtraction();
 
-        void two2x2MatricesCanBeProperlyMultiplied();
-        void one1x2AndOne2x1MatricesCanBeProperlyMultiplied();
         void two1x2And1x1MatricesWhenMultipliedThrowException();
-
-        void twoMatrixOfMatricesCanBeProperlyAdded();
 };
 
 
