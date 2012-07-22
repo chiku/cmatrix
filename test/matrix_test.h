@@ -42,17 +42,6 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
 {
     CPPUNIT_TEST_SUITE (MatrixTest);
 
-    CPPUNIT_TEST (attemptToAccessOutsizeRowBoundsThrowsException);
-    CPPUNIT_TEST (attemptToAccessOutsizeColumnBoundsThrowsException);
-    CPPUNIT_TEST (attemptToAssignOutsizeRowBoundsThrowsException);
-    CPPUNIT_TEST (attemptToAssignOutsizeColumnBoundsThrowsException);
-
-    CPPUNIT_TEST (matrixSizeNotSetAsNaturalNumbersDuringCreationThrowsException);
-    CPPUNIT_TEST (matrixSizeNotSetAsNaturalNumbersWhenSettingSizeAftferCreationThrowsException);
-    CPPUNIT_TEST (matrixSizeOnResettingAfterOnceSetThrowsException);
-    CPPUNIT_TEST (matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException);
-
-
     CPPUNIT_TEST (two1x2And2x1MatricesWhenAddedThrowException);
     CPPUNIT_TEST (two1x2And2x1MatricesWhenAddedByShortHandThrowException);
 
@@ -63,21 +52,7 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     
     CPPUNIT_TEST_SUITE_END ();
 
-    public:
-        void setUp();
-        void tearDown();
-
     protected:
-        void attemptToAccessOutsizeRowBoundsThrowsException();
-        void attemptToAccessOutsizeColumnBoundsThrowsException();
-        void attemptToAssignOutsizeRowBoundsThrowsException();
-        void attemptToAssignOutsizeColumnBoundsThrowsException();
-
-        void matrixSizeNotSetAsNaturalNumbersDuringCreationThrowsException();
-        void matrixSizeNotSetAsNaturalNumbersWhenSettingSizeAftferCreationThrowsException();
-        void matrixSizeOnResettingAfterOnceSetThrowsException();
-        void matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException();
-
         void two1x2And2x1MatricesWhenAddedThrowException();
         void two1x2And2x1MatricesWhenAddedByShortHandThrowException();
 
@@ -87,6 +62,6 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void two1x2And1x1MatricesWhenMultipliedThrowException();
 };
 
+CPPUNIT_TEST_SUITE_REGISTRATION (MatrixTest);
 
 #endif
-

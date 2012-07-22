@@ -89,42 +89,37 @@ Describe(CMatrix_Base)
         }
     };
 
+    It(ThrowsExceptionOnAttemptToAccessOutsizeRowBounds)
+    {
+        Matrix<double> oneByTwoMatrix(1, 2);
+        std::string expectedMessage = "Invalid attempt to access (1, 1) which lies outside bounds [1, 2]";
+        AssertThrows(Exception::AccessOutOfBound, oneByTwoMatrix(1, 1));
+        Assert::That(LastException<Exception::AccessOutOfBound>().what(), Equals(expectedMessage));
+    }
 
-    // void MatrixTest::attemptToAccessOutsizeRowBoundsThrowsException(void)
-    // {
-    //     Matrix<double> oneByTwoMatrix(1, 2);
-    //     std::string expectedMessage = "Invalid attempt to access (1, 1) which lies outside bounds [1, 2]";
-    //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( oneByTwoMatrix(1, 1),
-    //                                         Exception::AccessOutOfBound,
-    //                                         expectedMessage );
-    // }
+    It(ThrowsExceptionOnAttemptToAssignOutsizeRowBounds)
+    {
+        Matrix<double> oneByTwoMatrix(1, 2);
+        std::string expectedMessage = "Invalid attempt to access (1, 1) which lies outside bounds [1, 2]";
+        AssertThrows(Exception::AccessOutOfBound, oneByTwoMatrix(1, 1) = 5);
+        Assert::That(LastException<Exception::AccessOutOfBound>().what(), Equals(expectedMessage));
+    }
 
-    // void MatrixTest::attemptToAssignOutsizeRowBoundsThrowsException(void)
-    // {
-    //     Matrix<double> oneByTwoMatrix(1, 2);
-    //     std::string expectedMessage = "Invalid attempt to access (1, 1) which lies outside bounds [1, 2]";
-    //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( (oneByTwoMatrix(1, 1) = 5),
-    //                                         Exception::AccessOutOfBound,
-    //                                         expectedMessage );
-    // }
+    It(ThrowsExceptionOnAttemptToAccessOutsizeColumnBounds)
+    {
+        Matrix<double> oneByTwoMatrix(1, 2);
+        std::string expectedMessage = "Invalid attempt to access (0, 2) which lies outside bounds [1, 2]";
+        AssertThrows(Exception::AccessOutOfBound, oneByTwoMatrix(0, 2));
+        Assert::That(LastException<Exception::AccessOutOfBound>().what(), Equals(expectedMessage));
+    }
 
-    // void MatrixTest::attemptToAccessOutsizeColumnBoundsThrowsException(void)
-    // {
-    //     Matrix<double> oneByTwoMatrix(1, 2);
-    //     std::string expectedMessage = "Invalid attempt to access (0, 2) which lies outside bounds [1, 2]";
-    //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( oneByTwoMatrix(0, 2),
-    //                                         Exception::AccessOutOfBound,
-    //                                         expectedMessage );
-    // }
-
-    // void MatrixTest::attemptToAssignOutsizeColumnBoundsThrowsException(void)
-    // {
-    //     Matrix<double> oneByTwoMatrix(1, 2);
-    //     std::string expectedMessage = "Invalid attempt to access (0, 2) which lies outside bounds [1, 2]";
-    //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( (oneByTwoMatrix(0, 2) = 5),
-    //                                         Exception::AccessOutOfBound,
-    //                                         expectedMessage );
-    // }
+    It(ThrowsExceptionOnAttemptToAssignOutsizeColumnBounds)
+    {
+        Matrix<double> oneByTwoMatrix(1, 2);
+        std::string expectedMessage = "Invalid attempt to access (0, 2) which lies outside bounds [1, 2]";
+        AssertThrows(Exception::AccessOutOfBound, oneByTwoMatrix(0, 2) = 5);
+        Assert::That(LastException<Exception::AccessOutOfBound>().what(), Equals(expectedMessage));
+    }
 
     Describe(When_Copied_By_Equals_Operator)
     {
@@ -197,42 +192,39 @@ Describe(CMatrix_Base)
         }
     };
 
-    // void MatrixTest::matrixSizeNotSetAsNaturalNumbersDuringCreationThrowsException(void)
-    // {
-    //     std::string expectedMessage = "Invalid attempt to set rows to 0 and columns to 0";
-    //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( Matrix<double> firstBad0x0Matrix(0, 0),
-    //                                         Exception::InvalidSizeSet,
-    //                                         expectedMessage);
-    // }
+    It(ThrowsExceptionWhenMatrixSizeDuringCreationAreNotNaturalNumbers)
+    {
+        std::string expectedMessage = "Invalid attempt to set rows to 0 and columns to 0";
+        AssertThrows(Exception::InvalidSizeSet, Matrix<double> bad0x0Matrix(0, 0));
+        Assert::That(LastException<Exception::InvalidSizeSet>().what(), Equals(expectedMessage));
+    }
 
-    // void MatrixTest::matrixSizeNotSetAsNaturalNumbersWhenSettingSizeAftferCreationThrowsException(void)
-    // {
-    //     Matrix<double> secondBad0x0Matrix;
-    //     std::string expectedMessage = "Invalid attempt to set rows to 1 and columns to 0";
-    //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( secondBad0x0Matrix.setSize(1, 0),
-    //                                         Exception::InvalidSizeSet,
-    //                                         expectedMessage);
-    // }
+    It(ThrowsExceptionWhenSettingMatrixSizeAfterCreationAreNotNaturalNumbers)
+    {
+        Matrix<double> bad0x0Matrix;
+        std::string expectedMessage = "Invalid attempt to set rows to 1 and columns to 0";
+        AssertThrows(Exception::InvalidSizeSet, bad0x0Matrix.setSize(1, 0));
+        Assert::That(LastException<Exception::InvalidSizeSet>().what(), Equals(expectedMessage));
+    }
 
-    // void MatrixTest::matrixSizeOnResettingAfterOnceSetThrowsException(void)
-    // {
-    //     Matrix<double> first1x1Matrix(1, 1);
-    //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( first1x1Matrix.setSize(2, 2),
-    //                                         Exception::InvalidSizeReset,
-    //                                         "Invalid attempt to reset rows to 2 and columns to 2 from [1, 1]");
+    It(ThrowsExceptionWhenResettingToDifferentSizeWhenAlreadySet)
+    {
+        Matrix<double> first1x1Matrix(1, 1);
+        std::string firstExpectedMessage = "Invalid attempt to reset rows to 2 and columns to 2 from [1, 1]";
+        AssertThrows(Exception::InvalidSizeReset, first1x1Matrix.setSize(2, 2));
+        Assert::That(LastException<Exception::InvalidSizeReset>().what(), Equals(firstExpectedMessage));
 
-    //     Matrix<double> second1x1Matrix(1, 1);
-    //     CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( second1x1Matrix.setSize(2, 0),
-    //                                         Exception::InvalidSizeReset,
-    //                                         "Invalid attempt to reset rows to 2 and columns to 0 from [1, 1]");
-    // }
+        Matrix<double> second1x1Matrix(1, 1);
+        std::string secondExpectedMessage = "Invalid attempt to reset rows to 2 and columns to 0 from [1, 1]";
+        AssertThrows(Exception::InvalidSizeReset, second1x1Matrix.setSize(2, 0));
+        Assert::That(LastException<Exception::InvalidSizeReset>().what(), Equals(secondExpectedMessage));
+    }
 
-
-    // void MatrixTest::matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException(void)
-    // {
-    //     Matrix<double> first1x1Matrix(1, 1);
-    //     CPPUNIT_ASSERT_NO_THROW (first1x1Matrix.setSize(1, 1));
-    // }
+    It(DoesNotThrowExceptionWhenResettingToSameSizeWhenAlreadySet)
+    {
+        Matrix<double> first1x1Matrix(1, 1);
+        first1x1Matrix.setSize(1, 1);
+    }
 
 
     Describe(Does_Not_Equal_Matrix)
