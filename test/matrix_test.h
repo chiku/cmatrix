@@ -120,6 +120,13 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     CPPUNIT_TEST (matrixWithAllElementsAsZeroIsZero);
     CPPUNIT_TEST (matrixWithOneNonZeroElementIsNotZero);
 
+    CPPUNIT_TEST (aUnitaryMatrixGivesBackTheSameUnitaryMatrixOnInversion);
+    CPPUNIT_TEST (aMatrixGivesBackAUnitaryMatrixOnInversionAfterMultiplingWithItsInverse);
+    CPPUNIT_TEST (aMatrixDoesNotMutateOnInversion);
+    CPPUNIT_TEST (aMatrixWithOneElementHasAnInverse);
+    CPPUNIT_TEST (aThrowsExceptionWhenInvertingANonSquareMatrix);
+    CPPUNIT_TEST (aThrowsExceptionWhenInvertingASingularMatrix);
+
     CPPUNIT_TEST_SUITE_END ();
 
     public:
@@ -204,6 +211,13 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
         void nonSquareMatrixIsNotUnit();
         void matrixWithAllElementsAsZeroIsZero();
         void matrixWithOneNonZeroElementIsNotZero();
+
+        void aUnitaryMatrixGivesBackTheSameUnitaryMatrixOnInversion();
+        void aMatrixGivesBackAUnitaryMatrixOnInversionAfterMultiplingWithItsInverse();
+        void aMatrixDoesNotMutateOnInversion();
+        void aMatrixWithOneElementHasAnInverse();
+        void aThrowsExceptionWhenInvertingANonSquareMatrix();
+        void aThrowsExceptionWhenInvertingASingularMatrix();
 };
 
 

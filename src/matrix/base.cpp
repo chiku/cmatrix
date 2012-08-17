@@ -96,7 +96,7 @@ void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
 
 // Lvalue element accessor
 template <class Type>
-Type& CMatrix::Matrix<Type>::operator()(long int row, long int column)
+Type& CMatrix::Matrix<Type>::operator () (long int row, long int column)
 {
     if (row >= rows() || column >= columns())
         throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
@@ -106,7 +106,7 @@ Type& CMatrix::Matrix<Type>::operator()(long int row, long int column)
 
 // Rvalue element accessor (const)
 template <class Type>
-Type CMatrix::Matrix<Type>::operator()(long int row, long int column) const
+Type CMatrix::Matrix<Type>::operator () (long int row, long int column) const
 {
     if (row >= rows() || column >= columns())
         throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
@@ -116,7 +116,7 @@ Type CMatrix::Matrix<Type>::operator()(long int row, long int column) const
 
 // Overloaded equality operator
 template <class Type>
-bool CMatrix::Matrix<Type>::operator==(const Matrix& otherMatrix) const
+bool CMatrix::Matrix<Type>::operator == (const Matrix& otherMatrix) const
 {
     if (size != otherMatrix.size)
         return false;

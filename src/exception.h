@@ -41,6 +41,11 @@ namespace CMatrix
             {
                 public: IncompatibleMultiplication(std::string message) : std::runtime_error(message) {}
             };
+
+            class InversionNotPossible : public std::runtime_error
+            {
+                public: InversionNotPossible(std::string message) : std::runtime_error(message) {}
+            };
     };
 
     class ExceptionBody
@@ -53,19 +58,19 @@ namespace CMatrix
                 return message.str();
             }
 
-            static std::basic_string<char> BadSizeReset(Size bound, unsigned int rows, unsigned int columns)
+            static std::basic_string<char> BadSizeReset(Size bounds, unsigned int rows, unsigned int columns)
             {
                 std::stringstream message;
                 message << "Invalid attempt to reset rows to " << rows << " and columns to " << columns
-                        << " from [" << bound.getRows() << ", " << bound.getColumns() << "]";
+                        << " from [" << bounds.getRows() << ", " << bounds.getColumns() << "]";
                 return message.str();
             }
 
-            static std::basic_string<char> AccessOutOfBound(Size bound, unsigned int row, unsigned int column)
+            static std::basic_string<char> AccessOutOfBound(Size bounds, unsigned int row, unsigned int column)
             {
                 std::stringstream message;
                 message << "Invalid attempt to access (" << row << ", " << column << ") which lies "
-                        <<  "outside bounds [" << bound.getRows() << ", " << bound.getColumns() << "]";
+                        <<  "outside bounds [" << bounds.getRows() << ", " << bounds.getColumns() << "]";
                 return message.str();
             }
 
@@ -91,6 +96,18 @@ namespace CMatrix
                 message << "Cannot multiply [" << first.getRows() << ", " << first.getColumns() << "] "
                         <<  "with [" << second.getRows() << ", " << second.getColumns() << "]";
                 return message.str();
+            }
+
+            static std::basic_string<char> NonSquareMatrix(Size bounds)
+            {
+                std::stringstream message;
+                message << "Cannot invert a non-square matrix [" << bounds.getRows() << ", " << bounds.getColumns() << "]";
+                return message.str();
+            }
+
+            static std::basic_string<char> SingularMatrix()
+            {
+                return "Cannot invert a singular matrix";
             }
     };
 }
