@@ -60,17 +60,17 @@ Describe(CMatrix_Size)
         }
     };
 
-    Describe(When_Rows_Equal_Columns)
+    Describe(Is_Square)
     {
-        It(IsASquare)
+        It(IfItHasSameRowsAndColumns)
         {
             Assert::That(Size(2, 2).isSquare(), IsTrue());
         }
     };
 
-    Describe(When_Rows_Do_Not_Equal_Columns)
+    Describe(Is_Not_Square)
     {
-        It(IsNotASquare)
+        It(IfRowsDoNotEqualColumns)
         {
             Assert::That(Size(2, 3).isSquare(), IsFalse());
         }
@@ -146,11 +146,27 @@ Describe(CMatrix_Size)
             }
         };
 
+        Describe(When_Row_Is_Less_Than_Zero)
+        {
+            It(IsNotContained)
+            {
+                Assert::That(Size(2, 5).contains(-1, 1), IsFalse());
+            }
+        };
+
         Describe(When_Column_Exceeds_Size_Columns)
         {
             It(IsNotContained)
             {
                 Assert::That(Size(2, 5).contains(1, 5), IsFalse());
+            }
+        };
+
+        Describe(When_Column_Is_Less_Than_Zero)
+        {
+            It(IsNotContained)
+            {
+                Assert::That(Size(2, 5).contains(1, -1), IsFalse());
             }
         };
 

@@ -49,7 +49,7 @@ inline bool CMatrix::Size::matches(long int otherRows, long int otherColumns) co
 
 inline bool CMatrix::Size::contains(long int row, long int column) const
 {
-    return row < getRows() && column < getColumns();
+    return 0 <= row && row < getRows() && 0 <= column && column < getColumns();
 }
 
 // Overloaded equality operator
