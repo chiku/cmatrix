@@ -69,7 +69,7 @@ Describe(CMatrix_Mutators)
 		}
 
 		It(DoesNotModifyExistingValues)
-		{std::cout << "\n" << matrix << "\n";
+		{
 			Assert::That(matrix(0, 0), Equals(1.0));
 			Assert::That(matrix(0, 1), Equals(2.0));
 			Assert::That(matrix(1, 0), Equals(3.0));
@@ -104,7 +104,7 @@ Describe(CMatrix_Mutators)
 		}
 
 		It(DoesNotModifyExistingValues)
-		{std::cout << "\n" << matrix << "\n";
+		{
 			Assert::That(matrix(0, 0), Equals(1.0));
 			Assert::That(matrix(0, 1), Equals(2.0));
 			Assert::That(matrix(1, 0), Equals(3.0));
@@ -139,7 +139,7 @@ Describe(CMatrix_Mutators)
 		}
 
 		It(DoesNotModifyExistingValues)
-		{std::cout << "\n" << matrix << "\n";
+		{
 			Assert::That(matrix(0, 0), Equals(1.0));
 			Assert::That(matrix(0, 1), Equals(2.0));
 			Assert::That(matrix(1, 0), Equals(3.0));
