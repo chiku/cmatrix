@@ -83,6 +83,7 @@ namespace CMatrix
 }
 
 #include "matrix/base.cpp"
+#include "matrix/equality.cpp"
 #include "matrix/properties.cpp"
 #include "matrix/numerical.cpp"
 #include "matrix/functionoid.cpp"
