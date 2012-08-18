@@ -20,8 +20,11 @@ CMatrix::Matrix<Type>::Matrix(const Matrix& otherMatrix)
     setMatrixAsUnassigned();
     setSize(otherMatrix.rows(), otherMatrix.columns());
 
-    for(int i = 0; i < elements(); i++)
-        values[i] = otherMatrix.values[i];
+    for (long int i = 0; i < rows(); i++) {
+        for (long int j = 0; j < columns(); j++) {
+            access(i, j) = otherMatrix.access(i, j);
+        }
+    }
 }
 
 template <class Type>
@@ -54,8 +57,11 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator = (const Matrix& otherMat
 {
     setSize(otherMatrix.rows(), otherMatrix.columns());
 
-    for(int i = 0; i < elements(); i++)
-        values[i] = otherMatrix.values[i];
+    for (long int i = 0; i < rows(); i++) {
+        for (long int j = 0; j < columns(); j++) {
+            access(i, j) = otherMatrix.access(i, j);
+        }
+    }
 
     return *this;
 }
@@ -94,13 +100,28 @@ void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
     values = new Type[rows * columns];
 }
 
+// Lvalue element accessor - unchecked (used internally)
+template <class Type>
+inline Type& CMatrix::Matrix<Type>::access(long int row, long int column)
+{
+    return values[row * columns() + column];
+}
+
 // Lvalue element accessor
 template <class Type>
 Type& CMatrix::Matrix<Type>::operator () (long int row, long int column)
 {
-    if (row >= rows() || column >= columns())
+    if (row >= rows() || column >= columns()) {
         throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
+    }
 
+    return access(row, column);
+}
+
+// Rvalue element accessor (const) - unchecked (used internally)
+template <class Type>
+inline Type CMatrix::Matrix<Type>::access(long int row, long int column) const
+{
     return values[row * columns() + column];
 }
 
@@ -108,22 +129,28 @@ Type& CMatrix::Matrix<Type>::operator () (long int row, long int column)
 template <class Type>
 Type CMatrix::Matrix<Type>::operator () (long int row, long int column) const
 {
-    if (row >= rows() || column >= columns())
+    if (row >= rows() || column >= columns()) {
         throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
+    }
 
-    return values[row * columns() + column];
+    return access(row, column);
 }
 
 // Overloaded equality operator
 template <class Type>
 bool CMatrix::Matrix<Type>::operator == (const Matrix& otherMatrix) const
 {
-    if (size != otherMatrix.size)
+    if (size != otherMatrix.size) {
         return false;
+    }
 
-    for(int i = 0; i < elements(); i++)
-        if(values[i] != otherMatrix.values[i])
-            return false;
+    for (long int i = 0; i < rows(); i++) {
+        for (long int j = 0; j < columns(); j++) {
+            if (access(i, j) != otherMatrix.access(i, j)) {
+                return false;
+            }
+        }
+    }
 
     return true;
 }

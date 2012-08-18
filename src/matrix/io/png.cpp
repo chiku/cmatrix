@@ -9,7 +9,7 @@ void CMatrix::Matrix<Type>::pngize(const char* fileName, Type redScale, Type blu
     pngwriter png(rows(), columns(), 0, fileName);
     for(int i = 0; i < rows(); i++)
         for (int j = 0; j < columns(); j++)
-            png.plot(i, j, redScale * (*this)(i, j), blueScale * (*this)(i, j), greenScale * (*this)(i, j));
+            png.plot(i, j, redScale * access(i, j), blueScale * access(i, j), greenScale * access(i, j));
 
    png.close();
 }
@@ -22,7 +22,8 @@ void CMatrix::Matrix<Type>::pngize(const char* fileName, RedFunc redScale, BlueF
     pngwriter png(rows(), columns(), 0, fileName);
     for(int i = 0; i < rows(); i++)
         for (int j = 0; j < columns(); j++)
-            png.plot(i, j, (*redScale)(i, j) * (*this)(i, j), (*blueScale)(i, j) * (*this)(i, j), (*greenScale)(i, j) * (*this)(i, j));
+            png.plot(i, j, (*redScale)(i, j) * access(i, j), (*blueScale)(i, j) * access(i, j), (*greenScale)(i, j) * access(i, j));
+        }
 
    png.close();
 }
