@@ -6,8 +6,8 @@
 #include <iostream>
 #include <sstream>
 
-#include <exception.h>
-#include <size.h>
+#include "exception.h"
+#include "size.h"
 
 namespace CMatrix
 {
