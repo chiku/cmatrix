@@ -51,14 +51,14 @@ namespace CMatrix
     class ExceptionBody
     {
     public:
-        static std::basic_string<char> InvalidSizeSet(unsigned int rows, unsigned int columns)
+        static std::basic_string<char> InvalidSizeSet(long int rows, long int columns)
         {
             std::stringstream message;
             message << "Invalid attempt to set rows to " << rows << " and columns to " << columns;
             return message.str();
         }
 
-        static std::basic_string<char> BadSizeReset(Size bounds, unsigned int rows, unsigned int columns)
+        static std::basic_string<char> BadSizeReset(Size bounds, long int rows, long int columns)
         {
             std::stringstream message;
             message << "Invalid attempt to reset rows to " << rows << " and columns to " << columns
@@ -66,7 +66,7 @@ namespace CMatrix
             return message.str();
         }
 
-        static std::basic_string<char> AccessOutOfBound(Size bounds, unsigned int row, unsigned int column)
+        static std::basic_string<char> AccessOutOfBound(Size bounds, long int row, long int column)
         {
             std::stringstream message;
             message << "Invalid attempt to access (" << row << ", " << column << ") which lies "
@@ -113,4 +113,3 @@ namespace CMatrix
 }
 
 #endif
-
