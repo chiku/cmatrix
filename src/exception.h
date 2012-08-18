@@ -69,8 +69,8 @@ namespace CMatrix
         static std::basic_string<char> BadSizeOnMutate(Size bounds, long int rows, long int columns)
         {
             std::stringstream message;
-            message << "Invalid attempt to mutate rows to " << rows << " and columns to " << columns
-                    << " from [" << bounds.getRows() << ", " << bounds.getColumns() << "]";
+            message << "Invalid attempt to add element at negative row (" << rows << ") or column (" << columns
+                    << ") to matrix [" << bounds.getRows() << ", " << bounds.getColumns() << "]";
             return message.str();
         }
 

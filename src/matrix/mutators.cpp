@@ -9,7 +9,7 @@ void CMatrix::Matrix<Type>::mutateToInclude(Type value, long int row, long int c
 	}
 
 	if (row < 0 || column < 0) {
-		throw Exception::InvalidSizeReset(ExceptionBody::BadSizeOnMutate(size, row + 1, column + 1));
+		throw Exception::InvalidSizeReset(ExceptionBody::BadSizeOnMutate(size, row, column));
 	}
 
 	CMatrix::Size newSize(std::max(rows(), row + 1), std::max(columns(), column + 1));
