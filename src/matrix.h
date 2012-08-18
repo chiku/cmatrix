@@ -3,6 +3,7 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#include <vector>
 #include <iostream>
 #include <sstream>
 
@@ -17,7 +18,7 @@ namespace CMatrix
     template<typename Type> Matrix<Type> operator - (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
     template<typename Type> Matrix<Type> operator * (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
 
-    template<typename Type> std::ostream& operator << (std::ostream& outputStream, const Matrix<Type>& firstMatrix);
+    template<typename Type> std::ostream& operator << (std::ostream& outputStream, const Matrix<Type>& matrix);
 
 
     template <class Type>
@@ -40,7 +41,7 @@ namespace CMatrix
         Matrix(const Matrix& otherMatrix);
         ~Matrix();
 
-        Matrix<Type>& operator=(const Matrix& otherMatrix);
+        Matrix<Type>& operator = (const Matrix& otherMatrix);
 
         long int rows() const;
         long int columns() const;
