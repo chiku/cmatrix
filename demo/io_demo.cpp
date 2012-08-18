@@ -19,7 +19,6 @@ int main()
 {
     int size = 5;
     Matrix<double> matrix(size, size);
-    matrix = matrix.fillByPosition(new testFunctionoid, size/2, size/2, 1.0/size, 1.0/size);
+    matrix.fillByPosition(new testFunctionoid, size/2, size/2, 1.0/size, 1.0/size);
     std::cout << matrix << std::endl;
 }
-
