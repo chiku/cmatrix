@@ -86,11 +86,11 @@ inline long int CMatrix::Matrix<Type>::elements() const
 template <class Type>
 void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
 {
-    if ((*this).rows() != 0 && (*this).columns() != 0 && (*this).rows() != rows && (*this).columns() != columns) {
+    if ((*this).rows() > 0 && (*this).columns() > 0 && !size.matches(rows, columns)) {
         throw Exception::InvalidSizeReset(ExceptionBody::BadSizeReset(size, rows, columns));
     }
 
-    if (rows == 0 || columns == 0) {
+    if (rows < 0 || columns < 0) {
         throw Exception::InvalidSizeSet(ExceptionBody::InvalidSizeSet(rows, columns));
     }
 
@@ -112,7 +112,7 @@ inline Type& CMatrix::Matrix<Type>::access(long int row, long int column)
 template <class Type>
 Type& CMatrix::Matrix<Type>::operator () (long int row, long int column)
 {
-    if (row >= rows() || column >= columns()) {
+    if (! size.contains(row, column)) {
         throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
     }
 
@@ -130,7 +130,7 @@ inline Type CMatrix::Matrix<Type>::access(long int row, long int column) const
 template <class Type>
 Type CMatrix::Matrix<Type>::operator () (long int row, long int column) const
 {
-    if (row >= rows() || column >= columns()) {
+    if (! size.contains(row, column)) {
         throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
     }
 
