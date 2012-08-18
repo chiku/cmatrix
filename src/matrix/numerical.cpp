@@ -9,8 +9,11 @@ CMatrix::Matrix<Type> CMatrix::operator + (const CMatrix::Matrix<Type> firstMatr
 
     CMatrix::Matrix<Type> sum(firstMatrix.rows(), firstMatrix.columns());
 
-    for(int i = 0; i < firstMatrix.elements(); i++)
-        sum.values[i] = firstMatrix.values[i] + secondMatrix.values[i];
+    for (int i = 0; i < firstMatrix.rows(); i++) {
+        for (int j = 0; j < firstMatrix.columns(); j++) {
+            sum.access(i, j) = firstMatrix.access(i, j) + secondMatrix.access(i, j);
+        }
+    }
 
     return sum;
 }
@@ -24,8 +27,11 @@ CMatrix::Matrix<Type> CMatrix::operator - (const CMatrix::Matrix<Type> firstMatr
 
     CMatrix::Matrix<Type> difference(firstMatrix.rows(), firstMatrix.columns());
 
-    for(int i = 0; i < firstMatrix.elements(); i++)
-        difference.values[i] = firstMatrix.values[i] - secondMatrix.values[i];
+    for (int i = 0; i < firstMatrix.rows(); i++) {
+        for (int j = 0; j < firstMatrix.columns(); j++) {
+            difference.access(i, j) = firstMatrix.access(i, j) - secondMatrix.access(i, j);
+        }
+    }
 
     return difference;
 }
@@ -39,13 +45,14 @@ CMatrix::Matrix<Type> CMatrix::operator * (const CMatrix::Matrix<Type> firstMatr
 
     CMatrix::Matrix<Type> product(firstMatrix.rows(), secondMatrix.columns());
 
-    for(int i = 0; i < firstMatrix.rows(); i++)
-        for(int j = 0; j < secondMatrix.columns(); j++)
-        {
+    for (int i = 0; i < firstMatrix.rows(); i++) {
+        for (int j = 0; j < secondMatrix.columns(); j++) {
             product(i, j) = 0;
-            for(int k = 0; k < firstMatrix.columns(); k++)
+            for (int k = 0; k < firstMatrix.columns(); k++) {
                 product(i, j) += firstMatrix(i, k) * secondMatrix(k, j);
+            }
         }
+    }
 
     return product;
 }
@@ -58,8 +65,11 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator += (const CMatrix::Matrix
     if (size != secondMatrix.size)
         throw Exception::IncompatibleAddition(ExceptionBody::IncompatibleAddition(size, secondMatrix.size));
 
-    for(int i = 0; i < elements(); i++)
-        values[i] = values[i] + secondMatrix.values[i];
+    for (int i = 0; i < rows(); i++) {
+        for (int j = 0; j < columns(); j++) {
+            access(i, j) = access(i, j) + secondMatrix.access(i, j);
+        }
+    }
 
     return (*this);
 }
@@ -71,8 +81,11 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator -= (const CMatrix::Matrix
     if (size != secondMatrix.size)
         throw Exception::IncompatibleSubtraction(ExceptionBody::IncompatibleSubtraction(size, secondMatrix.size));
 
-    for(int i = 0; i < elements(); i++)
-        values[i] = values[i] - secondMatrix.values[i];
+    for (int i = 0; i < rows(); i++) {
+        for (int j = 0; j < columns(); j++) {
+            access(i, j) = access(i, j) - secondMatrix.access(i, j);
+        }
+    }
 
     return (*this);
 }
@@ -92,8 +105,11 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::operator - ()
 {
     Matrix<Type> result(rows(), columns());
 
-    for(int i = 0; i < elements(); i++)
-        result.values[i] = -values[i];
+    for (int i = 0; i < rows(); i++) {
+        for (int j = 0; j < columns(); j++) {
+            result.access(i, j) = -access(i, j);
+        }
+    }
 
     return result;
 }

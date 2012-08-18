@@ -31,6 +31,9 @@ namespace CMatrix
         void clearMemory();
         void setMatrixAsUnassigned();
 
+        Type& access(long int row, long int column);
+        Type access(long int row, long int column) const;
+
     public:
         Matrix();
         Matrix(long int rows, long int columns);
