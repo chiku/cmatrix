@@ -147,7 +147,7 @@ Describe(CMatrix_Mutators)
 		}
 	};
 
-	Describe(When_Adding_An_Element_At_The_End_Of_A_Column_Matrix)
+	Describe(When_Adding_An_Element_At_The_End_Of_A_Matrix_With_One_Column)
 	{
 		Matrix<double> matrix;
 
@@ -178,7 +178,7 @@ Describe(CMatrix_Mutators)
 		}
 	};
 
-	Describe(When_Adding_An_Element_At_The_End_Of_A_Row_Matrix)
+	Describe(When_Adding_An_Element_At_The_End_Of_A_Matrix_With_One_Row)
 	{
 		Matrix<double> matrix;
 

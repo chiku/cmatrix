@@ -3,13 +3,27 @@
 template <class Type>
 void CMatrix::Matrix<Type>::mutateToInclude(Type value, long int row, long int column)
 {
+	if (row < 0 || column < 0) {
+		throw Exception::InvalidSizeReset(ExceptionBody::BadSizeOnMutate(size, row, column));
+	}
+
 	if (size.contains(row, column)) {
 		access(row, column) = value;
 		return;
 	}
 
-	if (row < 0 || column < 0) {
-		throw Exception::InvalidSizeReset(ExceptionBody::BadSizeOnMutate(size, row, column));
+	if (rows() == 1) {
+		values->resize(column + 1);
+		size = Size(1, column + 1);
+		access(row, column) = value;
+		return;
+	}
+
+	if (columns() == 1) {
+		values->resize(row + 1);
+		size = Size(row + 1, 1);
+		access(row, column) = value;
+		return;
 	}
 
 	CMatrix::Size newSize(std::max(rows(), row + 1), std::max(columns(), column + 1));
