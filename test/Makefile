@@ -18,9 +18,6 @@ run:
 test_runner.o:
 	$(CXX) $(CXXFLAGS) -c test_runner.cpp
 
-test_suite_unconverted.o:
-	$(CXX) $(CXXFLAGS) -c test_suite_unconverted.cpp
-
 clean:
 	rm -f *.o *.a *_test *_demo
 
