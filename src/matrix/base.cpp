@@ -66,19 +66,19 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator = (const Matrix& otherMat
 }
 
 template <class Type>
-long int CMatrix::Matrix<Type>::rows() const
+inline long int CMatrix::Matrix<Type>::rows() const
 {
     return size.getRows();
 }
 
 template <class Type>
-long int CMatrix::Matrix<Type>::columns() const
+inline long int CMatrix::Matrix<Type>::columns() const
 {
     return size.getColumns();
 }
 
 template <class Type>
-long int CMatrix::Matrix<Type>::elements() const
+inline long int CMatrix::Matrix<Type>::elements() const
 {
     return size.elements();
 }
@@ -158,8 +158,7 @@ bool CMatrix::Matrix<Type>::operator == (const Matrix& otherMatrix) const
 
 // Overloaded not-equals operator
 template <class Type>
-bool CMatrix::Matrix<Type>::operator != (const Matrix& otherMatrix) const
+inline bool CMatrix::Matrix<Type>::operator != (const Matrix& otherMatrix) const
 {
     return !operator == (otherMatrix);
 }
-
