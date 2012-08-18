@@ -25,4 +25,6 @@ namespace CMatrix
     };
 }
 
+#include "size/size.cpp"
+
 #endif

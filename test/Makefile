@@ -9,7 +9,7 @@ all: compile run
 
 compile: test_runner.o
 	$(CXX) -c $(CXXFLAGS) $(INCLUDE_FILES) $(CPPFILES)
-	$(CXX) -o matrix_test *_test.o test_runner.o ../bin/libcmatrix.a -lstdc++ -ldl
+	$(CXX) -o matrix_test *_test.o test_runner.o -lstdc++ -ldl
 
 run:
 	mv matrix_test ../bin/matrix_test
