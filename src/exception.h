@@ -66,6 +66,14 @@ namespace CMatrix
             return message.str();
         }
 
+        static std::basic_string<char> BadSizeOnMutate(Size bounds, long int rows, long int columns)
+        {
+            std::stringstream message;
+            message << "Invalid attempt to mutate rows to " << rows << " and columns to " << columns
+                    << " from [" << bounds.getRows() << ", " << bounds.getColumns() << "]";
+            return message.str();
+        }
+
         static std::basic_string<char> AccessOutOfBound(Size bounds, long int row, long int column)
         {
             std::stringstream message;

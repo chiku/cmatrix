@@ -71,6 +71,7 @@ namespace CMatrix
         bool isZero() const;
 
         Matrix<Type> invert();
+        void mutateToInclude(Type value, long int row, long int column);
 
         template <typename FunctObj> Matrix<Type> map(FunctObj function);
         template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, long int xShift=0, long int yShift=0);
@@ -88,6 +89,7 @@ namespace CMatrix
 #include "matrix/numerical.cpp"
 #include "matrix/functionoid.cpp"
 #include "matrix/invert.cpp"
+#include "matrix/mutators.cpp"
 
 #include "matrix/io/stream.cpp"
 
