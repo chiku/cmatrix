@@ -42,8 +42,9 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
 {
     CPPUNIT_TEST_SUITE (MatrixTest);
 
-    CPPUNIT_TEST (sizeIsInvalidWithRowAsZero);
-    CPPUNIT_TEST (sizeIsInvalidWithColumnAsZero);
+    CPPUNIT_TEST (sizeIsInvalidWithRowAsNegative);
+    CPPUNIT_TEST (sizeIsInvalidWithColumnAsNegative);
+    CPPUNIT_TEST (sizeIsValidWithRowAndColumnAsZero);
     CPPUNIT_TEST (sizeIsValidWithRowAndColumnGreaterThanZero);
 
     CPPUNIT_TEST (sizeKnowsItsRows);
@@ -56,6 +57,14 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     CPPUNIT_TEST (sizesWithDifferentRowsAreUnequal);
     CPPUNIT_TEST (sizesWithDifferentColumnsAreUnequal);
     CPPUNIT_TEST (sizesWithSameRowsAndColumnsAreEqual);
+
+    CPPUNIT_TEST (sizeDoesNotMatchARowColumnPairWithDifferentRow);
+    CPPUNIT_TEST (sizeMatchesARowColumnPairWithSameRowAndColumn);
+    CPPUNIT_TEST (sizeDoesNotMatchARowColumnPairWithDifferentColumn);
+
+    CPPUNIT_TEST (sizeDoesNotContainPositionIfRowExceedsRows);
+    CPPUNIT_TEST (sizeDoesNotContainPositionIfColumnExceedsColumns);
+    CPPUNIT_TEST (sizeContainsPositionIfRowIsInsideRowsAndColumnIsInsideColumns);
 
     CPPUNIT_TEST (matrixOfSize2x3Has2Rows);
     CPPUNIT_TEST (matrixOfSize2x3Has3Columns);
@@ -72,8 +81,8 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
     CPPUNIT_TEST (matrixCanBeProperlyAssignedUsingEqualsOperator);
     CPPUNIT_TEST (matrixCanBeProperlyAssignedUsingCopyConstructor);
 
-    CPPUNIT_TEST (matrixSizeNotSetAsNaturalNumbersDuringCreationThrowsException);
-    CPPUNIT_TEST (matrixSizeNotSetAsNaturalNumbersWhenSettingSizeAftferCreationThrowsException);
+    CPPUNIT_TEST (matrixSizeSetAsNegativeNumbersDuringCreationThrowsException);
+    CPPUNIT_TEST (matrixSizeSetAsNegativeNumbersWhenSettingSizeAftferCreationThrowsException);
     CPPUNIT_TEST (matrixSizeOnResettingAfterOnceSetThrowsException);
     CPPUNIT_TEST (matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException);
 
@@ -129,95 +138,104 @@ class MatrixTest : public CPPUNIT_NS :: TestFixture
 
     CPPUNIT_TEST_SUITE_END ();
 
-    public:
-        void setUp();
-        void tearDown();
+public:
+    void setUp();
+    void tearDown();
 
-    protected:
-        void sizeIsInvalidWithRowAsZero();
-        void sizeIsInvalidWithColumnAsZero();
-        void sizeIsValidWithRowAndColumnGreaterThanZero();
+protected:
+    void sizeIsInvalidWithRowAsNegative();
+    void sizeIsInvalidWithColumnAsNegative();
+    void sizeIsValidWithRowAndColumnAsZero();
+    void sizeIsValidWithRowAndColumnGreaterThanZero();
 
-        void sizeKnowsItsRows();
-        void sizeKnowsItsColumns();
-        void sizeKnowsItsElementCount();
+    void sizeKnowsItsRows();
+    void sizeKnowsItsColumns();
+    void sizeKnowsItsElementCount();
 
-        void sizeKnowsItIsSquareWhenRowsAndColumnsAreEqual();
-        void sizeKnowsItIsSquareWhenRowsAndColumnsAreNotEqual();
+    void sizeKnowsItIsSquareWhenRowsAndColumnsAreEqual();
+    void sizeKnowsItIsSquareWhenRowsAndColumnsAreNotEqual();
 
-        void sizesWithDifferentRowsAreUnequal();
-        void sizesWithDifferentColumnsAreUnequal();
-        void sizesWithSameRowsAndColumnsAreEqual();
+    void sizesWithDifferentRowsAreUnequal();
+    void sizesWithDifferentColumnsAreUnequal();
+    void sizesWithSameRowsAndColumnsAreEqual();
 
-        void matrixOfSize2x3Has2Rows();
-        void matrixOfSize2x3Has3Columns();
-        void matrixOfSize2x3Has6Elements();
-        void matrixOfSize1x1CanStoreValueProperly();
-        void matrixOfSize2x3CanStoreValueProperly();
-        void matrixSizeCanBeSpecifiedAfterCreation();
+    void sizeDoesNotMatchARowColumnPairWithDifferentRow();
+    void sizeMatchesARowColumnPairWithSameRowAndColumn();
+    void sizeDoesNotMatchARowColumnPairWithDifferentColumn();
 
-        void attemptToAccessOutsizeRowBoundsThrowsException();
-        void attemptToAccessOutsizeColumnBoundsThrowsException();
-        void attemptToAssignOutsizeRowBoundsThrowsException();
-        void attemptToAssignOutsizeColumnBoundsThrowsException();
+    void sizeDoesNotContainPositionIfRowExceedsRows();
+    void sizeDoesNotContainPositionIfColumnExceedsColumns();
+    void sizeContainsPositionIfRowIsInsideRowsAndColumnIsInsideColumns();
 
-        void matrixCanBeProperlyAssignedUsingEqualsOperator();
-        void matrixCanBeProperlyAssignedUsingCopyConstructor();
+    void matrixOfSize2x3Has2Rows();
+    void matrixOfSize2x3Has3Columns();
+    void matrixOfSize2x3Has6Elements();
+    void matrixOfSize1x1CanStoreValueProperly();
+    void matrixOfSize2x3CanStoreValueProperly();
+    void matrixSizeCanBeSpecifiedAfterCreation();
 
-        void matrixSizeNotSetAsNaturalNumbersDuringCreationThrowsException();
-        void matrixSizeNotSetAsNaturalNumbersWhenSettingSizeAftferCreationThrowsException();
-        void matrixSizeOnResettingAfterOnceSetThrowsException();
-        void matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException();
+    void attemptToAccessOutsizeRowBoundsThrowsException();
+    void attemptToAccessOutsizeColumnBoundsThrowsException();
+    void attemptToAssignOutsizeRowBoundsThrowsException();
+    void attemptToAssignOutsizeColumnBoundsThrowsException();
+
+    void matrixCanBeProperlyAssignedUsingEqualsOperator();
+    void matrixCanBeProperlyAssignedUsingCopyConstructor();
+
+    void matrixSizeSetAsNegativeNumbersDuringCreationThrowsException();
+    void matrixSizeSetAsNegativeNumbersWhenSettingSizeAftferCreationThrowsException();
+    void matrixSizeOnResettingAfterOnceSetThrowsException();
+    void matrixSizeOnResettingToSameSizeAfterOnceSetDoesNotThrowException();
 
 
-        void matricesWithDifferentRowsAreUnequal();
-        void matricesWithDifferentColumnsAreUnequal();
-        void matricesOfEqualSizeWithOneDifferentMemberAreUnequal();
-        void matricesOfEqualSizeWithSameMembersAreEqual();
+    void matricesWithDifferentRowsAreUnequal();
+    void matricesWithDifferentColumnsAreUnequal();
+    void matricesOfEqualSizeWithOneDifferentMemberAreUnequal();
+    void matricesOfEqualSizeWithSameMembersAreEqual();
 
-        void matrixOfMatricesCanBeCreated();
-        void matricesOfMatricesWithEqualMatrixAreEqual();
-        void matricesOfMatricesWithUnequalMatrixAreUnequal();
+    void matrixOfMatricesCanBeCreated();
+    void matricesOfMatricesWithEqualMatrixAreEqual();
+    void matricesOfMatricesWithUnequalMatrixAreUnequal();
 
-        void two2x2MatricesCanBeProperlyAdded();
-        void three2x2MatricesCanBeProperlyAdded();
-        void two1x2And2x1MatricesWhenAddedThrowException();
-        void two2x2MatricesCanBeProperlyAddedByShortHand();
-        void two1x2And2x1MatricesWhenAddedByShortHandThrowException();
-        void a2x2MatricesReturnsItselfOnUnaryAddition();
+    void two2x2MatricesCanBeProperlyAdded();
+    void three2x2MatricesCanBeProperlyAdded();
+    void two1x2And2x1MatricesWhenAddedThrowException();
+    void two2x2MatricesCanBeProperlyAddedByShortHand();
+    void two1x2And2x1MatricesWhenAddedByShortHandThrowException();
+    void a2x2MatricesReturnsItselfOnUnaryAddition();
 
-        void two2x2MatricesCanBeProperlySubtracted();
-        void two1x2And1x1MatricesWhenSubtractedThrowException();
-        void two2x2MatricesCanBeProperlySubtractedByShortHand();
-        void two1x2And2x1MatricesWhenSubtractedByShortHandThrowException();
-        void a2x2MatricesReturnsAdditiveInverseOnUnarySubtraction();
+    void two2x2MatricesCanBeProperlySubtracted();
+    void two1x2And1x1MatricesWhenSubtractedThrowException();
+    void two2x2MatricesCanBeProperlySubtractedByShortHand();
+    void two1x2And2x1MatricesWhenSubtractedByShortHandThrowException();
+    void a2x2MatricesReturnsAdditiveInverseOnUnarySubtraction();
 
-        void two2x2MatricesCanBeProperlyMultiplied();
-        void one1x2AndOne2x1MatricesCanBeProperlyMultiplied();
-        void two1x2And1x1MatricesWhenMultipliedThrowException();
+    void two2x2MatricesCanBeProperlyMultiplied();
+    void one1x2AndOne2x1MatricesCanBeProperlyMultiplied();
+    void two1x2And1x1MatricesWhenMultipliedThrowException();
 
-        void twoMatrixOfMatricesCanBeProperlyAdded();
+    void twoMatrixOfMatricesCanBeProperlyAdded();
 
-        void a2x2MatrixOnGettingAFunctionoidForOneParameterAppliesItToAllMembers();
-        void a2x2MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPosition();
-        void a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShift();
-        void a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShiftAndScale();
+    void a2x2MatrixOnGettingAFunctionoidForOneParameterAppliesItToAllMembers();
+    void a2x2MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPosition();
+    void a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShift();
+    void a3x3MatrixOnGettingAFunctionoidForTwoParametersAppliesItToAllMembersByPositionAndShiftAndScale();
 
-        void matrixWithEqualNumberOfRowsAndColumnsIsSquare();
-        void matrixWithUnequalNumberOfRowsAndColumnsIsNotSquare();
-        void squareMatrixWithAllDiagonalElementsAsOneAndOthersAsZeroIsUnit();
-        void squareMatrixWithNotAllDiagonalElementsAsOneOthersAsZeroIsNotUnit();
-        void squareMatrixWithAllDiagonalElementsAsOneOthersAsNotZeroIsNotUnit();
-        void nonSquareMatrixIsNotUnit();
-        void matrixWithAllElementsAsZeroIsZero();
-        void matrixWithOneNonZeroElementIsNotZero();
+    void matrixWithEqualNumberOfRowsAndColumnsIsSquare();
+    void matrixWithUnequalNumberOfRowsAndColumnsIsNotSquare();
+    void squareMatrixWithAllDiagonalElementsAsOneAndOthersAsZeroIsUnit();
+    void squareMatrixWithNotAllDiagonalElementsAsOneOthersAsZeroIsNotUnit();
+    void squareMatrixWithAllDiagonalElementsAsOneOthersAsNotZeroIsNotUnit();
+    void nonSquareMatrixIsNotUnit();
+    void matrixWithAllElementsAsZeroIsZero();
+    void matrixWithOneNonZeroElementIsNotZero();
 
-        void aUnitaryMatrixGivesBackTheSameUnitaryMatrixOnInversion();
-        void aMatrixGivesBackAUnitaryMatrixOnInversionAfterMultiplingWithItsInverse();
-        void aMatrixDoesNotMutateOnInversion();
-        void aMatrixWithOneElementHasAnInverse();
-        void aThrowsExceptionWhenInvertingANonSquareMatrix();
-        void aThrowsExceptionWhenInvertingASingularMatrix();
+    void aUnitaryMatrixGivesBackTheSameUnitaryMatrixOnInversion();
+    void aMatrixGivesBackAUnitaryMatrixOnInversionAfterMultiplingWithItsInverse();
+    void aMatrixDoesNotMutateOnInversion();
+    void aMatrixWithOneElementHasAnInverse();
+    void aThrowsExceptionWhenInvertingANonSquareMatrix();
+    void aThrowsExceptionWhenInvertingASingularMatrix();
 };
 
 

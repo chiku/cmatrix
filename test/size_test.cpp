@@ -2,14 +2,19 @@
 
 #include <matrix_test.h>
 
-void MatrixTest::sizeIsInvalidWithRowAsZero(void)
+void MatrixTest::sizeIsInvalidWithRowAsNegative(void)
 {
-    CPPUNIT_ASSERT (!Size(0, 1).isValid());
+    CPPUNIT_ASSERT (!Size(-1, 1).isValid());
 }
 
-void MatrixTest::sizeIsInvalidWithColumnAsZero(void)
+void MatrixTest::sizeIsInvalidWithColumnAsNegative(void)
 {
-    CPPUNIT_ASSERT (!Size(1, 0).isValid());
+    CPPUNIT_ASSERT (!Size(1, -1).isValid());
+}
+
+void MatrixTest::sizeIsValidWithRowAndColumnAsZero(void)
+{
+    CPPUNIT_ASSERT (Size(0, 0).isValid());
 }
 
 void MatrixTest::sizeIsValidWithRowAndColumnGreaterThanZero(void)
@@ -70,3 +75,32 @@ void MatrixTest::sizesWithSameRowsAndColumnsAreEqual(void)
     CPPUNIT_ASSERT (! (firstTwoByTwo != secondTwoByTwo));
 }
 
+void MatrixTest::sizeDoesNotMatchARowColumnPairWithDifferentRow(void)
+{
+    CPPUNIT_ASSERT (! Size(2, 1).matches(3, 1));
+}
+
+void MatrixTest::sizeDoesNotMatchARowColumnPairWithDifferentColumn(void)
+{
+    CPPUNIT_ASSERT (! Size(2, 1).matches(2, 3));
+}
+
+void MatrixTest::sizeMatchesARowColumnPairWithSameRowAndColumn(void)
+{
+    CPPUNIT_ASSERT (Size(2, 1).matches(2, 1));
+}
+
+void MatrixTest::sizeDoesNotContainPositionIfRowExceedsRows()
+{
+    CPPUNIT_ASSERT (! Size(2, 5).contains(3, 1));
+}
+
+void MatrixTest::sizeDoesNotContainPositionIfColumnExceedsColumns()
+{
+    CPPUNIT_ASSERT (! Size(2, 5).contains(1, 5));
+}
+
+void MatrixTest::sizeContainsPositionIfRowIsInsideRowsAndColumnIsInsideColumns()
+{
+    CPPUNIT_ASSERT (Size(2, 5).contains(0, 0));
+}

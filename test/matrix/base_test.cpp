@@ -139,21 +139,32 @@ void MatrixTest::matrixCanBeProperlyAssignedUsingCopyConstructor(void)
     CPPUNIT_ASSERT (firstTwoByTwoMatrix != secondTwoByTwoMatrix);
 }
 
-void MatrixTest::matrixSizeNotSetAsNaturalNumbersDuringCreationThrowsException(void)
+void MatrixTest::matrixSizeSetAsNegativeNumbersDuringCreationThrowsException(void)
 {
-    std::string expectedMessage = "Invalid attempt to set rows to 0 and columns to 0";
-    CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( Matrix<double> firstBad0x0Matrix(0, 0),
+    std::string firstExpectedMessage = "Invalid attempt to set rows to -1 and columns to 0";
+    CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( Matrix<double> firstBad0x0Matrix(-1, 0),
                                         Exception::InvalidSizeSet,
-                                        expectedMessage);
+                                        firstExpectedMessage);
+
+    std::string secondExpectedMessage = "Invalid attempt to set rows to 0 and columns to -1";
+    CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( Matrix<double> secondBad0x0Matrix(0, -1),
+                                        Exception::InvalidSizeSet,
+                                        secondExpectedMessage);
 }
 
-void MatrixTest::matrixSizeNotSetAsNaturalNumbersWhenSettingSizeAftferCreationThrowsException(void)
+void MatrixTest::matrixSizeSetAsNegativeNumbersWhenSettingSizeAftferCreationThrowsException(void)
 {
-    Matrix<double> secondBad0x0Matrix;
-    std::string expectedMessage = "Invalid attempt to set rows to 1 and columns to 0";
-    CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( secondBad0x0Matrix.setSize(1, 0),
+    Matrix<double> firstBad0x0Matrix;
+    std::string firstExpectedMessage = "Invalid attempt to set rows to -1 and columns to 0";
+    CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( firstBad0x0Matrix.setSize(-1, 0),
                                         Exception::InvalidSizeSet,
-                                        expectedMessage);
+                                        firstExpectedMessage);
+
+    Matrix<double> secondBad0x0Matrix;
+    std::string secondExpectedMessage = "Invalid attempt to set rows to 0 and columns to -1";
+    CPPUNIT_ASSERT_THROW_WITH_MESSAGE ( firstBad0x0Matrix.setSize(0, -1),
+                                        Exception::InvalidSizeSet,
+                                        secondExpectedMessage);
 }
 
 void MatrixTest::matrixSizeOnResettingAfterOnceSetThrowsException(void)
