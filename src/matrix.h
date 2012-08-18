@@ -48,8 +48,8 @@ namespace CMatrix
 
         void setSize(long int rows, long int columns);
 
-        bool operator==(const Matrix& otherMatrix) const;
-        bool operator!=(const Matrix& otherMatrix) const;
+        bool operator == (const Matrix& otherMatrix) const;
+        bool operator != (const Matrix& otherMatrix) const;
 
         Type& operator()(long int row, long int column);
         Type operator()(long int row, long int column) const;
