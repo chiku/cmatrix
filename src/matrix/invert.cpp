@@ -7,8 +7,9 @@
 template <class Type>
 CMatrix::Matrix<Type> CMatrix::Matrix<Type>::invert()
 {
-    if (!isSquare())
+    if (!isSquare()) {
         throw Exception::InversionNotPossible(ExceptionBody::NonSquareMatrix(size));
+    }
 
     CMatrix::Matrix<Type> result = (*this);
     long int n = result.rows();

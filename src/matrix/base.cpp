@@ -36,8 +36,7 @@ CMatrix::Matrix<Type>::~Matrix()
 template <class Type>
 void CMatrix::Matrix<Type>::clearMemory()
 {
-    if (values != NULL)
-    {
+    if (values != NULL) {
         delete[] values;
         setMatrixAsUnassigned();
     }
@@ -87,11 +86,13 @@ long int CMatrix::Matrix<Type>::elements() const
 template <class Type>
 void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
 {
-    if ((*this).rows() != 0 && (*this).columns() != 0 && (*this).rows() != rows && (*this).columns() != columns)
+    if ((*this).rows() != 0 && (*this).columns() != 0 && (*this).rows() != rows && (*this).columns() != columns) {
         throw Exception::InvalidSizeReset(ExceptionBody::BadSizeReset(size, rows, columns));
+    }
 
-    if (rows == 0 || columns == 0)
+    if (rows == 0 || columns == 0) {
         throw Exception::InvalidSizeSet(ExceptionBody::InvalidSizeSet(rows, columns));
+    }
 
     clearMemory();
 

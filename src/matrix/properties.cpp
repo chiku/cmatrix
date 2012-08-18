@@ -9,8 +9,9 @@ bool CMatrix::Matrix<Type>::isSquare() const
 template <class Type>
 bool CMatrix::Matrix<Type>::isUnit() const
 {
-    if (!isSquare())
+    if (!isSquare()) {
         return false;
+    }
 
     for (int i = 0; i < rows(); i++) {
         for (int j = 0; j < columns(); j++) {
