@@ -25,7 +25,7 @@ namespace CMatrix
     class Matrix
     {
     private:
-        Type* values;
+        std::vector<Type>* values;
 
         Size size;
 

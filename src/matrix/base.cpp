@@ -37,7 +37,7 @@ template <class Type>
 void CMatrix::Matrix<Type>::clearMemory()
 {
     if (values != NULL) {
-        delete[] values;
+        delete values;
         setMatrixAsUnassigned();
     }
 }
@@ -98,14 +98,14 @@ void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
 
     size.set(rows, columns);
 
-    values = new Type[rows * columns];
+    values = new std::vector<Type>(rows * columns);
 }
 
 // Lvalue element accessor - unchecked (used internally)
 template <class Type>
 inline Type& CMatrix::Matrix<Type>::access(long int row, long int column)
 {
-    return values[row * columns() + column];
+    return (*values)[row * columns() + column];
 }
 
 // Lvalue element accessor
@@ -123,7 +123,7 @@ Type& CMatrix::Matrix<Type>::operator () (long int row, long int column)
 template <class Type>
 inline Type CMatrix::Matrix<Type>::access(long int row, long int column) const
 {
-    return values[row * columns() + column];
+    return (*values)[row * columns() + column];
 }
 
 // Rvalue element accessor (const)
