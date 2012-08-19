@@ -147,6 +147,26 @@ Describe(CMatrix_Mutators)
 		}
 	};
 
+	Describe(When_Adding_An_Element_To_An_Unallocated_Matrix)
+	{
+		It(IncreasesTheBoundaryToIncludeTheElement)
+		{
+			Matrix<double> matrix;
+			matrix.mutateToInclude(4.0, 0, 0);
+
+			Assert::That(matrix.rows(), Equals(1));
+			Assert::That(matrix.columns(), Equals(1));
+		}
+
+		It(StoresTheSpecifiedValueAtTheSpecifiedLocation)
+		{
+			Matrix<double> matrix;
+			matrix.mutateToInclude(4.0, 0, 0);
+
+			Assert::That(matrix(0, 0), Equals(4.0));
+		}
+	};
+
 	Describe(When_Adding_An_Element_At_Negative_Boundary)
 	{
 		It(ThrowsAnException)
