@@ -72,6 +72,9 @@ namespace CMatrix
         bool isUnit() const;
         bool isZero() const;
 
+        void fillWith(Type value);
+        void fillWithZeros();
+
         Matrix<Type> invert();
         void mutateToInclude(Type value, long int row, long int column);
 
@@ -92,6 +95,7 @@ namespace CMatrix
 #include "matrix/functionoid.cpp"
 #include "matrix/invert.cpp"
 #include "matrix/mutators.cpp"
+#include "matrix/populators.cpp"
 
 #include "matrix/io/stream.cpp"
 
