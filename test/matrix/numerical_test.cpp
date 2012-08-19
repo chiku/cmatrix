@@ -247,4 +247,40 @@ Describe(CMatrix_Numerical)
             Assert::That(LastException<Exception::IncompatibleMultiplication>().what(), Equals(expectedMessage));
         }
     };
+
+    Describe(When_scaling)
+    {
+        Matrix<double> matrix;
+        Matrix<double> result;
+
+        void SetUp()
+        {
+            matrix.setSize(2, 1);
+            matrix(0, 0) = -5.0;
+            matrix(1, 0) = 4.0;
+
+            result = matrix.scale(0.5);
+        }
+
+        It(TheResultHasSameSize)
+        {
+            Assert::That(result.rows(), Equals(2));
+            Assert::That(result.columns(), Equals(1));
+        }
+
+        It(MultipliesEachTermWithTheFactor)
+        {
+            Assert::That(result(0, 0), Equals(-2.5));
+            Assert::That(result(1, 0), Equals(2.0));
+        }
+
+        It(DoesNotMutateTheOriginalMatrix)
+        {
+            Assert::That(matrix.rows(), Equals(2));
+            Assert::That(matrix.columns(), Equals(1));
+
+            Assert::That(matrix(0, 0), Equals(-5.0));
+            Assert::That(matrix(1, 0), Equals(4.0));
+        }
+    };
 };

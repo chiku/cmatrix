@@ -66,6 +66,8 @@ namespace CMatrix
         Matrix<Type> operator + ();
         Matrix<Type> operator - ();
 
+        Matrix<Type> scale(Type value);
+
         bool isSquare() const;
         bool isUnit() const;
         bool isZero() const;

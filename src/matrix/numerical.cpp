@@ -119,3 +119,17 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::operator - ()
     return result;
 }
 
+// Scalar multiplication
+template <class Type>
+CMatrix::Matrix<Type> CMatrix::Matrix<Type>::scale(Type value)
+{
+    Matrix<Type> result(rows(), columns());
+
+    for (int i = 0; i < rows(); i++) {
+        for (int j = 0; j < columns(); j++) {
+            result.access(i, j) = value * access(i, j);
+        }
+    }
+
+    return result;
+}
