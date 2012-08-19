@@ -147,68 +147,6 @@ Describe(CMatrix_Mutators)
 		}
 	};
 
-	Describe(When_Adding_An_Element_At_The_End_Of_A_Matrix_With_One_Column)
-	{
-		Matrix<double> matrix;
-
-		void SetUp()
-		{
-			matrix.setSize(2, 1);
-			matrix(0, 0) = 1.0;
-			matrix(1, 0) = 2.0;
-
-			matrix.mutateToInclude(4.0, 2, 0);
-		}
-
-		It(IncreasesTheBoundaryToIncludeTheElement)
-		{
-			Assert::That(matrix.rows(), Equals(3));
-			Assert::That(matrix.columns(), Equals(1));
-		}
-
-		It(StoresTheSpecifiedValueAtTheSpecifiedLocation)
-		{
-			Assert::That(matrix(2, 0), Equals(4.0));
-		}
-
-		It(DoesNotModifyExistingValues)
-		{
-			Assert::That(matrix(0, 0), Equals(1.0));
-			Assert::That(matrix(1, 0), Equals(2.0));
-		}
-	};
-
-	Describe(When_Adding_An_Element_At_The_End_Of_A_Matrix_With_One_Row)
-	{
-		Matrix<double> matrix;
-
-		void SetUp()
-		{
-			matrix.setSize(1, 2);
-			matrix(0, 0) = 1.0;
-			matrix(0, 1) = 2.0;
-
-			matrix.mutateToInclude(4.0, 0, 2);
-		}
-
-		It(IncreasesTheBoundaryToIncludeTheElement)
-		{
-			Assert::That(matrix.rows(), Equals(1));
-			Assert::That(matrix.columns(), Equals(3));
-		}
-
-		It(StoresTheSpecifiedValueAtTheSpecifiedLocation)
-		{
-			Assert::That(matrix(0, 2), Equals(4.0));
-		}
-
-		It(DoesNotModifyExistingValues)
-		{
-			Assert::That(matrix(0, 0), Equals(1.0));
-			Assert::That(matrix(0, 1), Equals(2.0));
-		}
-	};
-
 	Describe(When_Adding_An_Element_At_Negative_Boundary)
 	{
 		It(ThrowsAnException)

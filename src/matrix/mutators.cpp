@@ -12,32 +12,18 @@ void CMatrix::Matrix<Type>::mutateToInclude(Type value, long int row, long int c
 		return;
 	}
 
-	if (rows() == 1) {
-		values->resize(column + 1);
-		size = Size(1, column + 1);
-		access(row, column) = value;
-		return;
-	}
-
-	if (columns() == 1) {
-		values->resize(row + 1);
-		size = Size(row + 1, 1);
-		access(row, column) = value;
-		return;
-	}
-
 	CMatrix::Size newSize(std::max(rows(), row + 1), std::max(columns(), column + 1));
 	std::vector<Type>* newValues = new std::vector<Type>(newSize.elements());
 
-    for (long int i = 0; i < rows(); i++) {
-        for (long int j = 0; j < columns(); j++) {
-            (*newValues)[i * newSize.getColumns() + j] = access(i, j);
-        }
-    }
+	for (long int i = 0; i < rows(); i++) {
+		for (long int j = 0; j < columns(); j++) {
+			(*newValues)[i * newSize.getColumns() + j] = access(i, j);
+		}
+	}
 
-    delete values;
-    values = newValues;
-    size = newSize;
+	delete values;
+	values = newValues;
+	size = newSize;
 
-    access(row, column) = value;
+	access(row, column) = value;
 }
