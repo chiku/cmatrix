@@ -19,6 +19,7 @@ namespace CMatrix
     template<typename Type> Matrix<Type> operator * (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
 
     template<typename Type> std::ostream& operator << (std::ostream& outputStream, const Matrix<Type>& matrix);
+    template<typename Type> std::istream& operator >> (std::istream& inputStream, CMatrix::Matrix<Type>& matrix);
 
 
     template <class Type>
