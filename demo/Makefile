@@ -6,7 +6,7 @@ CFLAGS += -O2
 CXXFLAGS += -O2
 
 INCLUDE_FILES += -I.
-INCLUDE_FILES += -I../src
+INCLUDE_FILES += -I../matrix
 
 CXXFLAGS += -I$(INCLUDE_FILES)
 

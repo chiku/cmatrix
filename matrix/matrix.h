@@ -89,19 +89,19 @@ namespace CMatrix
     };
 }
 
-#include "matrix/base.cpp"
-#include "matrix/equality.cpp"
-#include "matrix/properties.cpp"
-#include "matrix/numerical.cpp"
-#include "matrix/functionoid.cpp"
-#include "matrix/invert.cpp"
-#include "matrix/mutators.cpp"
-#include "matrix/populators.cpp"
+#include "core/base.cpp"
+#include "core/equality.cpp"
+#include "core/properties.cpp"
+#include "core/numerical.cpp"
+#include "core/functionoid.cpp"
+#include "core/invert.cpp"
+#include "core/mutators.cpp"
+#include "core/populators.cpp"
 
-#include "matrix/io/stream.cpp"
+#include "core/io/stream.cpp"
 
 #ifdef WITH_PNG
-#include "matrix/io/png.cpp"
+#include "core/io/png.cpp"
 #endif
 
 #endif

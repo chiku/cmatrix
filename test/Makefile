@@ -1,7 +1,7 @@
 # Written by     : Chirantan Mitra
 
 INCLUDE_FILES += -I.
-INCLUDE_FILES += -I../src
+INCLUDE_FILES += -I../matrix
 
 CPPFILES = $(shell ls */*_test.cpp *_test.cpp)
 

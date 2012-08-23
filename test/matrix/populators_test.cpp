@@ -1,7 +1,5 @@
 // Written by     : Chirantan Mitra
 
-// Written by     : Chirantan Mitra
-
 #include <igloo/igloo_alt.h>
 #include <matrix.h>
 

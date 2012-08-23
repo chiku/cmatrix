@@ -25,7 +25,7 @@ export CXXFLAGS
 all: clean compile test demo
 
 compile:
-	@cd src && make
+	@cd matrix && make
 
 test:
 	@cd test && make
@@ -35,7 +35,7 @@ demo:
 
 clean:
 	rm -rf bin/*
-	@cd src && make clean
+	@cd matrix && make clean
 	@cd test && make clean
 	@cd demo && make clean
 

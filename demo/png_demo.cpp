@@ -51,4 +51,3 @@ int main()
     secondMatrix.pngize("test1.png", 0.3, 0.1, 0.4);
     secondMatrix.pngize("test2.png", (new testRedScale), (new testBlueScale), (new testGreenScale));
 }
-

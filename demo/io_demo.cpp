@@ -1,7 +1,7 @@
 // Written by     : Chirantan Mitra
 
-#include <matrix.h>
 #include <cmath>
+#include <matrix.h>
 
 class testFunctionoid
 {
