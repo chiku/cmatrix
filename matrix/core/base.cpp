@@ -36,8 +36,8 @@ CMatrix::Matrix<Type>::~Matrix()
 template <class Type>
 void CMatrix::Matrix<Type>::clearMemory()
 {
-    if (isMemoryAssigned()) {
-        unallocateMemory();
+    if (engine.isMemoryAssigned()) {
+        engine.unallocateMemory();
         setMatrixAsUnassigned();
     }
 }
@@ -45,7 +45,7 @@ void CMatrix::Matrix<Type>::clearMemory()
 template <class Type>
 void CMatrix::Matrix<Type>::setMatrixAsUnassigned()
 {
-    markMemoryAsUnused();
+    engine.markMemoryAsUnused();
     size.set(0, 0);
 }
 
@@ -98,7 +98,21 @@ void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
 
     size.set(rows, columns);
 
-    allocateMemory(size);
+    engine.allocateMemory(size);
+}
+
+// Lvalue element accessor - unchecked
+template <class Type>
+inline Type& CMatrix::Matrix<Type>::access(long int row, long int column)
+{
+    return engine.access(row, column);
+}
+
+// Rvalue element accessor (const) - unchecked
+template <class Type>
+inline Type CMatrix::Matrix<Type>::access(long int row, long int column) const
+{
+    return engine.access(row, column);
 }
 
 // Lvalue element accessor

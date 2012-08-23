@@ -9,7 +9,6 @@ void CMatrix::Matrix<Type>::mutateToInclude(Type value, long int row, long int c
 
 	if (size.contains(row, column)) {
 		access(row, column) = value;
-		engine.access(row, column) = value;
 		return;
 	}
 
@@ -27,5 +26,5 @@ void CMatrix::Matrix<Type>::mutateToInclude(Type value, long int row, long int c
 	engine = newEngine;
 	size = newSize;
 
-	engine.access(row, column) = value;
+	access(row, column) = value;
 }

@@ -33,10 +33,6 @@ namespace CMatrix
         void clearMemory();
         void setMatrixAsUnassigned();
 
-        bool isMemoryAssigned() const;
-        void unallocateMemory() const;
-        void markMemoryAsUnused();
-        void allocateMemory(Size size);
         Type& access(long int row, long int column);
         Type access(long int row, long int column) const;
 
@@ -93,7 +89,6 @@ namespace CMatrix
     };
 }
 
-#include "core/engine.cpp"
 #include "core/base.cpp"
 #include "core/equality.cpp"
 #include "core/properties.cpp"
