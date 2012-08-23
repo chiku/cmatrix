@@ -27,8 +27,6 @@ namespace CMatrix
     class Matrix
     {
     private:
-        std::vector<Type>* values;
-
         Size size;
         StorageEngine<Type> engine;
 
