@@ -147,7 +147,7 @@ Describe(CMatrix_Mutators)
 		}
 	};
 
-	Describe(When_Adding_An_Element_To_An_Unallocated_Matrix)
+	Describe(When_Adding_An_Element_To_An_Zero_Sized_Matrix)
 	{
 		It(IncreasesTheBoundaryToIncludeTheElement)
 		{

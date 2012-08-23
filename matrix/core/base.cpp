@@ -36,8 +36,8 @@ CMatrix::Matrix<Type>::~Matrix()
 template <class Type>
 void CMatrix::Matrix<Type>::clearMemory()
 {
-    if (values != NULL) {
-        delete values;
+    if (isMemoryAssigned()) {
+        unallocateMemory();
         setMatrixAsUnassigned();
     }
 }
@@ -45,7 +45,7 @@ void CMatrix::Matrix<Type>::clearMemory()
 template <class Type>
 void CMatrix::Matrix<Type>::setMatrixAsUnassigned()
 {
-    values = NULL;
+    markMemoryAsUnused();
     size.set(0, 0);
 }
 
@@ -98,14 +98,7 @@ void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
 
     size.set(rows, columns);
 
-    values = new std::vector<Type>(rows * columns);
-}
-
-// Lvalue element accessor - unchecked (used internally)
-template <class Type>
-inline Type& CMatrix::Matrix<Type>::access(long int row, long int column)
-{
-    return (*values)[row * columns() + column];
+    allocateMemory(rows, columns);
 }
 
 // Lvalue element accessor
@@ -117,13 +110,6 @@ Type& CMatrix::Matrix<Type>::operator () (long int row, long int column)
     }
 
     return access(row, column);
-}
-
-// Rvalue element accessor (const) - unchecked (used internally)
-template <class Type>
-inline Type CMatrix::Matrix<Type>::access(long int row, long int column) const
-{
-    return (*values)[row * columns() + column];
 }
 
 // Rvalue element accessor (const)

@@ -12,14 +12,6 @@ void CMatrix::Matrix<Type>::mutateToInclude(Type value, long int row, long int c
 		return;
 	}
 
-	if (! size.isValid()) {
-		values->resize(column + 1);
-		size = Size(1, column + 1);
-		values = new std::vector<Type>(size.elements());
-		access(row, column) = value;
-		return;
-	}
-
 	CMatrix::Size newSize(std::max(rows(), row + 1), std::max(columns(), column + 1));
 	std::vector<Type>* newValues = new std::vector<Type>(newSize.elements());
 
@@ -29,7 +21,7 @@ void CMatrix::Matrix<Type>::mutateToInclude(Type value, long int row, long int c
 		}
 	}
 
-	delete values;
+	markMemoryAsUnused();
 	values = newValues;
 	size = newSize;
 
