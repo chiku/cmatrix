@@ -3,7 +3,6 @@
 #ifndef CMATRIX_H
 #define CMATRIX_H
 
-#include <vector>
 #include <iostream>
 #include <sstream>
 
