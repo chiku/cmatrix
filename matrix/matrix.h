@@ -1,12 +1,13 @@
 // Written by     : Chirantan Mitra
 
-#ifndef MATRIX_H
-#define MATRIX_H
+#ifndef CMATRIX_H
+#define CMATRIX_H
 
 #include <vector>
 #include <iostream>
 #include <sstream>
 
+#include "storage_engine.h"
 #include "exception.h"
 #include "size.h"
 
@@ -29,6 +30,7 @@ namespace CMatrix
         std::vector<Type>* values;
 
         Size size;
+        StorageEngine<Type> engine;
 
         void clearMemory();
         void setMatrixAsUnassigned();
@@ -36,7 +38,7 @@ namespace CMatrix
         bool isMemoryAssigned() const;
         void unallocateMemory() const;
         void markMemoryAsUnused();
-        void allocateMemory(long int rows, long int columns);
+        void allocateMemory(Size size);
         Type& access(long int row, long int column);
         Type access(long int row, long int column) const;
 

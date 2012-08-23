@@ -98,7 +98,7 @@ void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
 
     size.set(rows, columns);
 
-    allocateMemory(rows, columns);
+    allocateMemory(size);
 }
 
 // Lvalue element accessor

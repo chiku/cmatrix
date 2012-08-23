@@ -1,7 +1,7 @@
 // Written by     : Chirantan Mitra
 
-#ifndef MATRIX_SIZE_H
-#define MATRIX_SIZE_H
+#ifndef CMATRIX_SIZE_H
+#define CMATRIX_SIZE_H
 
 namespace CMatrix
 {

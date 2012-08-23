@@ -1,7 +1,7 @@
 // Written by     : Chirantan Mitra
 
-#ifndef MATRIX_EXCEPTIONS_H
-#define MATRIX_EXCEPTIONS_H
+#ifndef CMATRIX_EXCEPTIONS_H
+#define CMATRIX_EXCEPTIONS_H
 
 #include <stdexcept>
 
