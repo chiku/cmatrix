@@ -1,6 +1,22 @@
 // Written by     : Chirantan Mitra
 
 template <class Type>
+void CMatrix::Matrix<Type>::setMatrixAsUnassigned()
+{
+    engine.markMemoryAsUnused();
+    size.set(0, 0);
+}
+
+template <class Type>
+void CMatrix::Matrix<Type>::clearMemory()
+{
+    if (engine.isMemoryAssigned()) {
+        engine.unallocateMemory();
+        setMatrixAsUnassigned();
+    }
+}
+
+template <class Type>
 CMatrix::Matrix<Type>::Matrix()
 {
     setMatrixAsUnassigned();
@@ -34,56 +50,6 @@ CMatrix::Matrix<Type>::~Matrix()
 }
 
 template <class Type>
-void CMatrix::Matrix<Type>::clearMemory()
-{
-    if (engine.isMemoryAssigned()) {
-        engine.unallocateMemory();
-        setMatrixAsUnassigned();
-    }
-}
-
-template <class Type>
-void CMatrix::Matrix<Type>::setMatrixAsUnassigned()
-{
-    engine.markMemoryAsUnused();
-    size.set(0, 0);
-}
-
-
-// Overloaded assignment operator
-template <class Type>
-CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator = (const Matrix& otherMatrix)
-{
-    setSize(otherMatrix.rows(), otherMatrix.columns());
-
-    for (long int i = 0; i < rows(); i++) {
-        for (long int j = 0; j < columns(); j++) {
-            access(i, j) = otherMatrix.access(i, j);
-        }
-    }
-
-    return *this;
-}
-
-template <class Type>
-inline long int CMatrix::Matrix<Type>::rows() const
-{
-    return size.getRows();
-}
-
-template <class Type>
-inline long int CMatrix::Matrix<Type>::columns() const
-{
-    return size.getColumns();
-}
-
-template <class Type>
-inline long int CMatrix::Matrix<Type>::elements() const
-{
-    return size.elements();
-}
-
-template <class Type>
 void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
 {
     if ((*this).rows() > 0 && (*this).columns() > 0 && !size.matches(rows, columns)) {
@@ -99,40 +65,4 @@ void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
     size.set(rows, columns);
 
     engine.allocateMemory(size);
-}
-
-// Lvalue element accessor - unchecked
-template <class Type>
-inline Type& CMatrix::Matrix<Type>::access(long int row, long int column)
-{
-    return engine.access(row, column);
-}
-
-// Rvalue element accessor (const) - unchecked
-template <class Type>
-inline Type CMatrix::Matrix<Type>::access(long int row, long int column) const
-{
-    return engine.access(row, column);
-}
-
-// Lvalue element accessor
-template <class Type>
-Type& CMatrix::Matrix<Type>::operator () (long int row, long int column)
-{
-    if (! size.contains(row, column)) {
-        throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
-    }
-
-    return access(row, column);
-}
-
-// Rvalue element accessor (const)
-template <class Type>
-Type CMatrix::Matrix<Type>::operator () (long int row, long int column) const
-{
-    if (! size.contains(row, column)) {
-        throw Exception::AccessOutOfBound(ExceptionBody::AccessOutOfBound(size, row, column));
-    }
-
-    return access(row, column);
 }

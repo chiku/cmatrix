@@ -89,7 +89,9 @@ namespace CMatrix
 }
 
 #include "core/base.cpp"
+#include "core/accessor.cpp"
 #include "core/equality.cpp"
+#include "core/assignment.cpp"
 #include "core/properties.cpp"
 #include "core/numerical.cpp"
 #include "core/functionoid.cpp"
