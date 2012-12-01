@@ -36,7 +36,7 @@ endif
 
 CXXFLAGS+= $(FT_ARG)
 CXXFLAGS= $(FT_ARG)
-INC=  -I../src/ -I$(PREFIX)/include/
+INC=  -I../src/ -I$(PREFIX)/include/ -I/usr/X11/include
 
 LIBS= -L../src -L$(PREFIX)/lib/ -lz -lpng12 -lpngwriter
 

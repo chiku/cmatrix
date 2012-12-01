@@ -2,6 +2,7 @@
 
 INCLUDE_FILES += -I.
 INCLUDE_FILES += -I../matrix
+INCLUDE_FILES += -Ivendor
 
 CPPFILES = $(shell ls */*_test.cpp *_test.cpp)
 
@@ -16,7 +17,7 @@ run:
 	@cd ../bin && ./matrix_test
 
 test_runner.o:
-	$(CXX) $(CXXFLAGS) -c test_runner.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDE_FILES) -c test_runner.cpp
 
 clean:
 	rm -f *.o *.a *_test *_demo
