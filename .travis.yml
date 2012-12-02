@@ -3,4 +3,7 @@ compiler:
   - clang
   - gcc
 script:
+  - cd matrix && rmstorage_engine.h && ln -s storage_engine/vector.h storage_engine.h && cd ..
+  - make clean compile test
+  - cd matrix && rmstorage_engine.h && ln -s storage_engine/matrix.h storage_engine.h && cd ..
   - make clean compile test
