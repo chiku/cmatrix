@@ -22,13 +22,10 @@ run:
 	mv *_demo ../bin/demo/
 	./launch
 
-png_demo:
-	$(CXX) $(CXXFLAGS) `freetype-config --cflags` -o png_demo png_demo.cpp ../bin/libpngwriter.a -lfreetype -lpng -lz
-
 io_demo:
-	$(CXX) $(CXXFLAGS) -o io_demo io_demo.cpp -lfreetype -lpng -lz
+	$(CXX) $(CXXFLAGS) -o io_demo io_demo.cpp
 
 clean:
-	rm -rf *.o *.a *.png
+	rm -rf *.o *.a
 
 .PHONY: all clean compile run

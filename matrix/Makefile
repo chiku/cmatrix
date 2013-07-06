@@ -3,16 +3,12 @@
 INCLUDE_FILES += .
 CPPFILES = $(shell ls size/*.cpp)
 
-all: prepare vendor
-
-vendor:
-	@cd vendor && make
+all: prepare
 
 prepare:
 	mkdir -p ../bin/obj
 
 clean:
 	rm -f *.o *.a
-	@cd vendor && make clean
 
-.PHONY: all prepare clean vendor
+.PHONY: all prepare clean

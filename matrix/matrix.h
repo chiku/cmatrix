@@ -83,8 +83,6 @@ namespace CMatrix
         template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, long int xShift, long int yShift, Type xScale, Type yScale);
         
         friend std::ostream& operator << <>(std::ostream& outputStream, const Matrix<Type>& firstMatrix);
-        void pngize(const char* fileName, Type redScale, Type blueScale, Type greenScale) const;
-        template <typename RedFunc, typename BlueFunc, typename GreenFunc> void pngize(const char* fileName, RedFunc redScale, BlueFunc blueScale, GreenFunc greenScale) const;
     };
 }
 
@@ -100,9 +98,5 @@ namespace CMatrix
 #include "core/populators.cpp"
 
 #include "core/io/stream.cpp"
-
-#ifdef WITH_PNG
-#include "core/io/png.cpp"
-#endif
 
 #endif
