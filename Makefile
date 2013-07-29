@@ -13,14 +13,20 @@ AR = ar
 endif
 
 CFLAGS += -O2
-
 CXXFLAGS += -O2
+
+ifdef COVERAGE
+CFLAGS += -O2
+CXXFLAGS += -fprofile-arcs -ftest-coverage
+LDFLAGS += -lgcov
+endif
 
 export CC
 export CXX
 export AR
 export CFLAGS
 export CXXFLAGS
+export LDFLAGS
 
 all: clean compile test demo
 
