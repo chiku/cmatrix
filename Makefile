@@ -17,8 +17,8 @@ CXXFLAGS += -O2
 
 ifdef COVERAGE
 CFLAGS += -O2
-CXXFLAGS += -fprofile-arcs -ftest-coverage
-LDFLAGS += -lgcov
+CXXFLAGS += --coverage
+LDFLAGS += --coverage
 endif
 
 export CC

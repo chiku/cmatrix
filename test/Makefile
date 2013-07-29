@@ -20,6 +20,6 @@ test_runner.o:
 	$(CXX) $(CXXFLAGS) $(INCLUDE_FILES) -c test_runner.cpp
 
 clean:
-	rm -f *.o *.a *_test *_demo
+	rm -f *.o *.a *_test *_demo *.gcda *.gcno
 
 .PHONY: all run compile clean

@@ -23,9 +23,9 @@ run:
 	./launch
 
 io_demo:
-	$(CXX) $(CXXFLAGS) -o io_demo io_demo.cpp
+	$(CXX) $(CXXFLAGS) -o io_demo io_demo.cpp $(LDFLAGS)
 
 clean:
-	rm -rf *.o *.a
+	rm -rf *.o *.a *.gcda *.gcno
 
 .PHONY: all clean compile run
