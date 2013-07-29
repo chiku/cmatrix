@@ -6,7 +6,7 @@ INCLUDE_FILES += -Ivendor
 
 CPPFILES = $(shell ls */*_test.cpp *_test.cpp)
 
-all: compile
+all: compile run
 
 compile: test_runner.o
 	$(CXX) -c $(CXXFLAGS) $(INCLUDE_FILES) $(CPPFILES)
