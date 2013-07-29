@@ -8,15 +8,15 @@ ifndef CXX
 CXX = g++
 endif
 
-ifndef ar
+ifndef AR
 AR = ar
 endif
 
-ifndef lcov
+ifndef LCOV
 LCOV = lcov
 endif
 
-ifndef genhtml
+ifndef GENHTML
 GENHTML = genhtml
 endif
 
@@ -42,7 +42,7 @@ demo: compile
 	@cd demo && make
 
 clean:
-	rm -rf bin/*
+	rm -rf bin/* coverage *.info
 	@cd matrix && make clean
 	@cd test && make clean
 	@cd demo && make clean
@@ -52,7 +52,8 @@ coverage: LDFLAGS += --coverage
 coverage: compile test generate.coverage.report
 
 generate.coverage.report:
-	$LCOV --capture --directory test --output-file coverage.info
-	$GENHTML coverage.info --output-directory coverage
+	${LCOV} --capture --directory test --output-file coverage.info
+	${LCOV} --extract coverage.info "${PWD}/matrix/*" -o coverage.filtered.info
+	${GENHTML} coverage.filtered.info --output-directory coverage
 
-.PHONY: all compile test demo clean coverage set.coverage generate.coverage.report
+.PHONY: all compile test demo clean coverage generate.coverage.report
