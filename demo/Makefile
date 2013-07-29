@@ -18,8 +18,8 @@ all: compile run
 compile: $(DEMOFILES)
 
 run:
-	mkdir -p ../bin/demo/
-	mv *_demo ../bin/demo/
+	mkdir -p ../bin/
+	mv *_demo ../bin/
 	./launch
 
 io_demo:
