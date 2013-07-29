@@ -12,14 +12,16 @@ ifndef ar
 AR = ar
 endif
 
+ifndef lcov
+LCOV = lcov
+endif
+
+ifndef genhtml
+GENHTML = genhtml
+endif
+
 CFLAGS += -O2
 CXXFLAGS += -O2
-
-ifdef COVERAGE
-CFLAGS += -O2
-CXXFLAGS += --coverage
-LDFLAGS += --coverage
-endif
 
 export CC
 export CXX
@@ -33,10 +35,10 @@ all: clean compile test demo
 compile:
 	@cd matrix && make
 
-test:
+test: compile
 	@cd test && make
 
-demo:
+demo: compile
 	@cd demo && make
 
 clean:
@@ -45,4 +47,12 @@ clean:
 	@cd test && make clean
 	@cd demo && make clean
 
-.PHONY: all compile test demo clean
+coverage: CXXFLAGS += --coverage
+coverage: LDFLAGS += --coverage
+coverage: compile test generate.coverage.report
+
+generate.coverage.report:
+	$LCOV --capture --directory test --output-file coverage.info
+	$GENHTML coverage.info --output-directory coverage
+
+.PHONY: all compile test demo clean coverage set.coverage generate.coverage.report
