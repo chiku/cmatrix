@@ -1,2 +1,6 @@
 **/*.o
 **/*.a
+**/*.info
+**/*.gcda
+**/*.gcno
+coverage
