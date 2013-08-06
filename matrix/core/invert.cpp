@@ -23,16 +23,16 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::invert()
         pivots(i, 0) = -1;
     }
 
-    for (long int i = 0; i < n; i++) { 
+    for (long int i = 0; i < n; i++) {
         Type big = 0;
         for (long int j = 0; j < n; j++) {
             if (pivots(j, 0) != 0) {
                 for (long int k = 0; k < n; k++) {
-                    if ((pivots(k, 0) == -1) && fabs(result(j, k) >= big)) {
+                    if ((pivots(k, 0) == -1) && (fabs(result(j, k)) >= big)) {
                         big = fabs(result(j, k));
                         pivot_row = j;
                         pivot_column = k;
-                    } 
+                    }
                 }
             }
         }
@@ -41,14 +41,14 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::invert()
         /* We now have the pivot element, so we interchange rows, if needed, to put the pivot
         element on the diagonal. The columns are not physically interchanged, only relabeled:
         column_indices[i], the column of the ith pivot element, is the ith column that is reduced,
-        while row_indices[i] is the row in which that pivot element was originally located. 
-        If row_indices[i] != column_indices[i] there is an implied column interchange. 
+        while row_indices[i] is the row in which that pivot element was originally located.
+        If row_indices[i] != column_indices[i] there is an implied column interchange.
         With this form of book keeping, inverse matrix will be scrambled by columns. */
         if (pivot_row != pivot_column) {
             for (long int j = 0; j < n; j++)
                 std::swap(result(pivot_row, j), result(pivot_column, j));
         }
-    
+
         row_indices(i, 0) = pivot_row;       // We are now ready to divide the pivot row by the
         column_indices(i, 0) = pivot_column; // pivot element, located at pivot_row and pivot_column.
         if (result(pivot_column, pivot_column) == 0.0) {
@@ -65,7 +65,7 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::invert()
             if (j != pivot_column) {       //  except for the pivot one
                 Type dum = result(j, pivot_column);
                 result(j, pivot_column) = 0.0;
-                for (long int k = 0; k < n; k++) 
+                for (long int k = 0; k < n; k++)
                     result(j, k) -= result(pivot_column, k) * dum;
             }
         }
