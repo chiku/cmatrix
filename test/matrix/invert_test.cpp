@@ -6,7 +6,7 @@
 using namespace igloo;
 using namespace CMatrix;
 
-Describe(When_Inverting_A_Unitary_Matrix)
+Describe(When_inverting_a_unitary_matrix)
 {
     Matrix<double> unitaryMatrix;
     Matrix<double> invertedMatrix;
@@ -20,24 +20,24 @@ Describe(When_Inverting_A_Unitary_Matrix)
         invertedMatrix = unitaryMatrix.invert();
     }
 
-    It(HasSameNumberOfRows)
+    It(has_same_number_of_rows)
     {
         Assert::That(invertedMatrix.rows(), Equals(2));
     }
 
-    It(HasSameNumberOfColumns)
+    It(has_same_number_of_columns)
     {
         Assert::That(invertedMatrix.columns(), Equals(2));
     }
 
-    It(IsTheUnitaryMatrix)
+    It(is_the_unitary_matrix)
     {
         Assert::That(invertedMatrix(0, 0), Equals(1)); Assert::That(invertedMatrix(0, 1), Equals(0));
         Assert::That(invertedMatrix(1, 0), Equals(0)); Assert::That(invertedMatrix(1, 1), Equals(1));
     }
 };
 
-Describe(When_Inverting_A_Matrix)
+Describe(When_inverting_a_matrix)
 {
     Matrix<double> matrix;
     Matrix<double> invertedMatrix;
@@ -47,25 +47,25 @@ Describe(When_Inverting_A_Matrix)
         matrix.setSize(3, 3);
         matrix(0, 0) = 1.0; matrix(0, 1) = 3.0; matrix(0, 2) = 3.0;
         matrix(1, 0) = 1.0; matrix(1, 1) = 4.0; matrix(1, 2) = 3.0;
-        matrix(2, 0) = 1.0; matrix(2, 1) = 3.0; matrix(2, 2) = 4.0; 
+        matrix(2, 0) = 1.0; matrix(2, 1) = 3.0; matrix(2, 2) = 4.0;
 
         invertedMatrix = matrix.invert();
     }
 
-    It(GivesTheUnitaryMatrixOnMultiplyingTheResultWithItself)
+    It(gives_the_unitary_matrix_on_multiplying_the_result_with_itself)
     {
         Assert::That((matrix * invertedMatrix).isUnit(), IsTrue());
     }
 
-    It(DoesNotMutateTheOriginalMatrix)
+    It(does_not_mutate_the_original_matrix)
     {
         Assert::That(matrix == invertedMatrix, IsFalse());
     }
 };
 
-Describe(When_Inverting_A_Matrix_With_Size_One)
+Describe(When_inverting_a_matrix_with_size_1x1)
 {
-    It(FindsItsInverse)
+    It(finds_its_inverse)
     {
         Matrix<double> matrix(1, 1);
         matrix(0, 0) = -1.0;
@@ -76,9 +76,9 @@ Describe(When_Inverting_A_Matrix_With_Size_One)
     }
 };
 
-Describe(When_Inverting_A_Non_Square_Matrix)
+Describe(When_inverting_a_non_square_matrix)
 {
-    It(ThrowsException)
+    It(throws_an_exception)
     {
         Matrix<double> nonSquareMatrix(2, 3);
 
@@ -88,9 +88,9 @@ Describe(When_Inverting_A_Non_Square_Matrix)
     }
 };
 
-Describe(When_Inverting_A_Singular_Matrix)
+Describe(When_inverting_a_singular_matrix)
 {
-    It(ThrowsException)
+    It(throws_an_exception)
     {
         Matrix<double> singularMatrix(2, 2);
         singularMatrix(0, 0) = 1.0; singularMatrix(0, 1) = 0.0;

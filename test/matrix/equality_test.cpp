@@ -6,11 +6,11 @@
 using namespace igloo;
 using namespace CMatrix;
 
-Describe(CMatrix_Equality)
+Describe(CMatrix_equality)
 {
-    Describe(Does_Not_Equal_Matrix)
+    Describe(Does_not_equal_matrix)
     {
-        It(WithDifferentRowCount)
+        It(with_different_row_count)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> twoByTwoMatrix(2, 2);
@@ -19,7 +19,7 @@ Describe(CMatrix_Equality)
             Assert::That(oneByTwoMatrix != twoByTwoMatrix, IsTrue());
         }
 
-        It(WithDifferentColumnCount)
+        It(with_different_column_count)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> oneByThreeMatrix(1, 3);
@@ -28,7 +28,7 @@ Describe(CMatrix_Equality)
             Assert::That(oneByTwoMatrix != oneByThreeMatrix, IsTrue());
         }
 
-        It(WithADifferentElement)
+        It(with_a_different_element)
         {
             Matrix<double> firstTwoByTwoMatrix(2, 2);
             Matrix<double> secondTwoByTwoMatrix(2, 2);
@@ -43,9 +43,9 @@ Describe(CMatrix_Equality)
         }
     };
 
-    Describe(Equals_Another_Matrix)
+    Describe(Equals_another_matrix)
     {
-        It(WhitSameRowCountAndColumnCountAndSameElementsInSamePosition)
+        It(with_same_row_count_and_column_count_and_same_elements_in_same_position)
         {
             Matrix<double> firstTwoByTwoMatrix(2, 2);
             Matrix<double> secondTwoByTwoMatrix(2, 2);
@@ -62,7 +62,7 @@ Describe(CMatrix_Equality)
 
     Describe(Matrix_Of_Matrices)
     {
-        It(EqualsAnotherMatrixOfMatricesWhenAllComponentMatricesAreEquals)
+        It(equals_another_matrix_of_matrices_when_all_component_matrices_are_equal)
         {
             Matrix<Matrix <double> > firstMatrix(1, 2);
             Matrix<Matrix <double> > secondMatrix(1, 2);
@@ -80,7 +80,7 @@ Describe(CMatrix_Equality)
             Assert::That(firstMatrix == secondMatrix), IsTrue();
         }
 
-        It(DoesNotEqualAnotherMatrixOfMatricesWhenOneComponentMatrixIsNotEqual)
+        It(does_not_equal_another_matrix_of_matrices_when_one_component_matrix_is_not_equal)
         {
             Matrix<Matrix <double> > firstMatrix(1, 2);
             Matrix<Matrix <double> > secondMatrix(1, 2);

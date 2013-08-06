@@ -6,9 +6,9 @@
 using namespace igloo;
 using namespace CMatrix;
 
-Describe(CMatrix_Mutators)
+Describe(CMatrix_mutators)
 {
-	Describe(When_Adding_An_Element_Inside_Boundary)
+	Describe(When_adding_an_element_inside_boundary)
 	{
 		Matrix<double> matrix;
 
@@ -23,18 +23,18 @@ Describe(CMatrix_Mutators)
 			matrix.mutateToInclude(-4.0, 0, 1);
 		}
 
-		It(DoesNotMutateTheBoundary)
+		It(does_not_mutate_the_size)
 		{
 			Assert::That(matrix.rows(), Equals(2));
 			Assert::That(matrix.columns(), Equals(2));
 		}
 
-		It(StoresTheSpecifiedValueAtTheSpecifiedLocation)
+		It(stores_the_specified_value_at_the_specified_location)
 		{
 			Assert::That(matrix(0, 1), Equals(-4.0));
 		}
 
-		It(DoesNotModifyOtherExistingValues)
+		It(does_not_modify_other_existing_values)
 		{
 			Assert::That(matrix(0, 0), Equals(1.0));
 			Assert::That(matrix(1, 0), Equals(3.0));
@@ -42,7 +42,7 @@ Describe(CMatrix_Mutators)
 		}
 	};
 
-	Describe(When_Adding_An_Element_Outside_Row_Boundary)
+	Describe(When_adding_an_element_outside_row_boundary)
 	{
 		Matrix<double> matrix;
 
@@ -57,18 +57,18 @@ Describe(CMatrix_Mutators)
 			matrix.mutateToInclude(4.0, 3, 0);
 		}
 
-		It(IncreasesTheBoundaryToIncludeTheElement)
+		It(increases_the_boundary_to_include_the_element)
 		{
 			Assert::That(matrix.rows(), Equals(4));
 			Assert::That(matrix.columns(), Equals(2));
 		}
 
-		It(StoresTheSpecifiedValueAtTheSpecifiedLocation)
+		It(stores_the_specified_value_at_the_specified_location)
 		{
 			Assert::That(matrix(3, 0), Equals(4.0));
 		}
 
-		It(DoesNotModifyExistingValues)
+		It(does_not_modify_existing_values)
 		{
 			Assert::That(matrix(0, 0), Equals(1.0));
 			Assert::That(matrix(0, 1), Equals(2.0));
@@ -77,7 +77,7 @@ Describe(CMatrix_Mutators)
 		}
 	};
 
-	Describe(When_Adding_An_Element_Outside_Column_Boundary)
+	Describe(When_adding_an_element_outside_column_boundary)
 	{
 		Matrix<double> matrix;
 
@@ -92,18 +92,18 @@ Describe(CMatrix_Mutators)
 			matrix.mutateToInclude(-4.0, 0, 4);
 		}
 
-		It(IncreasesTheBoundaryToIncludeTheElement)
+		It(increases_the_boundary_to_include_the_element)
 		{
 			Assert::That(matrix.rows(), Equals(2));
 			Assert::That(matrix.columns(), Equals(5));
 		}
 
-		It(StoresTheSpecifiedValueAtTheSpecifiedLocation)
+		It(stores_the_specified_value_at_the_specified_location)
 		{
 			Assert::That(matrix(0, 4), Equals(-4.0));
 		}
 
-		It(DoesNotModifyExistingValues)
+		It(does_not_modify_existing_values)
 		{
 			Assert::That(matrix(0, 0), Equals(1.0));
 			Assert::That(matrix(0, 1), Equals(2.0));
@@ -112,7 +112,7 @@ Describe(CMatrix_Mutators)
 		}
 	};
 
-	Describe(When_Adding_An_Element_Outside_Row_And_Column_Boundary)
+	Describe(When_adding_an_element_outside_row_and_column_boundary)
 	{
 		Matrix<double> matrix;
 
@@ -127,18 +127,18 @@ Describe(CMatrix_Mutators)
 			matrix.mutateToInclude(-11.5, 2, 5);
 		}
 
-		It(IncreasesTheBoundaryToIncludeTheElement)
+		It(increases_the_boundary_to_include_the_element)
 		{
 			Assert::That(matrix.rows(), Equals(3));
 			Assert::That(matrix.columns(), Equals(6));
 		}
 
-		It(StoresTheSpecifiedValueAtTheSpecifiedLocation)
+		It(stores_the_specified_value_at_the_specified_location)
 		{
 			Assert::That(matrix(2, 5), Equals(-11.5));
 		}
 
-		It(DoesNotModifyExistingValues)
+		It(does_not_modify_existing_values)
 		{
 			Assert::That(matrix(0, 0), Equals(1.0));
 			Assert::That(matrix(0, 1), Equals(2.0));
@@ -147,9 +147,9 @@ Describe(CMatrix_Mutators)
 		}
 	};
 
-	Describe(When_Adding_An_Element_To_An_Zero_Sized_Matrix)
+	Describe(When_adding_an_element_to_an_zero_sized_matrix)
 	{
-		It(IncreasesTheBoundaryToIncludeTheElement)
+		It(increases_the_boundary_to_include_the_element)
 		{
 			Matrix<double> matrix;
 			matrix.mutateToInclude(4.0, 0, 0);
@@ -158,7 +158,7 @@ Describe(CMatrix_Mutators)
 			Assert::That(matrix.columns(), Equals(1));
 		}
 
-		It(StoresTheSpecifiedValueAtTheSpecifiedLocation)
+		It(stores_the_specified_value_at_the_specified_location)
 		{
 			Matrix<double> matrix;
 			matrix.mutateToInclude(4.0, 0, 0);
@@ -167,9 +167,9 @@ Describe(CMatrix_Mutators)
 		}
 	};
 
-	Describe(When_Adding_An_Element_At_Negative_Boundary)
+	Describe(When_adding_an_element_at_negative_boundary)
 	{
-		It(ThrowsAnException)
+		It(throws_an_exception)
 		{
 			Matrix<double> matrix(2, 2);
             std::string expectedMessage = "Invalid attempt to add element at negative row (-2) or column (2) to matrix [2, 2]";

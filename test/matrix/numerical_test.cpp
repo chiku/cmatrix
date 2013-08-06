@@ -6,11 +6,11 @@
 using namespace igloo;
 using namespace CMatrix;
 
-Describe(CMatrix_Numerical)
+Describe(CMatrix_numerical)
 {
-    Describe(When_Adding)
+    Describe(When_adding)
     {
-        It(Two2x2MatricesHasAResultantWithEachPositionTheSumOfTheTwoMatrices)
+        It(two_2x2_matrices_has_a_resultant_with_each_position_the_sum_of_the_two_matrices)
         {
             Matrix<double> firstTwoByTwoMatrix(2, 2);
             Matrix<double> secondTwoByTwoMatrix(2, 2);
@@ -24,14 +24,14 @@ Describe(CMatrix_Numerical)
             Assert::That(firstTwoByTwoMatrix + secondTwoByTwoMatrix, Equals(expectedSum));
         }
 
-        It(Three2x2MatricesHasAResultantWithEachPositionTheSumOfTheThreeMatrices)
+        It(three_2x2_matrices_has_a_resultant_with_each_position_the_sum_of_the_three_matrices)
         {
             Matrix<double> firstTwoByTwoMatrix(2, 2);
             Matrix<double> secondTwoByTwoMatrix(2, 2);
             Matrix<double> thirdTwoByTwoMatrix(2, 2);
             Matrix<double> expectedSum(2, 2);
 
-            firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = -1.0; thirdTwoByTwoMatrix(0, 0) = -1.0; expectedSum(0, 0) = -1.0; 
+            firstTwoByTwoMatrix(0, 0) = 1.0; secondTwoByTwoMatrix(0, 0) = -1.0; thirdTwoByTwoMatrix(0, 0) = -1.0; expectedSum(0, 0) = -1.0;
             firstTwoByTwoMatrix(0, 1) = 2.0; secondTwoByTwoMatrix(0, 1) =  2.0; thirdTwoByTwoMatrix(0, 1) =  2.0; expectedSum(0, 1) =  6.0;
             firstTwoByTwoMatrix(1, 0) = 3.0; secondTwoByTwoMatrix(1, 0) = -3.0; thirdTwoByTwoMatrix(1, 0) =  3.0; expectedSum(1, 0) =  3.0;
             firstTwoByTwoMatrix(1, 1) = 4.0; secondTwoByTwoMatrix(1, 1) =  4.0; thirdTwoByTwoMatrix(1, 1) =  4.0; expectedSum(1, 1) = 12.0;
@@ -39,7 +39,7 @@ Describe(CMatrix_Numerical)
             Assert::That(firstTwoByTwoMatrix + secondTwoByTwoMatrix + thirdTwoByTwoMatrix, Equals(expectedSum));
         }
 
-        It(Two1x2And2x1MatricesThrowsException)
+        It(two_1x2_and_2x1_matrices_throws_an_exception)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> twoByOneMatrix(2, 1);
@@ -49,7 +49,7 @@ Describe(CMatrix_Numerical)
             Assert::That(LastException<Exception::IncompatibleAddition>().what(), Equals(expectedMessage));
         }
 
-        It(TwoMatrixOfMatricesHasAResultantWithEachPositionTheSumOfTheComponentMatrices)
+        It(two_matrix_of_matrices_has_a_resultant_with_each_position_the_sum_of_the_component_matrices)
         {
             Matrix<Matrix <double> > firstMatrixOfMatrices(1, 2);
             Matrix<Matrix <double> > secondMatrixOfMatrices(1, 2);
@@ -70,9 +70,9 @@ Describe(CMatrix_Numerical)
         }
     };
 
-    Describe(When_Subtracting)
+    Describe(When_subtracting)
     {
-        It(Two2x2MatricesHasAResultantWithEachPositionTheDifferenceOfTheSecondFromTheFirst)
+        It(two_2x2_matrices_has_a_resultant_with_each_position_the_difference_of_the_second_from_the_first)
         {
             Matrix<double> firstTwoByTwoMatrix(2, 2);
             Matrix<double> secondTwoByTwoMatrix(2, 2);
@@ -86,7 +86,7 @@ Describe(CMatrix_Numerical)
             Assert::That(firstTwoByTwoMatrix - secondTwoByTwoMatrix, Equals(expectedDifference));
         }
 
-        It(A1x2MatrixFromA1x1MatrixThrowsException)
+        It(a_1x2_matrix_from_a_1x1_matrix_throws_an_exception)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> oneByOneMatrix(1, 1);
@@ -96,7 +96,7 @@ Describe(CMatrix_Numerical)
         }
     };
 
-    Describe(When_Adding_By_Short_Hand)
+    Describe(When_adding_by_short_hand)
     {
         Matrix<double> firstTwoByTwoMatrix;
         Matrix<double> secondTwoByTwoMatrix;
@@ -114,18 +114,18 @@ Describe(CMatrix_Numerical)
             firstTwoByTwoMatrix(1, 1) = 4.0; secondTwoByTwoMatrix(1, 1) =  4.0; expectedSum(1, 1) = 8.0;
         }
 
-        It(Two2x2MatricesHasAResultantWithEachPositionTheSumOfTheTwoMatrices)
+        It(two_2x2_matrices_has_a_resultant_with_each_position_the_sum_of_the_two_matrices)
         {
             Assert::That(firstTwoByTwoMatrix += secondTwoByTwoMatrix, Equals(expectedSum));
         }
 
-        It(MutatesTheFirstMatrix)
+        It(mutates_the_first_matrix)
         {
             firstTwoByTwoMatrix += secondTwoByTwoMatrix;
             Assert::That(firstTwoByTwoMatrix, Equals(expectedSum));
         }
 
-        It(A1x2MatrixAndA2x1MatrixThrowsException)
+        It(a_1x2_matrix_and_a_2x1_matrix_throws_exception)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> twoByOneMatrix(2, 1);
@@ -136,7 +136,7 @@ Describe(CMatrix_Numerical)
         }
     };
 
-    Describe(When_Subtracting_By_Short_Hand)
+    Describe(When_subtracting_by_short_hand)
     {
         Matrix<double> firstTwoByTwoMatrix;
         Matrix<double> secondTwoByTwoMatrix;
@@ -154,18 +154,18 @@ Describe(CMatrix_Numerical)
             firstTwoByTwoMatrix(1, 1) = 4.0; secondTwoByTwoMatrix(1, 1) =  4.0; expectedDifference(1, 1) = 0.0;
         }
 
-        It(Two2x2MatricesHasAResultantWithEachPositionTheDifferenceOfTheSecondFromTheFirst)
+        It(two_2x2_matrices_has_a_resultant_with_each_position_the_difference_of_the_second_from_the_first)
         {
             Assert::That(firstTwoByTwoMatrix -= secondTwoByTwoMatrix, Equals(expectedDifference));
         }
 
-        It(MutatesTheFirstMatrix)
+        It(mutates_the_first_matrix)
         {
             firstTwoByTwoMatrix -= secondTwoByTwoMatrix;
             Assert::That(firstTwoByTwoMatrix, Equals(expectedDifference));
         }
 
-        It(A2x1MatrixFromA1x2MatrixThrowsException)
+        It(a_2x1_matrix_from_a_1x2_matrix_throws_an_exception)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> twoByOneMatrix(2, 1);
@@ -176,9 +176,9 @@ Describe(CMatrix_Numerical)
         }
     };
 
-    Describe(When_Unary_Adding)
+    Describe(When_unary_adding)
     {
-        It(ReturnsAMatrixWhoseEachElementIsSameAsTheOriginal)
+        It(returns_a_matrix_whose_each_element_is_same_as_the_original)
         {
             Matrix<double> firstTwoByTwoMatrix(2, 2);
             Matrix<double> secondTwoByTwoMatrix(2, 2);
@@ -192,9 +192,9 @@ Describe(CMatrix_Numerical)
         }
     };
 
-    Describe(When_Unary_Subtracting)
+    Describe(When_unary_subtracting)
     {
-        It(ReturnsAMatrixWhoseEachElementIsTheAdditiveInverseOfTheOriginal)
+        It(returns_a_matrix_whose_each_element_is_the_additive_inverse_of_the_original)
         {
             Matrix<double> firstTwoByTwoMatrix(2, 2);
             Matrix<double> secondTwoByTwoMatrix(2, 2);
@@ -208,9 +208,9 @@ Describe(CMatrix_Numerical)
         }
     };
 
-    Describe(When_Multipling)
+    Describe(When_multipling)
     {
-        It(Two2x2MatricesHaveAResultantWithEachPositionTheSumOfVectorMultiplicationOfTheTwo)
+        It(two_2x2_matrices_have_a_resultant_with_each_position_the_sum_of_vector_multiplication_of_the_two)
         {
             Matrix<double> firstTwoByTwoMatrix(2, 2);
             Matrix<double> secondTwoByTwoMatrix(2, 2);
@@ -224,7 +224,7 @@ Describe(CMatrix_Numerical)
             Assert::That(firstTwoByTwoMatrix * secondTwoByTwoMatrix, Equals(expectedProduct));
         }
 
-        It(A1x2AndA2x1MatrixHaveAResultantWithEachPositionTheSumOfVectorMultiplicationOfTheTwo)
+        It(a_1x2_and_a_2x1_matrix_have_a_resultant_with_each_position_the_sum_of_vector_multiplication_of_the_two)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> twoByOneMatrix(2, 1);
@@ -237,7 +237,7 @@ Describe(CMatrix_Numerical)
             Assert::That(oneByTwoMatrix * twoByOneMatrix, Equals(expectedProduct));
         }
 
-        It(A1x2MatrixWithA1x1MatrixThrowsException)
+        It(a_1x2_matrix_with_a_1x1_matrix_throws_exception)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> oneByOneMatrix(1, 1);
@@ -262,19 +262,19 @@ Describe(CMatrix_Numerical)
             result = matrix.scale(0.5);
         }
 
-        It(TheResultHasSameSize)
+        It(has_same_size)
         {
             Assert::That(result.rows(), Equals(2));
             Assert::That(result.columns(), Equals(1));
         }
 
-        It(MultipliesEachTermWithTheFactor)
+        It(multiplies_each_term_with_the_factor)
         {
             Assert::That(result(0, 0), Equals(-2.5));
             Assert::That(result(1, 0), Equals(2.0));
         }
 
-        It(DoesNotMutateTheOriginalMatrix)
+        It(does_not_mutate_the_original_matrix)
         {
             Assert::That(matrix.rows(), Equals(2));
             Assert::That(matrix.columns(), Equals(1));

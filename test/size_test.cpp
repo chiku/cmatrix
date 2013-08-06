@@ -6,83 +6,89 @@
 using namespace igloo;
 using namespace CMatrix;
 
-Describe(CMatrix_Size)
+Describe(CMatrix_size)
 {
-    Describe(IsInvalid)
+    Describe(When_with_negative_rows)
     {
-        It(With_Negative_Rows)
+        It(is_invalid)
         {
             Assert::That(Size(-1, 1).isValid(), IsFalse());
         }
+    };
 
-        It(With_Negative_Columns)
+    Describe(When_with_negative_columns)
+    {
+        It(is_invalid)
         {
             Assert::That(Size(1, -1).isValid(), IsFalse());
         }
     };
 
-    Describe(Isvalid)
+    Describe(with_zero_sizes)
     {
-        It(With_Zero_Sizes)
+        It(Is_valid)
         {
             Assert::That(Size(0, 0).isValid(), IsTrue());
         }
+    };
 
-        It(With_Positive_Sizes)
+    Describe(With_positive_sizes)
+    {
+        It(Is_valid)
         {
             Assert::That(Size(1, 1).isValid(), IsTrue());
         }
     };
 
-    Describe(Size_Of_4x2)
+    Describe(size_of_4x2)
     {
-        It(Has4Rows)
+        It(has_4_rows)
         {
             Assert::That(Size(4, 2).getRows(), Equals(4));
         }
 
-        It(Has2Columns)
+        It(has_2_columns)
         {
             Assert::That(Size(4, 2).getColumns(), Equals(2));
         }
 
-        It(Has8Elements)
+        It(has_8_elements)
         {
             Assert::That(Size(4, 2).elements(), Equals(8));
         }
     };
 
-    Describe(Size_Of_2x0)
+    Describe(Size_of_2x0)
     {
-        It(Has0Elements)
+        It(has_0_elements)
         {
             Assert::That(Size(2, 0).elements(), Equals(0));
         }
     };
 
-    Describe(Is_Square)
+    Describe(When_it_has_same_rows_and_columns)
     {
-        It(IfItHasSameRowsAndColumns)
+        It(is_square)
         {
             Assert::That(Size(2, 2).isSquare(), IsTrue());
         }
     };
 
-    Describe(Is_Not_Square)
+    Describe(When_it_has_different_rows_and_columns)
     {
-        It(IfRowsDoNotEqualColumns)
+        It(is_not_square)
         {
             Assert::That(Size(2, 3).isSquare(), IsFalse());
         }
     };
 
-    Describe(When_Comparing)
+    Describe(When_comparing)
     {
-        Describe(To_Another_Size)
+        Describe(to_another_size)
         {
-            Describe(Equals)
+            Describe(When_both_have_same_rows_and_columns)
             {
-                It(WhenBothHaveSameRowsAndColumns)
+                It(is_equal)
                 {
                     Size firstTwoByOne  = Size(2, 1);
                     Size secondTwoByOne = Size(2, 1);
@@ -92,9 +98,9 @@ Describe(CMatrix_Size)
                 }
             };
 
-            Describe(Does_Not_Equal)
+            Describe(When_both_have_different_rows)
             {
-                It(WhenBothHaveDifferentRows)
+                It(is_not_equal)
                 {
                     Size twoByTwo = Size(2, 2);
                     Size oneByTwo = Size(1, 2);
@@ -102,8 +108,11 @@ Describe(CMatrix_Size)
                     Assert::That(twoByTwo == oneByTwo, IsFalse());
                     Assert::That(twoByTwo != oneByTwo, IsTrue());
                 }
+            };
 
-                It(WhenBothHaveDifferentColumns)
+            Describe(When_both_have_different_columns)
+            {
+                It(is_not_equal)
                 {
                     Size twoByTwo = Size(2, 2);
                     Size twoByOne = Size(2, 1);
@@ -114,65 +123,68 @@ Describe(CMatrix_Size)
             };
         };
 
-        Describe(To_A_Row_Column_Pair)
+        Describe(To_a_row_column_pair)
         {
-            Describe(Matches)
+            Describe(When_both_have_same_rows_and_columns)
             {
-                It(WhenBothHaveSameRowsAndColumns)
+                It(matches)
                 {
                     Assert::That(Size(2, 1).matches(2, 1), IsTrue());
                 }
             };
 
-            Describe(Does_Not_Match)
+            Describe(When_both_have_different_rows)
             {
-                It(WhenBothHaveDifferentRows)
+                It(does_not_match)
                 {
                     Assert::That(Size(2, 1).matches(3, 1), IsFalse());
                 }
+            };
 
-                It(WhenBothHaveDifferentColumns)
+            Describe(When_both_have_different_columns)
+            {
+                It(does_not_match)
                 {
                     Assert::That(Size(2, 1).matches(2, 3), IsFalse());
                 }
             };
         };
 
-        Describe(When_Row_Exceeds_Size_Rows)
+        Describe(When_row_exceeds_row_size)
         {
-            It(IsNotContained)
+            It(is_not_contained_in_the_size_limits)
             {
                 Assert::That(Size(2, 5).contains(3, 1), IsFalse());
             }
         };
 
-        Describe(When_Row_Is_Less_Than_Zero)
+        Describe(When_row_is_less_than_zero)
         {
-            It(IsNotContained)
+            It(is_not_contained_in_the_size_limits)
             {
                 Assert::That(Size(2, 5).contains(-1, 1), IsFalse());
             }
         };
 
-        Describe(When_Column_Exceeds_Size_Columns)
+        Describe(When_column_size_exceeds_column_size)
         {
-            It(IsNotContained)
+            It(is_not_contained_in_the_size_limits)
             {
                 Assert::That(Size(2, 5).contains(1, 5), IsFalse());
             }
         };
 
-        Describe(When_Column_Is_Less_Than_Zero)
+        Describe(When_column_is_less_than_zero)
         {
-            It(IsNotContained)
+            It(is_not_contained_in_the_size_limits)
             {
                 Assert::That(Size(2, 5).contains(1, -1), IsFalse());
             }
         };
 
-        Describe(When_Row_Column_Are_Within_Size)
+        Describe(When_row_column_pair_are_within_size)
         {
-            It(IsContained)
+            It(is_contained)
             {
                 Assert::That(Size(2, 5).contains(0, 0), IsTrue());
             }

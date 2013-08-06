@@ -6,9 +6,9 @@
 using namespace igloo;
 using namespace CMatrix;
 
-Describe(CMatrix_Properties)
+Describe(CMatrix_properties)
 {
-    It(IsSquareWhenNumberOfRowsAndColumnsAreEqual)
+    It(is_square_when_number_of_rows_and_columns_are_equal)
     {
         Matrix<double> firstMatrix(1, 1);
         Matrix<double> secondMatrix(3, 3);
@@ -17,7 +17,7 @@ Describe(CMatrix_Properties)
         Assert::That(secondMatrix.isSquare(), IsTrue());
     }
 
-    It(IsNotSquareWhenNumberOfRowsAndColumnsAreUnequal)
+    It(is_not_square_when_number_of_rows_and_columns_are_unequal)
     {
         Matrix<double> firstMatrix(1, 2);
         Matrix<double> secondMatrix(3, 2);
@@ -26,9 +26,9 @@ Describe(CMatrix_Properties)
         Assert::That(secondMatrix.isSquare(), IsFalse());
     }
 
-    Describe(When_Square)
+    Describe(When_square)
     {
-        It(IsUnitIfAllDiagonalElementsAreOneAndOthersAreZero)
+        It(is_unit_if_all_diagonal_elements_are_one_and_others_are_zero)
         {
             Matrix<double> firstMatrix(1, 1);
             Matrix<double> secondMatrix(2, 2);
@@ -41,7 +41,7 @@ Describe(CMatrix_Properties)
             Assert::That(secondMatrix.isUnit(), IsTrue());
         }
 
-        It(IsNotUnitIfSomeDiagonalElementsAreNotOne)
+        It(is_not_unit_if_some_diagonal_elements_are_not_one)
         {
             Matrix<double> firstMatrix(1, 1);
             Matrix<double> secondMatrix(2, 2);
@@ -54,7 +54,7 @@ Describe(CMatrix_Properties)
             Assert::That(secondMatrix.isUnit(), IsFalse());
         }
 
-        It(IsNotUnitIfSomeNonDiagonalElementsAreNotZero)
+        It(is_not_unit_if_some_non_diagonal_elements_are_not_zero)
         {
             Matrix<double> firstMatrix(1, 1);
             Matrix<double> secondMatrix(2, 2);
@@ -68,9 +68,9 @@ Describe(CMatrix_Properties)
         }
     };
 
-    Describe(When_Not_Square)
+    Describe(When_not_square)
     {
-        It(IsNotUnit)
+        It(is_not_unit)
         {
             Matrix<double> matrix(1, 2);
 
@@ -80,7 +80,7 @@ Describe(CMatrix_Properties)
         }
     };
 
-    It(IsZeroIfAllElementsAreZero)
+    It(is_zero_if_all_elements_are_zero)
     {
         Matrix<double> matrix(1, 2);
 
@@ -89,7 +89,7 @@ Describe(CMatrix_Properties)
         Assert::That(matrix.isZero(), IsTrue());
     }
 
-    It(IsNotZeroIfOneElementIsNotZero)
+    It(is_not_zero_if_one_element_is_not_zero)
     {
         Matrix<double> matrix(1, 2);
 

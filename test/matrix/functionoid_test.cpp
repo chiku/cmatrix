@@ -24,9 +24,9 @@ class testFunctionoidWithTwoParameters
         }
 };
 
-Describe(CMatrix_When_Receiving_A_Functionoid_With_One_Parameter)
+Describe(CMatrix_when_receiving_a_functionoid_with_one_parameter)
 {
-    Describe(On_Map)
+    Describe(On_map)
     {
         Matrix<double> twoByTwoMatrix;
         Matrix<double> expectedMatrix;
@@ -42,7 +42,7 @@ Describe(CMatrix_When_Receiving_A_Functionoid_With_One_Parameter)
             expectedMatrix(1, 0) = 4.0; expectedMatrix(1, 1) = 5.0;
         }
 
-        It(AppliesItToAllMembers)
+        It(applies_it_to_all_members)
         {
             Assert::That(twoByTwoMatrix.map(new testFunctionoidWithOneParameter), Equals(expectedMatrix));
         }
@@ -55,9 +55,9 @@ Describe(CMatrix_When_Receiving_A_Functionoid_With_One_Parameter)
     };
 };
 
-Describe(CMatrix_When_Receiving_A_Functionoid_With_Two_Parameters)
+Describe(CMatrix_when_receiving_a_functionoid_with_two_parameters)
 {
-    Describe(On_Fill_By_Position)
+    Describe(On_fill_by_position)
     {
         Matrix<double> twoByTwoMatrix;
         Matrix<double> expectedMatrix;
@@ -70,19 +70,19 @@ Describe(CMatrix_When_Receiving_A_Functionoid_With_Two_Parameters)
             expectedMatrix(1, 0) = 1.0; expectedMatrix(1, 1) = 2.0;
         }
 
-        It(AppliesItToAllMembers)
+        It(applies_it_to_all_members)
         {
             Assert::That(twoByTwoMatrix.fillByPosition(new testFunctionoidWithTwoParameters), Equals(expectedMatrix));
         }
 
-        It(Mutates)
+        It(mutates)
         {
             twoByTwoMatrix.fillByPosition(new testFunctionoidWithTwoParameters);
             Assert::That(twoByTwoMatrix == expectedMatrix);
         }
     };
 
-    Describe(On_Fill_By_Position_And_Shift)
+    Describe(On_fill_by_position_and_shift)
     {
         Matrix<double> threeByThreeMatrix;
         Matrix<double> expectedMatrix;
@@ -96,19 +96,19 @@ Describe(CMatrix_When_Receiving_A_Functionoid_With_Two_Parameters)
             expectedMatrix(2, 0) =  0.0; expectedMatrix(2, 1) =  1.0; expectedMatrix(2, 2) = 2.0;
         }
 
-        It(AppliesItToAllMembers)
+        It(applies_it_to_all_members)
         {
             Assert::That(threeByThreeMatrix.fillByPosition(new testFunctionoidWithTwoParameters, 1, 1), Equals(expectedMatrix));
         }
 
-        It(Mutates)
+        It(mutates)
         {
             threeByThreeMatrix.fillByPosition(new testFunctionoidWithTwoParameters, 1, 1);
             Assert::That(threeByThreeMatrix, Equals(expectedMatrix));
         }
     };
 
-    Describe(On_Fill_By_Position_And_Shift_And_Scale)
+    Describe(On_fill_by_position_and_shift_and_scale)
     {
         Matrix<double> threeByThreeMatrix;
         Matrix<double> expectedMatrix;
@@ -122,12 +122,12 @@ Describe(CMatrix_When_Receiving_A_Functionoid_With_Two_Parameters)
             expectedMatrix(2, 0) = 5.0; expectedMatrix(2, 1) =  2.0; expectedMatrix(2, 2) =  -1.0;
         }
 
-        It(AppliesItToAllMembers)
+        It(applies_it_to_all_members)
         {
             Assert::That(threeByThreeMatrix.fillByPosition(new testFunctionoidWithTwoParameters, 1, 1, 2.0, -3.0), Equals(expectedMatrix));
         }
 
-        It(Mutates)
+        It(mutates)
         {
             threeByThreeMatrix.fillByPosition(new testFunctionoidWithTwoParameters, 1, 1, 2.0, -3.0);
             Assert::That(threeByThreeMatrix, Equals(expectedMatrix));

@@ -6,11 +6,11 @@
 using namespace igloo;
 using namespace CMatrix;
 
-Describe(CMatrix_Populators)
+Describe(CMatrix_populators)
 {
-	Describe(When_Filling)
+	Describe(When_filling)
 	{
-		It(PopulatesAllTheCellsWithTheGivenValue)
+		It(populates_all_the_cells_with_the_given_value)
 		{
 			Matrix<double> matrix(2, 1);
 
@@ -19,7 +19,7 @@ Describe(CMatrix_Populators)
 			Assert::That(matrix(1, 0), Equals(-1.5));
 		}
 
-		It(DoesNotChangeTheMatrixSize)
+		It(does_not_change_the_matrix_size)
 		{
 			Matrix<double> matrix(2, 1);
 
@@ -29,9 +29,9 @@ Describe(CMatrix_Populators)
 		}
 	};
 
-	Describe(When_Filling_With_Zeroes)
+	Describe(When_filling_with_zeroes)
 	{
-		It(PopulatesAllTheCellsWithTheZero)
+		It(populates_all_the_cells_with_the_zero)
 		{
 			Matrix<double> matrix(2, 1);
 
@@ -40,7 +40,7 @@ Describe(CMatrix_Populators)
 			Assert::That(matrix(1, 0), Equals(0));
 		}
 
-		It(DoesNotChangeTheMatrixSize)
+		It(does_not_change_the_matrix_size)
 		{
 			Matrix<double> matrix(2, 1);
 

@@ -6,29 +6,29 @@
 using namespace igloo;
 using namespace CMatrix;
 
-Describe(CMatrix_Base)
+Describe(CMatrix_base)
 {
-    Describe(When_Of_Size_2x3_For_Double)
+    Describe(when_of_size_2x3_for_double)
     {
-        It(Has2Rows)
+        It(has_2_rows)
         {
             Matrix<double> twoByThreeMatrix(2, 3);
             Assert::That(twoByThreeMatrix.rows(), Equals(2L));
         }
 
-        It(Has3Columns)
+        It(has_3_columns)
         {
             Matrix<double> twoByThreeMatrix(2, 3);
             Assert::That(twoByThreeMatrix.columns(), Equals(3));
         }
 
-        It(HasATotalOf6Elements)
+        It(has_a_total_of_6_elements)
         {
             Matrix<double> twoByThreeMatrix(2, 3);
             Assert::That(twoByThreeMatrix.elements(), Equals(6));
         }
 
-        It(CanStoreRetrievableValuesAtAll6Locations)
+        It(stores_retrievable_values_at_all_6_locations)
         {
             Matrix<double> twoByThreeMatrix(2, 3);
             twoByThreeMatrix(0, 0) = -2;
@@ -46,16 +46,16 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Of_Size_1x1)
+    Describe(When_of_size_1x1)
     {
-        It(StoresRetrievableIntegerValues)
+        It(stores_retrievable_integer_values)
         {
             Matrix<int> oneByOneIntMatrix(1, 1);
             oneByOneIntMatrix(0, 0) = 10;
             Assert::That(oneByOneIntMatrix(0, 0), Equals(10));
         }
 
-        It(StoresRetrievableDoubleValues)
+        It(stores_retrievable_double_values)
         {
             Matrix<double> oneByOneDoubleMatrix(1, 1);
             oneByOneDoubleMatrix(0, 0) = 10.0;
@@ -63,7 +63,7 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Setting_Size_1x1_After_Creation)
+    Describe(When_setting_size_1x1_after_creation)
     {
         Matrix<double> oneByOneMatrix;
 
@@ -72,26 +72,26 @@ Describe(CMatrix_Base)
             oneByOneMatrix.setSize(1, 1);
         }
 
-        It(Has1Row)
+        It(has_1_row)
         {
             Assert::That(oneByOneMatrix.rows(), Equals(1L));
         }
 
-        It(Has1Column)
+        It(has_1_column)
         {
             Assert::That(oneByOneMatrix.columns(), Equals(1L));
         }
 
-        It(StoresRetrievableValue)
+        It(stores_retrievable_value)
         {
             oneByOneMatrix(0, 0) = 1.0;
             Assert::That(oneByOneMatrix(0, 0), Equals(1.0));
         }
     };
 
-    Describe(When_Accessing_Outside_Row_Bounds)
+    Describe(When_accessing_outside_row_bounds)
     {
-        It(ThrowsAnException)
+        It(throws_an_exception)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             std::string expectedMessage = "Invalid attempt to access (1, 1) which lies outside bounds [1, 2]";
@@ -100,9 +100,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Assigning_Outside_Row_Bounds)
+    Describe(When_assigning_outside_row_bounds)
     {
-        It(ThrowsAnException)
+        It(throws_an_exception)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             std::string expectedMessage = "Invalid attempt to access (1, 1) which lies outside bounds [1, 2]";
@@ -111,9 +111,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Accessing_Outside_Column_Bounds)
+    Describe(When_accessing_outside_column_bounds)
     {
-        It(ThrowsAnException)
+        It(throws_an_exception)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             std::string expectedMessage = "Invalid attempt to access (0, 2) which lies outside bounds [1, 2]";
@@ -122,9 +122,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Assigning_Outside_Column_Bounds)
+    Describe(When_assigning_outside_column_bounds)
     {
-        It(ThrowsAnException)
+        It(throws_an_exception)
         {
             Matrix<double> oneByTwoMatrix(1, 2);
             std::string expectedMessage = "Invalid attempt to access (0, 2) which lies outside bounds [1, 2]";
@@ -133,7 +133,7 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Copied_By_Equals_Operator)
+    Describe(When_copied_by_equals_operator)
     {
         Matrix<double> firstTwoByTwoMatrix;
 
@@ -146,14 +146,14 @@ Describe(CMatrix_Base)
             firstTwoByTwoMatrix(1, 1) = 4.0;
         }
 
-        It(EqualsTheOriginalMatrix)
+        It(equals_the_original_matrix)
         {
             Matrix<double> secondTwoByTwoMatrix;
             secondTwoByTwoMatrix = firstTwoByTwoMatrix;
             Assert::That(firstTwoByTwoMatrix, Equals(secondTwoByTwoMatrix));
         }
 
-        It(DoesNotEqualTheOriginalMatrixIfOneElementIsChangedForCopiedMatrix)
+        It(does_not_equal_the_original_matrix_after_copied_matrix_is_changed)
         {
             Matrix<double> secondTwoByTwoMatrix;
             secondTwoByTwoMatrix = firstTwoByTwoMatrix;
@@ -161,7 +161,7 @@ Describe(CMatrix_Base)
             Assert::That(firstTwoByTwoMatrix, !Equals(secondTwoByTwoMatrix));
         }
 
-        It(ChangedToCopiedMatrixDoNotAffectTheOriginalMatrix)
+        It(is_unaffected_by_changes_to_copied_matrix)
         {
             Matrix<double> secondTwoByTwoMatrix;
             secondTwoByTwoMatrix = firstTwoByTwoMatrix;
@@ -170,7 +170,7 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Copied_By_Copy_Constructor)
+    Describe(When_copied_by_copy_constructor)
     {
         Matrix<double> firstTwoByTwoMatrix;
 
@@ -183,20 +183,20 @@ Describe(CMatrix_Base)
             firstTwoByTwoMatrix(1, 1) = 4.0;
         }
 
-        It(EqualsTheOriginalMatrix)
+        It(equals_the_original_matrix)
         {
             Matrix<double> secondTwoByTwoMatrix = firstTwoByTwoMatrix;
             Assert::That(firstTwoByTwoMatrix, Equals(secondTwoByTwoMatrix));
         }
 
-        It(DoesNotEqualTheOriginalMatrixIfOneElementIsChangedForCopiedMatrix)
+        It(does_not_equal_the_original_matrix_after_copied_matrix_is_changed)
         {
             Matrix<double> secondTwoByTwoMatrix = firstTwoByTwoMatrix;
             secondTwoByTwoMatrix(1, 1) = -4.0;
             Assert::That(firstTwoByTwoMatrix, !Equals(secondTwoByTwoMatrix));
         }
 
-        It(ChangedToCopiedMatrixDoNotAffectTheOriginalMatrix)
+        It(is_unaffected_by_changes_to_copied_matrix)
         {
             Matrix<double> secondTwoByTwoMatrix = firstTwoByTwoMatrix;
             secondTwoByTwoMatrix(1, 1) = -4.0;
@@ -204,9 +204,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Rows_Is_Negative_During_Creation)
+    Describe(When_rows_is_negative_during_creation)
     {
-        It(ThrowsAnException)
+        It(throws_an_exception)
         {
             std::string expectedMessage = "Invalid attempt to set rows to -1 and columns to 0";
             AssertThrows(Exception::InvalidSizeSet, Matrix<double> bad0x0Matrix(-1, 0));
@@ -214,9 +214,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Columns_Is_Negative_During_Creation)
+    Describe(When_columns_is_negative_during_creation)
     {
-        It(ThrowsAnException)
+        It(throws_an_exception)
         {
             std::string expectedMessage = "Invalid attempt to set rows to 0 and columns to -1";
             AssertThrows(Exception::InvalidSizeSet, Matrix<double> bad0x0Matrix(0, -1));
@@ -224,9 +224,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Rows_Is_Negative_While_Resizing_After_Creation)
+    Describe(When_rows_is_negative_while_resizing_after_creation)
     {
-        It(ThrowsAnException)
+        It(throws_an_exception)
         {
             std::string expectedMessage = "Invalid attempt to set rows to -1 and columns to 0";
             AssertThrows(Exception::InvalidSizeSet, Matrix<double> bad0x0Matrix(-1, 0));
@@ -234,9 +234,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Columns_Is_Negative_While_Resizing_After_Creation)
+    Describe(When_columns_is_negative_while_resizing_after_creation)
     {
-        It(ThrowsAnException)
+        It(throws_an_exception)
         {
             Matrix<double> bad0x0Matrix;
             std::string expectedMessage = "Invalid attempt to set rows to 1 and columns to -1";
@@ -245,9 +245,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Resetting_Rows_To_Different_Row_From_Original_Size)
+    Describe(When_resetting_rows_to_different_row_from_original_size)
     {
-        It(ThrowsAnException)
+        It(throws_an_exception)
         {
             Matrix<double> a1x1Matrix(1, 1);
             std::string expectedMessage = "Invalid attempt to reset rows to 2 and columns to 2 from [1, 1]";
@@ -256,9 +256,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Resetting_Columns_To_Different_Column_From_Original_Size)
+    Describe(When_resetting_columns_to_different_column_from_original_size)
     {
-        It(ThrowsAnException)
+        It(throws_an_exception)
         {
             Matrix<double> a1x1Matrix(1, 1);
             std::string expectedMessage = "Invalid attempt to reset rows to 2 and columns to 0 from [1, 1]";
@@ -267,9 +267,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(When_Resetting_Size_To_Same_As_Original)
+    Describe(When_resetting_size_to_same_as_original)
     {
-        It(TheSizeRemainsSame)
+        It(the_size_remains_same)
         {
             Matrix<double> a1x1Matrix(1, 1);
             a1x1Matrix.setSize(1, 1);
@@ -278,9 +278,9 @@ Describe(CMatrix_Base)
         }
     };
 
-    Describe(Matrix_Of_Matrices)
+    Describe(Matrix_of_matrices)
     {
-        It(HasRetrievableValues)
+        It(has_retrievable_values)
         {
             Matrix<double> firstMatrix(1, 1);
             Matrix<double> secondMatrix(1, 1);
