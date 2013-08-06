@@ -1,24 +1,10 @@
 # Written by     : Chirantan Mitra
 
-ifndef CC
-CC = gcc
-endif
-
-ifndef CXX
-CXX = g++
-endif
-
-ifndef AR
-AR = ar
-endif
-
-ifndef LCOV
-LCOV = lcov
-endif
-
-ifndef GENHTML
-GENHTML = genhtml
-endif
+CC ?= gcc
+CXX ?= g++
+AR ?= ar
+LCOV ?= lcov
+GENHTML ?= genhtml
 
 CFLAGS += -O2
 CXXFLAGS += -O2
