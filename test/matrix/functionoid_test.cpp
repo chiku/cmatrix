@@ -47,7 +47,7 @@ Describe(CMatrix_when_receiving_a_functionoid_with_one_parameter)
             Assert::That(twoByTwoMatrix.map(new testFunctionoidWithOneParameter), Equals(expectedMatrix));
         }
 
-        It(DoesNotMutate)
+        It(does_not_mutate)
         {
             twoByTwoMatrix.map(new testFunctionoidWithOneParameter);
             Assert::That(twoByTwoMatrix, !Equals(expectedMatrix));
