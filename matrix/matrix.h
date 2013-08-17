@@ -81,7 +81,7 @@ namespace CMatrix
         template <typename FunctObj> Matrix<Type> map(FunctObj function);
         template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, long int xShift=0, long int yShift=0);
         template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, long int xShift, long int yShift, Type xScale, Type yScale);
-        
+
         friend std::ostream& operator << <>(std::ostream& outputStream, const Matrix<Type>& firstMatrix);
     };
 }
