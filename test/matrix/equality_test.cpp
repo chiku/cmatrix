@@ -15,6 +15,7 @@ Describe(CMatrix_equality)
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> twoByTwoMatrix(2, 2);
 
+            Assert::That(oneByTwoMatrix.equal(twoByTwoMatrix), IsFalse());
             Assert::That(oneByTwoMatrix == twoByTwoMatrix, IsFalse());
             Assert::That(oneByTwoMatrix != twoByTwoMatrix, IsTrue());
         }
@@ -24,6 +25,7 @@ Describe(CMatrix_equality)
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> oneByThreeMatrix(1, 3);
 
+            Assert::That(oneByTwoMatrix.equal(oneByThreeMatrix), IsFalse());
             Assert::That(oneByTwoMatrix == oneByThreeMatrix, IsFalse());
             Assert::That(oneByTwoMatrix != oneByThreeMatrix, IsTrue());
         }
@@ -38,6 +40,7 @@ Describe(CMatrix_equality)
             firstTwoByTwoMatrix(1, 0) = 3.0; secondTwoByTwoMatrix(1, 0) = -3.0;
             firstTwoByTwoMatrix(1, 1) = 4.0; secondTwoByTwoMatrix(1, 1) =  4.0;
 
+            Assert::That(firstTwoByTwoMatrix.equal(secondTwoByTwoMatrix), IsFalse());
             Assert::That(firstTwoByTwoMatrix == secondTwoByTwoMatrix, IsFalse());
             Assert::That(firstTwoByTwoMatrix != secondTwoByTwoMatrix, IsTrue());
         }
@@ -55,6 +58,7 @@ Describe(CMatrix_equality)
             firstTwoByTwoMatrix(1, 0) = 3.0; secondTwoByTwoMatrix(1, 0) = 3.0;
             firstTwoByTwoMatrix(1, 1) = 4.0; secondTwoByTwoMatrix(1, 1) = 4.0;
 
+            Assert::That(firstTwoByTwoMatrix.equal(secondTwoByTwoMatrix), IsTrue());
             Assert::That(firstTwoByTwoMatrix == secondTwoByTwoMatrix, IsTrue());
             Assert::That(firstTwoByTwoMatrix != secondTwoByTwoMatrix, IsFalse());
         }

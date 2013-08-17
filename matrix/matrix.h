@@ -49,6 +49,8 @@ namespace CMatrix
 
         void setSize(long int rows, long int columns);
 
+        bool equal(const Matrix& otherMatrix) const;
+        bool equalWithTolerance(const Matrix& otherMatrix, const Type tolerance) const;
         bool operator == (const Matrix& otherMatrix) const;
         bool operator != (const Matrix& otherMatrix) const;
 
@@ -89,6 +91,7 @@ namespace CMatrix
 #include "core/base.cpp"
 #include "core/accessor.cpp"
 #include "core/equality.cpp"
+#include "core/equality_with_tolerance.cpp"
 #include "core/assignment.cpp"
 #include "core/properties.cpp"
 #include "core/numerical.cpp"

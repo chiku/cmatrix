@@ -2,7 +2,7 @@
 
 // Overloaded equality operator
 template <class Type>
-bool CMatrix::Matrix<Type>::operator == (const Matrix& otherMatrix) const
+bool CMatrix::Matrix<Type>::equal(const Matrix& otherMatrix) const
 {
     if (size != otherMatrix.size) {
         return false;
@@ -19,9 +19,16 @@ bool CMatrix::Matrix<Type>::operator == (const Matrix& otherMatrix) const
     return true;
 }
 
+// Overloaded equality operator
+template <class Type>
+inline bool CMatrix::Matrix<Type>::operator == (const Matrix& otherMatrix) const
+{
+    return equal(otherMatrix);
+}
+
 // Overloaded not-equals operator
 template <class Type>
 inline bool CMatrix::Matrix<Type>::operator != (const Matrix& otherMatrix) const
 {
-    return !operator == (otherMatrix);
+    return !equal(otherMatrix);
 }
