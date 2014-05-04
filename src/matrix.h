@@ -1,7 +1,7 @@
 // Written by     : Chirantan Mitra
 
-#ifndef CMATRIX_H
-#define CMATRIX_H
+#ifndef CMATRIX_MATRIX_H
+#define CMATRIX_MATRIX_H
 
 #include <iostream>
 #include <sstream>
@@ -88,18 +88,18 @@ namespace CMatrix
     };
 }
 
-#include "core/base.cpp"
-#include "core/accessor.cpp"
-#include "core/equality.cpp"
-#include "core/equality_with_tolerance.cpp"
-#include "core/assignment.cpp"
-#include "core/properties.cpp"
-#include "core/numerical.cpp"
-#include "core/functionoid.cpp"
-#include "core/invert.cpp"
-#include "core/mutators.cpp"
-#include "core/populators.cpp"
+#include "impl/matrix/base.cpp"
+#include "impl/matrix/accessor.cpp"
+#include "impl/matrix/equality.cpp"
+#include "impl/matrix/equality_with_tolerance.cpp"
+#include "impl/matrix/assignment.cpp"
+#include "impl/matrix/properties.cpp"
+#include "impl/matrix/numerical.cpp"
+#include "impl/matrix/functionoid.cpp"
+#include "impl/matrix/invert.cpp"
+#include "impl/matrix/mutators.cpp"
+#include "impl/matrix/populators.cpp"
 
-#include "core/io/stream.cpp"
+#include "impl/matrix/io/stream.cpp"
 
 #endif

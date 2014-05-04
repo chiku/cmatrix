@@ -2,8 +2,6 @@
 
 #include <iomanip>
 
-#include "../../matrix.h"
-
 namespace CMatrix
 {
 
