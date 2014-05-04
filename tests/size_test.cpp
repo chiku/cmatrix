@@ -5,10 +5,10 @@
 
 using namespace igloo;
 
-namespace CMatrix
+namespace cmatrix
 {
 
-Describe(CMatrix_size)
+Describe(cmatrix_size)
 {
     Describe(When_with_negative_rows)
     {
@@ -194,4 +194,4 @@ Describe(CMatrix_size)
     };
 };
 
-} // namespace CMatrix
+} // namespace cmatrix

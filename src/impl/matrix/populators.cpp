@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 template <class Type>
@@ -19,4 +19,4 @@ inline void Matrix<Type>::fillWithZeros()
     fillWith(0);
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

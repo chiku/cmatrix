@@ -5,7 +5,7 @@
 
 using namespace igloo;
 
-namespace CMatrix
+namespace cmatrix
 {
 
 Describe(When_inverting_a_unitary_matrix)
@@ -104,4 +104,4 @@ Describe(When_inverting_a_singular_matrix)
     }
 };
 
-} // namespace CMatrix
+} // namespace cmatrix

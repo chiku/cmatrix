@@ -7,7 +7,7 @@
 
 #include "size.h"
 
-namespace CMatrix
+namespace cmatrix
 {
     class Exception
     {

@@ -5,7 +5,7 @@
 
 using namespace igloo;
 
-namespace CMatrix
+namespace cmatrix
 {
 
 class testFunctionoidWithOneParameter
@@ -26,7 +26,7 @@ class testFunctionoidWithTwoParameters
         }
 };
 
-Describe(CMatrix_when_receiving_a_functionoid_with_one_parameter)
+Describe(cmatrix_when_receiving_a_functionoid_with_one_parameter)
 {
     Describe(On_map)
     {
@@ -57,7 +57,7 @@ Describe(CMatrix_when_receiving_a_functionoid_with_one_parameter)
     };
 };
 
-Describe(CMatrix_when_receiving_a_functionoid_with_two_parameters)
+Describe(cmatrix_when_receiving_a_functionoid_with_two_parameters)
 {
     Describe(On_fill_by_position)
     {
@@ -137,4 +137,4 @@ Describe(CMatrix_when_receiving_a_functionoid_with_two_parameters)
     };
 };
 
-} // namespace CMatrix
+} // namespace cmatrix

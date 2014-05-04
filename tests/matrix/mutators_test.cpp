@@ -5,10 +5,10 @@
 
 using namespace igloo;
 
-namespace CMatrix
+namespace cmatrix
 {
 
-Describe(CMatrix_mutators)
+Describe(cmatrix_mutators)
 {
 	Describe(When_adding_an_element_inside_boundary)
 	{
@@ -181,4 +181,4 @@ Describe(CMatrix_mutators)
 	};
 };
 
-} // namespace CMatrix
+} // namespace cmatrix

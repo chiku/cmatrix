@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 inline Size::Size()
@@ -67,4 +67,4 @@ inline bool Size::operator != (const Size& otherSize) const
     return !operator == (otherSize);
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

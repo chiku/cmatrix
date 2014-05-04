@@ -10,83 +10,83 @@
 #include "exception.h"
 #include "size.h"
 
-namespace CMatrix
+namespace cmatrix
 {
-    template<typename Type> class Matrix;
+template<typename Type> class Matrix;
 
-    template<typename Type> Matrix<Type> operator + (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
-    template<typename Type> Matrix<Type> operator - (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
-    template<typename Type> Matrix<Type> operator * (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
+template<typename Type> Matrix<Type> operator + (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
+template<typename Type> Matrix<Type> operator - (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
+template<typename Type> Matrix<Type> operator * (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
 
-    template<typename Type> std::ostream& operator << (std::ostream& outputStream, const Matrix<Type>& matrix);
-    template<typename Type> std::istream& operator >> (std::istream& inputStream, CMatrix::Matrix<Type>& matrix);
+template<typename Type> std::ostream& operator << (std::ostream& outputStream, const Matrix<Type>& matrix);
+template<typename Type> std::istream& operator >> (std::istream& inputStream, Matrix<Type>& matrix);
 
+template <class Type>
+class Matrix
+{
+public:
+    Matrix();
+    Matrix(long int rows, long int columns);
+    Matrix(const Matrix& otherMatrix);
+    ~Matrix();
 
-    template <class Type>
-    class Matrix
-    {
-    private:
-        Size size;
-        StorageEngine<Type> engine;
+    Matrix<Type>& operator = (const Matrix& otherMatrix);
 
-        void clearMemory();
-        void setMatrixAsUnassigned();
+    long int rows() const;
+    long int columns() const;
+    long int elements() const;
 
-        Type& access(long int row, long int column);
-        Type access(long int row, long int column) const;
+    void setSize(long int rows, long int columns);
 
-    public:
-        Matrix();
-        Matrix(long int rows, long int columns);
-        Matrix(const Matrix& otherMatrix);
-        ~Matrix();
+    bool equal(const Matrix& otherMatrix) const;
+    bool equalWithTolerance(const Matrix& otherMatrix, const Type tolerance) const;
+    bool operator == (const Matrix& otherMatrix) const;
+    bool operator != (const Matrix& otherMatrix) const;
 
-        Matrix<Type>& operator = (const Matrix& otherMatrix);
+    Type& operator()(long int row, long int column);
+    Type operator()(long int row, long int column) const;
 
-        long int rows() const;
-        long int columns() const;
-        long int elements() const;
+    friend Matrix<Type> operator + <>(const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
+    friend Matrix<Type> operator - <>(const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
+    friend Matrix<Type> operator * <>(const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
 
-        void setSize(long int rows, long int columns);
+    Matrix<Type>& operator += (const Matrix<Type> secondMatrix);
+    Matrix<Type>& operator -= (const Matrix<Type> secondMatrix);
+    Matrix<Type>& operator *= (const Matrix<Type> secondMatrix);
 
-        bool equal(const Matrix& otherMatrix) const;
-        bool equalWithTolerance(const Matrix& otherMatrix, const Type tolerance) const;
-        bool operator == (const Matrix& otherMatrix) const;
-        bool operator != (const Matrix& otherMatrix) const;
+    Matrix<Type> operator + ();
+    Matrix<Type> operator - ();
 
-        Type& operator()(long int row, long int column);
-        Type operator()(long int row, long int column) const;
+    Matrix<Type> scale(Type value);
 
-        friend Matrix<Type> operator + <>(const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
-        friend Matrix<Type> operator - <>(const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
-        friend Matrix<Type> operator * <>(const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix);
+    bool isSquare() const;
+    bool isUnit() const;
+    bool isZero() const;
 
-        Matrix<Type>& operator += (const Matrix<Type> secondMatrix);
-        Matrix<Type>& operator -= (const Matrix<Type> secondMatrix);
-        Matrix<Type>& operator *= (const Matrix<Type> secondMatrix);
+    void fillWith(Type value);
+    void fillWithZeros();
 
-        Matrix<Type> operator + ();
-        Matrix<Type> operator - ();
+    Matrix<Type> invert();
+    void mutateToInclude(Type value, long int row, long int column);
 
-        Matrix<Type> scale(Type value);
+    template <typename FunctObj> Matrix<Type> map(FunctObj function);
+    template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, long int xShift=0, long int yShift=0);
+    template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, long int xShift, long int yShift, Type xScale, Type yScale);
 
-        bool isSquare() const;
-        bool isUnit() const;
-        bool isZero() const;
+    friend std::ostream& operator << <>(std::ostream& outputStream, const Matrix<Type>& firstMatrix);
 
-        void fillWith(Type value);
-        void fillWithZeros();
+private:
+    Size size;
+    StorageEngine<Type> engine;
 
-        Matrix<Type> invert();
-        void mutateToInclude(Type value, long int row, long int column);
+    void clearMemory();
+    void setMatrixAsUnassigned();
 
-        template <typename FunctObj> Matrix<Type> map(FunctObj function);
-        template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, long int xShift=0, long int yShift=0);
-        template <typename FunctObj> Matrix<Type>& fillByPosition(FunctObj function, long int xShift, long int yShift, Type xScale, Type yScale);
+    Type& access(long int row, long int column);
+    Type access(long int row, long int column) const;
+};
 
-        friend std::ostream& operator << <>(std::ostream& outputStream, const Matrix<Type>& firstMatrix);
-    };
-}
+} // namespace cmatrix
 
 #include "impl/matrix/base.cpp"
 #include "impl/matrix/accessor.cpp"

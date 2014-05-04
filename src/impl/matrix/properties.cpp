@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 template <class Type>
@@ -41,4 +41,4 @@ bool Matrix<Type>::isZero() const
     return true;
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

@@ -5,49 +5,51 @@
 
 #include "size.h"
 
-namespace CMatrix
+namespace cmatrix
 {
-    template <class Type>
-    class StorageEngine
+
+template <class Type>
+class StorageEngine
+{
+public:
+    bool isMemoryAssigned() const
     {
-	private:
-		Type* values;
-		Size size;
+        return values != NULL;
+    }
 
-	public:
-		bool isMemoryAssigned() const
-		{
-	    	return values != NULL;
-		}
+    void unallocateMemory() const
+    {
+        delete[] values;
+    }
 
-		void unallocateMemory() const
-		{
-	    	delete[] values;
-		}
+    void markMemoryAsUnused()
+    {
+        values = NULL;
+    }
 
-		void markMemoryAsUnused()
-		{
-	    	values = NULL;
-		}
+    void allocateMemory(Size size)
+    {
+        values = new Type[size.elements()];
+        (*this).size = size;
+    }
 
-		void allocateMemory(Size size)
-		{
-    		values = new Type[size.elements()];
-			(*this).size = size;
-		}
+    // Lvalue element accessor - unchecked
+    Type& access(long int row, long int column)
+    {
+        return values[row * size.getColumns() + column];
+    }
 
-		// Lvalue element accessor - unchecked
-		Type& access(long int row, long int column)
-		{
-	    	return values[row * size.getColumns() + column];
-		}
+    // Rvalue element accessor (const) - unchecked
+    Type access(long int row, long int column) const
+    {
+        return values[row * size.getColumns() + column];
+    }
 
-		// Rvalue element accessor (const) - unchecked
-		Type access(long int row, long int column) const
-		{
-	    	return values[row * size.getColumns() + column];
-		}
-    };
-}
+private:
+    Type* values;
+    Size size;
+};
+
+} // namespace cmatrix
 
 #endif

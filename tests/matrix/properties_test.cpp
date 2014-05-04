@@ -5,10 +5,10 @@
 
 using namespace igloo;
 
-namespace CMatrix
+namespace cmatrix
 {
 
-Describe(CMatrix_properties)
+Describe(cmatrix_properties)
 {
     It(is_square_when_number_of_rows_and_columns_are_equal)
     {
@@ -101,4 +101,4 @@ Describe(CMatrix_properties)
     }
 };
 
-} // namespace CMatrix
+} // namespace cmatrix

@@ -13,7 +13,7 @@ class testFunctionoid
 };
 
 
-using namespace CMatrix;
+using namespace cmatrix;
 
 int main()
 {

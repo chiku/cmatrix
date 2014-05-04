@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 template <class Type>
@@ -32,4 +32,4 @@ void Matrix<Type>::mutateToInclude(Type value, long int row, long int column)
 	access(row, column) = value;
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 template <class Type>
@@ -70,4 +70,4 @@ void Matrix<Type>::setSize(long int rows, long int columns)
     engine.allocateMemory(size);
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

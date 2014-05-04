@@ -2,7 +2,7 @@
 
 #include <iomanip>
 
-namespace CMatrix
+namespace cmatrix
 {
 
 // Output to stream
@@ -33,4 +33,4 @@ std::istream& operator >> (std::istream& inputStream, Matrix<Type>& matrix)
     return inputStream;
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

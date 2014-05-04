@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace CMatrix
+namespace cmatrix
 {
 
 // Invert matrix using Gauss Jordan elimination
@@ -87,4 +87,4 @@ Matrix<Type> Matrix<Type>::invert()
     return result;
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

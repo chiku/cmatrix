@@ -5,10 +5,10 @@
 
 using namespace igloo;
 
-namespace CMatrix
+namespace cmatrix
 {
 
-Describe(CMatrix_equality_with_tolerance)
+Describe(cmatrix_equality_with_tolerance)
 {
     Describe(Does_not_equal_matrix)
     {
@@ -72,4 +72,4 @@ Describe(CMatrix_equality_with_tolerance)
     };
 };
 
-} // namespace CMatrix
+} // namespace cmatrix

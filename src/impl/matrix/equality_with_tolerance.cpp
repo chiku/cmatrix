@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 // Overloaded equality operator
@@ -23,4 +23,4 @@ bool Matrix<Type>::equalWithTolerance(const Matrix& otherMatrix, const Type tole
     return true;
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 // Binary addition
@@ -137,4 +137,4 @@ Matrix<Type> Matrix<Type>::scale(Type value)
     return result;
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 // Overloaded assignment operator
@@ -18,4 +18,4 @@ Matrix<Type>& Matrix<Type>::operator = (const Matrix& otherMatrix)
     return *this;
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

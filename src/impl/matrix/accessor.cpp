@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 template <class Type>
@@ -57,4 +57,4 @@ Type Matrix<Type>::operator () (long int row, long int column) const
     return access(row, column);
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

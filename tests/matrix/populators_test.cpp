@@ -5,10 +5,10 @@
 
 using namespace igloo;
 
-namespace CMatrix
+namespace cmatrix
 {
 
-Describe(CMatrix_populators)
+Describe(cmatrix_populators)
 {
 	Describe(When_filling)
 	{
@@ -53,4 +53,4 @@ Describe(CMatrix_populators)
 	};
 };
 
-} // namespace CMatrix
+} // namespace cmatrix

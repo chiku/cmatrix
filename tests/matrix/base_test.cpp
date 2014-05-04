@@ -5,10 +5,10 @@
 
 using namespace igloo;
 
-namespace CMatrix
+namespace cmatrix
 {
 
-Describe(CMatrix_base)
+Describe(cmatrix_base)
 {
     Describe(when_of_size_2x3_for_double)
     {
@@ -299,4 +299,4 @@ Describe(CMatrix_base)
     };
 };
 
-} // namespace CMatrix
+} // namespace cmatrix

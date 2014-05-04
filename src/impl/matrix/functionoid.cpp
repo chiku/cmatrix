@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 // Per-element function passing
@@ -46,4 +46,4 @@ Matrix<Type>& Matrix<Type>::fillByPosition(FunctObj function, long int xShift, l
     return (*this);
 }
 
-} // namespace CMatrix
+} // namespace cmatrix

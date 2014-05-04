@@ -5,10 +5,10 @@
 
 using namespace igloo;
 
-namespace CMatrix
+namespace cmatrix
 {
 
-Describe(CMatrix_numerical)
+Describe(cmatrix_numerical)
 {
     Describe(When_adding)
     {
@@ -287,4 +287,4 @@ Describe(CMatrix_numerical)
     };
 };
 
-} // namespace CMatrix
+} // namespace cmatrix

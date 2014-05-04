@@ -1,6 +1,6 @@
 // Written by     : Chirantan Mitra
 
-namespace CMatrix
+namespace cmatrix
 {
 
 // Overloaded equality operator
@@ -36,4 +36,4 @@ inline bool Matrix<Type>::operator != (const Matrix& otherMatrix) const
     return !equal(otherMatrix);
 }
 
-}
+} // namespace cmatrix
