@@ -1,14 +1,17 @@
 // Written by     : Chirantan Mitra
 
+namespace CMatrix
+{
+
 template <class Type>
-void CMatrix::Matrix<Type>::setMatrixAsUnassigned()
+void Matrix<Type>::setMatrixAsUnassigned()
 {
     engine.markMemoryAsUnused();
     size.set(0, 0);
 }
 
 template <class Type>
-void CMatrix::Matrix<Type>::clearMemory()
+void Matrix<Type>::clearMemory()
 {
     if (engine.isMemoryAssigned()) {
         engine.unallocateMemory();
@@ -17,13 +20,13 @@ void CMatrix::Matrix<Type>::clearMemory()
 }
 
 template <class Type>
-CMatrix::Matrix<Type>::Matrix()
+Matrix<Type>::Matrix()
 {
     setMatrixAsUnassigned();
 }
 
 template <class Type>
-CMatrix::Matrix<Type>::Matrix(long int rows, long int columns)
+Matrix<Type>::Matrix(long int rows, long int columns)
 {
     setMatrixAsUnassigned();
     setSize(rows, columns);
@@ -31,7 +34,7 @@ CMatrix::Matrix<Type>::Matrix(long int rows, long int columns)
 
 // Copy Constructor
 template <class Type>
-CMatrix::Matrix<Type>::Matrix(const Matrix& otherMatrix)
+Matrix<Type>::Matrix(const Matrix& otherMatrix)
 {
     setMatrixAsUnassigned();
     setSize(otherMatrix.rows(), otherMatrix.columns());
@@ -44,13 +47,13 @@ CMatrix::Matrix<Type>::Matrix(const Matrix& otherMatrix)
 }
 
 template <class Type>
-CMatrix::Matrix<Type>::~Matrix()
+Matrix<Type>::~Matrix()
 {
     clearMemory();
 }
 
 template <class Type>
-void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
+void Matrix<Type>::setSize(long int rows, long int columns)
 {
     if ((*this).rows() > 0 && (*this).columns() > 0 && !size.matches(rows, columns)) {
         throw Exception::InvalidSizeReset(ExceptionBody::BadSizeReset(size, rows, columns));
@@ -66,3 +69,5 @@ void CMatrix::Matrix<Type>::setSize(long int rows, long int columns)
 
     engine.allocateMemory(size);
 }
+
+} // namespace CMatrix

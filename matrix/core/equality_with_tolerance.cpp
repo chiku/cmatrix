@@ -1,8 +1,11 @@
 // Written by     : Chirantan Mitra
 
+namespace CMatrix
+{
+
 // Overloaded equality operator
 template <class Type>
-bool CMatrix::Matrix<Type>::equalWithTolerance(const Matrix& otherMatrix, const Type tolerance) const
+bool Matrix<Type>::equalWithTolerance(const Matrix& otherMatrix, const Type tolerance) const
 {
     if (size != otherMatrix.size) {
         return false;
@@ -19,3 +22,5 @@ bool CMatrix::Matrix<Type>::equalWithTolerance(const Matrix& otherMatrix, const 
 
     return true;
 }
+
+} // namespace CMatrix

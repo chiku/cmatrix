@@ -4,7 +4,9 @@
 #include <matrix.h>
 
 using namespace igloo;
-using namespace CMatrix;
+
+namespace CMatrix
+{
 
 Describe(CMatrix_equality_with_tolerance)
 {
@@ -69,3 +71,5 @@ Describe(CMatrix_equality_with_tolerance)
         }
     };
 };
+
+} // namespace CMatrix

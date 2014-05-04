@@ -1,7 +1,10 @@
 // Written by     : Chirantan Mitra
 
+namespace CMatrix
+{
+
 template <class Type>
-void CMatrix::Matrix<Type>::mutateToInclude(Type value, long int row, long int column)
+void Matrix<Type>::mutateToInclude(Type value, long int row, long int column)
 {
 	if (row < 0 || column < 0) {
 		throw Exception::InvalidSizeReset(ExceptionBody::BadSizeOnMutate(size, row, column));
@@ -12,7 +15,7 @@ void CMatrix::Matrix<Type>::mutateToInclude(Type value, long int row, long int c
 		return;
 	}
 
-	CMatrix::Size newSize(std::max(rows(), row + 1), std::max(columns(), column + 1));
+	Size newSize(std::max(rows(), row + 1), std::max(columns(), column + 1));
 	StorageEngine<Type> newEngine;
 	newEngine.allocateMemory(newSize);
 
@@ -28,3 +31,5 @@ void CMatrix::Matrix<Type>::mutateToInclude(Type value, long int row, long int c
 
 	access(row, column) = value;
 }
+
+} // namespace CMatrix

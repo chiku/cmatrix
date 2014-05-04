@@ -4,7 +4,9 @@
 #include <matrix.h>
 
 using namespace igloo;
-using namespace CMatrix;
+
+namespace CMatrix
+{
 
 Describe(CMatrix_equality)
 {
@@ -103,3 +105,5 @@ Describe(CMatrix_equality)
         }
     };
 };
+
+} // namespace CMatrix

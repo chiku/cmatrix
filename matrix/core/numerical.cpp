@@ -1,14 +1,17 @@
 // Written by     : Chirantan Mitra
 
+namespace CMatrix
+{
+
 // Binary addition
 template <class Type>
-CMatrix::Matrix<Type> CMatrix::operator + (const CMatrix::Matrix<Type> firstMatrix, const CMatrix::Matrix<Type> secondMatrix)
+Matrix<Type> operator + (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix)
 {
     if (firstMatrix.size != secondMatrix.size) {
         throw Exception::IncompatibleAddition(ExceptionBody::IncompatibleAddition(firstMatrix.size, secondMatrix.size));
     }
 
-    CMatrix::Matrix<Type> sum(firstMatrix.rows(), firstMatrix.columns());
+    Matrix<Type> sum(firstMatrix.rows(), firstMatrix.columns());
 
     for (int i = 0; i < firstMatrix.rows(); i++) {
         for (int j = 0; j < firstMatrix.columns(); j++) {
@@ -21,13 +24,13 @@ CMatrix::Matrix<Type> CMatrix::operator + (const CMatrix::Matrix<Type> firstMatr
 
 // Binary subtraction
 template <class Type>
-CMatrix::Matrix<Type> CMatrix::operator - (const CMatrix::Matrix<Type> firstMatrix, const CMatrix::Matrix<Type> secondMatrix)
+Matrix<Type> operator - (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix)
 {
     if (firstMatrix.size != secondMatrix.size) {
         throw Exception::IncompatibleSubtraction(ExceptionBody::IncompatibleSubtraction(firstMatrix.size, secondMatrix.size));
     }
 
-    CMatrix::Matrix<Type> difference(firstMatrix.rows(), firstMatrix.columns());
+    Matrix<Type> difference(firstMatrix.rows(), firstMatrix.columns());
 
     for (int i = 0; i < firstMatrix.rows(); i++) {
         for (int j = 0; j < firstMatrix.columns(); j++) {
@@ -40,13 +43,13 @@ CMatrix::Matrix<Type> CMatrix::operator - (const CMatrix::Matrix<Type> firstMatr
 
 // Binary multiplication
 template <class Type>
-CMatrix::Matrix<Type> CMatrix::operator * (const CMatrix::Matrix<Type> firstMatrix, const CMatrix::Matrix<Type> secondMatrix)
+Matrix<Type> operator * (const Matrix<Type> firstMatrix, const Matrix<Type> secondMatrix)
 {
     if (firstMatrix.columns() != secondMatrix.rows()) {
         throw Exception::IncompatibleMultiplication(ExceptionBody::IncompatibleMultiplication(firstMatrix.size, secondMatrix.size));
     }
 
-    CMatrix::Matrix<Type> product(firstMatrix.rows(), secondMatrix.columns());
+    Matrix<Type> product(firstMatrix.rows(), secondMatrix.columns());
 
     for (int i = 0; i < firstMatrix.rows(); i++) {
         for (int j = 0; j < secondMatrix.columns(); j++) {
@@ -63,7 +66,7 @@ CMatrix::Matrix<Type> CMatrix::operator * (const CMatrix::Matrix<Type> firstMatr
 
 // Shorthand binary addition
 template <class Type>
-CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator += (const CMatrix::Matrix<Type> secondMatrix)
+Matrix<Type>& Matrix<Type>::operator += (const Matrix<Type> secondMatrix)
 {
     if (size != secondMatrix.size) {
         throw Exception::IncompatibleAddition(ExceptionBody::IncompatibleAddition(size, secondMatrix.size));
@@ -80,7 +83,7 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator += (const CMatrix::Matrix
 
 // Shorthand binary subtraction
 template <class Type>
-CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator -= (const CMatrix::Matrix<Type> secondMatrix)
+Matrix<Type>& Matrix<Type>::operator -= (const Matrix<Type> secondMatrix)
 {
     if (size != secondMatrix.size) {
         throw Exception::IncompatibleSubtraction(ExceptionBody::IncompatibleSubtraction(size, secondMatrix.size));
@@ -98,7 +101,7 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator -= (const CMatrix::Matrix
 
 // Unary addition
 template <class Type>
-CMatrix::Matrix<Type> CMatrix::Matrix<Type>::operator + ()
+Matrix<Type> Matrix<Type>::operator + ()
 {
     Matrix<Type> result = (*this);
     return result;
@@ -106,7 +109,7 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::operator + ()
 
 // Unary subtraction
 template <class Type>
-CMatrix::Matrix<Type> CMatrix::Matrix<Type>::operator - ()
+Matrix<Type> Matrix<Type>::operator - ()
 {
     Matrix<Type> result(rows(), columns());
 
@@ -121,7 +124,7 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::operator - ()
 
 // Scalar multiplication
 template <class Type>
-CMatrix::Matrix<Type> CMatrix::Matrix<Type>::scale(Type value)
+Matrix<Type> Matrix<Type>::scale(Type value)
 {
     Matrix<Type> result(rows(), columns());
 
@@ -133,3 +136,5 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::scale(Type value)
 
     return result;
 }
+
+} // namespace CMatrix

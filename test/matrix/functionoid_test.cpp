@@ -4,7 +4,9 @@
 #include <matrix.h>
 
 using namespace igloo;
-using namespace CMatrix;
+
+namespace CMatrix
+{
 
 class testFunctionoidWithOneParameter
 {
@@ -134,3 +136,5 @@ Describe(CMatrix_when_receiving_a_functionoid_with_two_parameters)
         }
     };
 };
+
+} // namespace CMatrix

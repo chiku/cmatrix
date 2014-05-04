@@ -1,13 +1,16 @@
 // Written by     : Chirantan Mitra
 
+namespace CMatrix
+{
+
 template <class Type>
-bool CMatrix::Matrix<Type>::isSquare() const
+bool Matrix<Type>::isSquare() const
 {
     return size.isSquare();
 }
 
 template <class Type>
-bool CMatrix::Matrix<Type>::isUnit() const
+bool Matrix<Type>::isUnit() const
 {
     if (!isSquare()) {
         return false;
@@ -25,7 +28,7 @@ bool CMatrix::Matrix<Type>::isUnit() const
 }
 
 template <class Type>
-bool CMatrix::Matrix<Type>::isZero() const
+bool Matrix<Type>::isZero() const
 {
     for (int i = 0; i < rows(); i++) {
         for (int j = 0; j < columns(); j++) {
@@ -37,3 +40,5 @@ bool CMatrix::Matrix<Type>::isZero() const
 
     return true;
 }
+
+} // namespace CMatrix

@@ -4,7 +4,9 @@
 #include <matrix.h>
 
 using namespace igloo;
-using namespace CMatrix;
+
+namespace CMatrix
+{
 
 Describe(CMatrix_properties)
 {
@@ -98,3 +100,5 @@ Describe(CMatrix_properties)
         Assert::That(matrix.isZero(), IsFalse());
     }
 };
+
+} // namespace CMatrix

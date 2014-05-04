@@ -1,8 +1,11 @@
 // Written by     : Chirantan Mitra
 
+namespace CMatrix
+{
+
 // Overloaded assignment operator
 template <class Type>
-CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator = (const Matrix& otherMatrix)
+Matrix<Type>& Matrix<Type>::operator = (const Matrix& otherMatrix)
 {
     setSize(otherMatrix.rows(), otherMatrix.columns());
 
@@ -14,3 +17,5 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::operator = (const Matrix& otherMat
 
     return *this;
 }
+
+} // namespace CMatrix

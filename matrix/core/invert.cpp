@@ -3,21 +3,24 @@
 #include <algorithm>
 #include <cmath>
 
+namespace CMatrix
+{
+
 // Invert matrix using Gauss Jordan elimination
 template <class Type>
-CMatrix::Matrix<Type> CMatrix::Matrix<Type>::invert()
+Matrix<Type> Matrix<Type>::invert()
 {
     if (!isSquare()) {
         throw Exception::InversionNotPossible(ExceptionBody::NonSquareMatrix(size));
     }
 
-    CMatrix::Matrix<Type> result = (*this);
+    Matrix<Type> result = (*this);
     long int n = result.rows();
     long int pivot_column = 0, pivot_row = 0;
 
-    CMatrix::Matrix<long int> column_indices(n, 1);
-    CMatrix::Matrix<long int> row_indices(n, 1);
-    CMatrix::Matrix<long int> pivots(n, 1);
+    Matrix<long int> column_indices(n, 1);
+    Matrix<long int> row_indices(n, 1);
+    Matrix<long int> pivots(n, 1);
 
     for (long int i = 0; i < n; i++) {
         pivots(i, 0) = -1;
@@ -83,3 +86,5 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::invert()
 
     return result;
 }
+
+} // namespace CMatrix

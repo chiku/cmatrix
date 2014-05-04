@@ -1,11 +1,14 @@
 // Written by     : Chirantan Mitra
 
+namespace CMatrix
+{
+
 // Per-element function passing
 template <class Type>
 template <typename FunctObj>
-CMatrix::Matrix<Type> CMatrix::Matrix<Type>::map(FunctObj function)
+Matrix<Type> Matrix<Type>::map(FunctObj function)
 {
-    CMatrix::Matrix<Type> result(rows(), columns());
+    Matrix<Type> result(rows(), columns());
     for(int i = 0; i < rows(); i++) {
         for(int j = 0; j < columns(); j++) {
             result.access(i, j) = (*function)(access(i, j));
@@ -18,7 +21,7 @@ CMatrix::Matrix<Type> CMatrix::Matrix<Type>::map(FunctObj function)
 // Per-element filling by position
 template <class Type>
 template <typename FunctObj>
-CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, long int xShift, long int yShift)
+Matrix<Type>& Matrix<Type>::fillByPosition(FunctObj function, long int xShift, long int yShift)
 {
     for (int i = 0; i < rows(); i++) {
         for (int j = 0; j < columns(); j++) {
@@ -32,7 +35,7 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, 
 // Per-element filling by position with scaling and position shift
 template <class Type>
 template <typename FunctObj>
-CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, long int xShift, long int yShift, Type xScale, Type yScale)
+Matrix<Type>& Matrix<Type>::fillByPosition(FunctObj function, long int xShift, long int yShift, Type xScale, Type yScale)
 {
     for (int i = 0; i < rows(); i++) {
         for (int j = 0; j < columns(); j++) {
@@ -42,3 +45,5 @@ CMatrix::Matrix<Type>& CMatrix::Matrix<Type>::fillByPosition(FunctObj function, 
 
     return (*this);
 }
+
+} // namespace CMatrix

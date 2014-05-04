@@ -4,7 +4,9 @@
 #include <matrix.h>
 
 using namespace igloo;
-using namespace CMatrix;
+
+namespace CMatrix
+{
 
 Describe(CMatrix_populators)
 {
@@ -50,3 +52,5 @@ Describe(CMatrix_populators)
 		}
 	};
 };
+
+} // namespace CMatrix

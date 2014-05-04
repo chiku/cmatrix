@@ -4,7 +4,9 @@
 #include <matrix.h>
 
 using namespace igloo;
-using namespace CMatrix;
+
+namespace CMatrix
+{
 
 Describe(When_inverting_a_unitary_matrix)
 {
@@ -101,3 +103,5 @@ Describe(When_inverting_a_singular_matrix)
         Assert::That(LastException<Exception::InversionNotPossible>().what(), Equals(expectedMessage));
     }
 };
+
+} // namespace CMatrix

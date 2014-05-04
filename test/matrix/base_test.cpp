@@ -4,7 +4,9 @@
 #include <matrix.h>
 
 using namespace igloo;
-using namespace CMatrix;
+
+namespace CMatrix
+{
 
 Describe(CMatrix_base)
 {
@@ -296,3 +298,5 @@ Describe(CMatrix_base)
         }
     };
 };
+
+} // namespace CMatrix
