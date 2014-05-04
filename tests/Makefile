@@ -1,7 +1,7 @@
 # Written by     : Chirantan Mitra
 
 INCLUDE_FILES += -I.
-INCLUDE_FILES += -I../matrix
+INCLUDE_FILES += -I../src
 INCLUDE_FILES += -Ivendor
 
 CPPFILES = $(shell ls */*_test.cpp *_test.cpp)
@@ -13,8 +13,8 @@ compile: test_runner.o
 	$(CXX) -o matrix_test *_test.o test_runner.o -lstdc++ $(LDFLAGS) -ldl
 
 run:
-	mv matrix_test ../bin/matrix_test
-	@cd ../bin && ./matrix_test
+	mv matrix_test ../build/matrix_test
+	@cd ../build && ./matrix_test
 
 test_runner.o:
 	$(CXX) $(CXXFLAGS) $(INCLUDE_FILES) -c test_runner.cpp

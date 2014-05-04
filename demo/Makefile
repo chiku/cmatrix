@@ -6,7 +6,7 @@ CFLAGS += -O2
 CXXFLAGS += -O2
 
 INCLUDE_FILES += -I.
-INCLUDE_FILES += -I../matrix
+INCLUDE_FILES += -I../src
 
 CXXFLAGS += -I$(INCLUDE_FILES)
 
@@ -18,8 +18,8 @@ all: compile run
 compile: $(DEMOFILES)
 
 run:
-	mkdir -p ../bin/
-	mv *_demo ../bin/
+	mkdir -p ../build/
+	mv *_demo ../build/
 	./launch
 
 io_demo:

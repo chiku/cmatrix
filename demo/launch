@@ -1,7 +1,7 @@
 #!/bin/bash
 # Written by     : Chirantan Mitra
 
-cd ../bin
+cd ../build
 FILES=$(ls *_demo)
 
 for file in $FILES
