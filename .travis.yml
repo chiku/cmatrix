@@ -3,7 +3,7 @@ compiler:
   - clang
   - gcc
 script:
-  - pushd matrix && ln -sf storage_engine/vector.h storage_engine.h && popd
+  - pushd src && ln -sf storage_engine/vector.h storage_engine.h && popd
   - make clean compile test
-  - pushd matrix && ln -sf storage_engine/array.h storage_engine.h && popd
+  - pushd src && ln -sf storage_engine/array.h storage_engine.h && popd
   - make clean compile test
