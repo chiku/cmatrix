@@ -9,37 +9,45 @@ GENHTML ?= genhtml
 CFLAGS += -O2
 CXXFLAGS += -O2
 
-export CC
-export CXX
-export AR
-export CFLAGS
-export CXXFLAGS
-export LDFLAGS
+INCLUDE_FILES += -I.
+INCLUDE_FILES += -Isrc
+TEST_INCLUDE_FILES += -Itests/vendor
 
-all: clean compile test demo
+TEST_OBJ_FILES = $(shell ls tests/*_test.cpp tests/*/*_test.cpp | sed 's/.cpp/.o/g')
+DEMO_OBJ_FILES = $(shell ls demo/*_demo.cpp | sed 's/.cpp/.o/g')
 
-compile:
-	@cd src && make
+all: clean test demo
 
-test: compile
-	@cd tests && make
+test: tests/matrix_test
+	./tests/matrix_test
 
-demo: compile
-	@cd demo && make
+demo: demo/io_demo
+	./demo/io_demo
 
-clean:
-	rm -rf bin/* coverage *.info
-	@cd src && make clean
-	@cd tests && make clean
-	@cd demo && make clean
+tests/matrix_test: ${TEST_OBJ_FILES} tests/test_runner.o
+	$(CXX) $^ $(LDFLAGS) -o $@
+
+demo/io_demo: demo/io_demo.o
+	$(CXX) $^ $(LDFLAGS) -o $@
+
+tests/%.o: tests/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDE_FILES) $(TEST_INCLUDE_FILES) -c $< -o $@
+
+demo/%.o: demo/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDE_FILES) -c $< -o $@
 
 coverage: CXXFLAGS += --coverage
 coverage: LDFLAGS += --coverage
-coverage: compile test generate.coverage.report
+coverage: clean test generate.coverage.report
 
 generate.coverage.report:
 	${LCOV} --capture --directory tests --output-file coverage.info
 	${LCOV} --extract coverage.info "${PWD}/src/*" -o coverage.filtered.info
 	${GENHTML} coverage.filtered.info --output-directory coverage
 
-.PHONY: all compile test demo clean coverage generate.coverage.report
+clean:
+	rm -rf ${TEST_OBJ_FILES} ${DEMO_OBJ_FILES} tests/test_runner.o tests/*_test demo/*_demo *.info coverage
+	find . -name "*.gcda" -delete
+	find . -name "*.gcno" -delete
+
+.PHONY: all test demo clean coverage generate.coverage.report
