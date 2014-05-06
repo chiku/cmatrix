@@ -4,6 +4,8 @@ compiler:
   - gcc
 script:
   - pushd src && ln -sf storage_engine/vector.h storage_engine.h && popd
-  - make
+  - make clean
+  - make -j4
   - pushd src && ln -sf storage_engine/array.h storage_engine.h && popd
-  - make
+  - make clean
+  - make -j4

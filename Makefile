@@ -16,7 +16,7 @@ TEST_INCLUDE_FILES += -Itests/vendor
 TEST_OBJ_FILES = $(shell ls tests/*_test.cpp tests/*/*_test.cpp | sed 's/.cpp/.o/g')
 DEMO_OBJ_FILES = $(shell ls demo/*_demo.cpp | sed 's/.cpp/.o/g')
 
-all: clean test demo
+all: test demo
 
 test: tests/matrix_test
 	./tests/matrix_test
