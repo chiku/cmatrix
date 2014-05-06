@@ -13,6 +13,7 @@ INCLUDE_FILES += -I.
 INCLUDE_FILES += -Isrc
 TEST_INCLUDE_FILES += -Itests/vendor
 
+SOURCE_FILES = $(find src -name *.h  -o -name *.cpp)
 TEST_OBJ_FILES = $(shell ls tests/*_test.cpp tests/*/*_test.cpp | sed 's/.cpp/.o/g')
 DEMO_OBJ_FILES = $(shell ls demo/*_demo.cpp | sed 's/.cpp/.o/g')
 
@@ -30,10 +31,10 @@ tests/matrix_test: ${TEST_OBJ_FILES} tests/test_runner.o
 demo/io_demo: demo/io_demo.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
-tests/%.o: tests/%.cpp
+tests/%.o: tests/%.cpp $(SOURCE_FILES)
 	$(CXX) $(CXXFLAGS) $(INCLUDE_FILES) $(TEST_INCLUDE_FILES) -c $< -o $@
 
-demo/%.o: demo/%.cpp
+demo/%.o: demo/%.cpp $(SOURCE_FILES)
 	$(CXX) $(CXXFLAGS) $(INCLUDE_FILES) -c $< -o $@
 
 coverage: CXXFLAGS += --coverage
