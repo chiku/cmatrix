@@ -30,7 +30,7 @@ public:
     void allocateMemory(Size size)
     {
         values = new Type[size.elements()];
-        (*this).size = size;
+        this->size = size;
     }
 
     // Lvalue element accessor - unchecked

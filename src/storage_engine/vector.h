@@ -32,7 +32,7 @@ public:
     void allocateMemory(Size size)
     {
         values = new std::vector<Type>(size.elements());
-        (*this).size = size;
+        this->size = size;
     }
 
     // Lvalue element accessor - unchecked
