@@ -36,11 +36,6 @@ install: $(SOURCE_FILES)
 		install -c -m 644 src/$$file $$(dirname ${prefix}/include/cmatrix/$$file) ;\
 	done
 
-qwert:
-	for number in 1 2 3 4 ; do \
-		echo $$number ; \
-	done
-
 tests/matrix_test: $(TEST_OBJ_FILES) tests/test_runner.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
