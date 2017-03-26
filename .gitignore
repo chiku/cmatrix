@@ -5,4 +5,5 @@
 **/*.gcno
 coverage
 tests/*_test
+test/*_test
 demo/*_demo
