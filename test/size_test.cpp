@@ -1,197 +1,183 @@
 // Written by     : Chirantan Mitra
 
-#include <igloo/igloo_alt.h>
-#include <matrix.h>
+#include "doctest.h"
 
-using namespace igloo;
+#include <matrix.h>
 
 namespace cmatrix
 {
 
-Describe(cmatrix_size)
-{
-    Describe(When_with_negative_rows)
-    {
-        It(is_invalid)
-        {
-            Assert::That(Size(-1, 1).isValid(), IsFalse());
-        }
-    };
-
-    Describe(When_with_negative_columns)
-    {
-        It(is_invalid)
-        {
-            Assert::That(Size(1, -1).isValid(), IsFalse());
-        }
-    };
-
-    Describe(with_zero_sizes)
-    {
-        It(Is_valid)
-        {
-            Assert::That(Size(0, 0).isValid(), IsTrue());
-        }
-    };
-
-    Describe(With_positive_sizes)
-    {
-        It(Is_valid)
-        {
-            Assert::That(Size(1, 1).isValid(), IsTrue());
-        }
-    };
-
-    Describe(size_of_4x2)
-    {
-        It(has_4_rows)
-        {
-            Assert::That(Size(4, 2).getRows(), Equals(4));
-        }
-
-        It(has_2_columns)
-        {
-            Assert::That(Size(4, 2).getColumns(), Equals(2));
-        }
-
-        It(has_8_elements)
-        {
-            Assert::That(Size(4, 2).elements(), Equals(8));
-        }
-    };
-
-    Describe(Size_of_2x0)
-    {
-        It(has_0_elements)
-        {
-            Assert::That(Size(2, 0).elements(), Equals(0));
-        }
-    };
-
-    Describe(When_it_has_same_rows_and_columns)
-    {
-        It(is_square)
-        {
-            Assert::That(Size(2, 2).isSquare(), IsTrue());
-        }
-    };
-
-    Describe(When_it_has_different_rows_and_columns)
-    {
-        It(is_not_square)
-        {
-            Assert::That(Size(2, 3).isSquare(), IsFalse());
-        }
-    };
-
-    Describe(When_comparing)
-    {
-        Describe(to_another_size)
-        {
-            Describe(When_both_have_same_rows_and_columns)
-            {
-                It(is_equal)
-                {
-                    Size firstTwoByOne  = Size(2, 1);
-                    Size secondTwoByOne = Size(2, 1);
-
-                    Assert::That(firstTwoByOne == secondTwoByOne, IsTrue());
-                    Assert::That(firstTwoByOne != secondTwoByOne, IsFalse());
-                }
-            };
-
-            Describe(When_both_have_different_rows)
-            {
-                It(is_not_equal)
-                {
-                    Size twoByTwo = Size(2, 2);
-                    Size oneByTwo = Size(1, 2);
-
-                    Assert::That(twoByTwo == oneByTwo, IsFalse());
-                    Assert::That(twoByTwo != oneByTwo, IsTrue());
-                }
-            };
-
-            Describe(When_both_have_different_columns)
-            {
-                It(is_not_equal)
-                {
-                    Size twoByTwo = Size(2, 2);
-                    Size twoByOne = Size(2, 1);
-
-                    Assert::That(twoByTwo == twoByOne, IsFalse());
-                    Assert::That(twoByTwo != twoByOne, IsTrue());
-                }
-            };
-        };
-
-        Describe(To_a_row_column_pair)
-        {
-            Describe(When_both_have_same_rows_and_columns)
-            {
-                It(matches)
-                {
-                    Assert::That(Size(2, 1).matches(2, 1), IsTrue());
-                }
-            };
-
-            Describe(When_both_have_different_rows)
-            {
-                It(does_not_match)
-                {
-                    Assert::That(Size(2, 1).matches(3, 1), IsFalse());
-                }
-            };
-
-            Describe(When_both_have_different_columns)
-            {
-                It(does_not_match)
-                {
-                    Assert::That(Size(2, 1).matches(2, 3), IsFalse());
-                }
-            };
-        };
-
-        Describe(When_row_exceeds_row_size)
-        {
-            It(is_not_contained_in_the_size_limits)
-            {
-                Assert::That(Size(2, 5).contains(3, 1), IsFalse());
+SCENARIO("cmatrix::Size validations") {
+    GIVEN("Size") {
+        WHEN("with negative rows") {
+            THEN("it is invalid") {
+                CHECK_FALSE(Size(-1, 1).isValid());
             }
-        };
+        }
 
-        Describe(When_row_is_less_than_zero)
-        {
-            It(is_not_contained_in_the_size_limits)
-            {
-                Assert::That(Size(2, 5).contains(-1, 1), IsFalse());
+        WHEN("with negative columns") {
+            THEN("it is invalid") {
+                CHECK_FALSE(Size(1, -1).isValid());
             }
-        };
+        }
 
-        Describe(When_column_size_exceeds_column_size)
-        {
-            It(is_not_contained_in_the_size_limits)
-            {
-                Assert::That(Size(2, 5).contains(1, 5), IsFalse());
+        WHEN("with zero sides") {
+            THEN("it is valid") {
+                CHECK(Size(0, 0).isValid());
             }
-        };
+        }
 
-        Describe(When_column_is_less_than_zero)
-        {
-            It(is_not_contained_in_the_size_limits)
-            {
-                Assert::That(Size(2, 5).contains(1, -1), IsFalse());
+        WHEN("with positive sides") {
+            THEN("it is valid") {
+                CHECK(Size(1, 1).isValid());
             }
-        };
+        }
+    }
+}
 
-        Describe(When_row_column_pair_are_within_size)
-        {
-            It(is_contained)
-            {
-                Assert::That(Size(2, 5).contains(0, 0), IsTrue());
+SCENARIO("cmatrix::Size getters") {
+    GIVEN("Size") {
+        WHEN("with size 4x2") {
+            auto size = Size(4, 2);
+
+            THEN("it has 4 rows") {
+                CHECK(size.getRows() == 4);
             }
-        };
-    };
-};
+
+            THEN("it has 2 columns") {
+                CHECK(size.getColumns() == 2);
+            }
+
+            THEN("it has 8 elements") {
+                CHECK(size.elements() == 8);
+            }
+        }
+
+        WHEN("with size 2x0") {
+            auto size = Size(2, 0);
+
+            THEN("is has 0 elements") {
+                CHECK(size.elements() == 0);
+            }
+        }
+
+        WHEN("with same number of rows and columns") {
+            THEN("it is a square") {
+                CHECK(Size(2, 2).isSquare());
+            }
+        }
+
+        WHEN("with different number of rows and columns") {
+            THEN("it is not a square") {
+                CHECK_FALSE(Size(2, 3).isSquare());
+            }
+        }
+    }
+}
+
+SCENARIO("cmatrix::Size equality") {
+    GIVEN("Size") {
+        WHEN("compairing to another Size with same number or rows and columns") {
+            auto size1 = Size(2, 1);
+            auto size2 = Size(2, 1);
+
+            THEN("they are equal") {
+                CHECK(size1 == size2);
+
+            }
+
+            THEN("they are not unequal") {
+                CHECK_FALSE(size1 != size2);
+
+            }
+        }
+
+        WHEN("compairing to another Size with same number of rows but different number of columns") {
+            auto size1 = Size(2, 2);
+            auto size2 = Size(2, 1);
+
+            THEN("they are not equal") {
+                CHECK_FALSE(size1 == size2);
+
+            }
+
+            THEN("they are unequal") {
+                CHECK(size1 != size2);
+
+            }
+        }
+
+        WHEN("compairing to another Size with same number of columns but different number of rows") {
+            auto size1 = Size(2, 2);
+            auto size2 = Size(1, 2);
+
+            THEN("they are not equal") {
+                CHECK_FALSE(size1 == size2);
+
+            }
+
+            THEN("they are unequal") {
+                CHECK(size1 != size2);
+
+            }
+        }
+    }
+}
+
+SCENARIO("cmatrix::Size matches()") {
+    GIVEN("Size") {
+        WHEN("when paired with a row-column pair equal to number of rows and columns respectively") {
+            THEN("they match") {
+                CHECK(Size(2, 1).matches(2, 1));
+            }
+        }
+
+        WHEN("when paired with a row-column pair with same number of rows but different number of columns") {
+            THEN("they don't match") {
+                CHECK_FALSE(Size(2, 1).matches(2, 3));
+            }
+        }
+
+        WHEN("when paired with a row-column pair with same number of columns but different number of rows") {
+            THEN("they don't match") {
+                CHECK_FALSE(Size(2, 1).matches(3, 1));
+            }
+        }
+    }
+}
+
+SCENARIO("cmatrix::Size contains()") {
+    GIVEN("Size") {
+        WHEN("row exceeds row limit") {
+            THEN("the size is not contained within the given limits") {
+                CHECK_FALSE(Size(2, 5).contains(3, 1));
+            }
+        }
+
+        WHEN("row is less than zero") {
+            THEN("the size is not contained within limits") {
+                CHECK_FALSE(Size(2, 5).contains(-1, 1));
+            }
+        }
+
+        WHEN("column exceeds column limit") {
+            THEN("the size is not contained within limits") {
+                CHECK_FALSE(Size(2, 5).contains(1, 5));
+            }
+        }
+
+        WHEN("column is less than zero") {
+            THEN("the size is not contained within limits") {
+                CHECK_FALSE(Size(2, 5).contains(1, -1));
+            }
+        }
+
+        WHEN("row-column pair are within limits") {
+            THEN("the size is contained within limits") {
+                CHECK(Size(2, 5).contains(0, 0));
+            }
+        }
+    }
+}
 
 } // namespace cmatrix

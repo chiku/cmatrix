@@ -1,8 +1,5 @@
 // Written by     : Chirantan Mitra
 
-#include <igloo/igloo_alt.h>
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
-int main()
-{
-    return igloo::TestRunner::RunAllTests();
-}
+#include "doctest.h"
