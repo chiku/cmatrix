@@ -23,11 +23,11 @@ all: test demo
 
 compile:
 
-test: test/matrix_test
-	./test/matrix_test
+test: build/bin/test/matrix_test
+	./build/bin/test/matrix_test
 
-demo: demo/io_demo
-	./demo/io_demo
+demo: build/bin/demo/io_demo
+	./build/bin/demo/io_demo
 
 install: $(SOURCE_FILES)
 	install -d 511 ${prefix}/include/cmatrix/impl/matrix/io
@@ -36,10 +36,12 @@ install: $(SOURCE_FILES)
 		install -c -m 644 src/$$file $$(dirname ${prefix}/include/cmatrix/$$file) ;\
 	done
 
-test/matrix_test: $(TEST_OBJ_FILES) test/test_runner.o
+build/bin/test/matrix_test: $(TEST_OBJ_FILES) test/test_runner.o
+	mkdir -pv $(@D)
 	$(CXX) $^ $(LDFLAGS) -o $@
 
-demo/io_demo: demo/io_demo.o
+build/bin/demo/io_demo: demo/io_demo.o
+	mkdir -pv $(@D)
 	$(CXX) $^ $(LDFLAGS) -o $@
 
 test/%.o: test/%.cpp $(SOURCE_FILES)
@@ -58,6 +60,7 @@ generate.coverage.report:
 	$(GENHTML) coverage.filtered.info --output-directory coverage
 
 clean:
+	rm -rf build/
 	rm -rf $(TEST_OBJ_FILES) $(DEMO_OBJ_FILES) test/test_runner.o test/*_test demo/*_demo *.info coverage
 	find . -name "*.gcda" -delete
 	find . -name "*.gcno" -delete
