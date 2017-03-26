@@ -38,7 +38,7 @@ SCENARIO("cmatrix::Size validations") {
 SCENARIO("cmatrix::Size getters") {
     GIVEN("Size") {
         WHEN("with size 4x2") {
-            auto size = Size(4, 2);
+            Size size(4, 2);
 
             THEN("it has 4 rows") {
                 CHECK(size.getRows() == 4);
@@ -54,7 +54,7 @@ SCENARIO("cmatrix::Size getters") {
         }
 
         WHEN("with size 2x0") {
-            auto size = Size(2, 0);
+            Size size(2, 0);
 
             THEN("is has 0 elements") {
                 CHECK(size.elements() == 0);
@@ -78,8 +78,8 @@ SCENARIO("cmatrix::Size getters") {
 SCENARIO("cmatrix::Size equality") {
     GIVEN("Size") {
         WHEN("compairing to another Size with same number or rows and columns") {
-            auto size1 = Size(2, 1);
-            auto size2 = Size(2, 1);
+            Size size1(2, 1);
+            Size size2(2, 1);
 
             THEN("they are equal") {
                 CHECK(size1 == size2);
@@ -93,8 +93,8 @@ SCENARIO("cmatrix::Size equality") {
         }
 
         WHEN("compairing to another Size with same number of rows but different number of columns") {
-            auto size1 = Size(2, 2);
-            auto size2 = Size(2, 1);
+            Size size1(2, 2);
+            Size size2(2, 1);
 
             THEN("they are not equal") {
                 CHECK_FALSE(size1 == size2);
@@ -108,8 +108,8 @@ SCENARIO("cmatrix::Size equality") {
         }
 
         WHEN("compairing to another Size with same number of columns but different number of rows") {
-            auto size1 = Size(2, 2);
-            auto size2 = Size(1, 2);
+            Size size1(2, 2);
+            Size size2(1, 2);
 
             THEN("they are not equal") {
                 CHECK_FALSE(size1 == size2);
