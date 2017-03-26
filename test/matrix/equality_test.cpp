@@ -1,39 +1,43 @@
 // Written by     : Chirantan Mitra
 
-#include <igloo/igloo_alt.h>
-#include <matrix.h>
+#include "../doctest.h"
 
-using namespace igloo;
+#include <matrix.h>
 
 namespace cmatrix
 {
 
-Describe(cmatrix_equality)
-{
-    Describe(Does_not_equal_matrix)
-    {
-        It(with_different_row_count)
-        {
+SCENARIO("cmatrix::Matrix<double> equality") {
+    GIVEN("matrix of doubles") {
+        WHEN("compared with a matrix with different number of rows") {
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> twoByTwoMatrix(2, 2);
 
-            Assert::That(oneByTwoMatrix.equal(twoByTwoMatrix), IsFalse());
-            Assert::That(oneByTwoMatrix == twoByTwoMatrix, IsFalse());
-            Assert::That(oneByTwoMatrix != twoByTwoMatrix, IsTrue());
+            THEN("the matrices are not equal") {
+                CHECK_FALSE(oneByTwoMatrix.equal(twoByTwoMatrix));
+                CHECK_FALSE(oneByTwoMatrix == twoByTwoMatrix);
+            }
+
+            THEN("the matrices are unequal") {
+                CHECK(oneByTwoMatrix != twoByTwoMatrix);
+            }
         }
 
-        It(with_different_column_count)
-        {
+        WHEN("compared with a matrix with different number of columns") {
             Matrix<double> oneByTwoMatrix(1, 2);
             Matrix<double> oneByThreeMatrix(1, 3);
 
-            Assert::That(oneByTwoMatrix.equal(oneByThreeMatrix), IsFalse());
-            Assert::That(oneByTwoMatrix == oneByThreeMatrix, IsFalse());
-            Assert::That(oneByTwoMatrix != oneByThreeMatrix, IsTrue());
+            THEN("the matrices are not equal") {
+                CHECK_FALSE(oneByTwoMatrix.equal(oneByThreeMatrix));
+                CHECK_FALSE(oneByTwoMatrix == oneByThreeMatrix);
+            }
+
+            THEN("the matrices are unequal") {
+                CHECK(oneByTwoMatrix != oneByThreeMatrix);
+            }
         }
 
-        It(with_a_different_element)
-        {
+        WHEN("compared with a matrix with same number of rows and columns but one different element") {
             Matrix<double> firstTwoByTwoMatrix(2, 2);
             Matrix<double> secondTwoByTwoMatrix(2, 2);
 
@@ -42,16 +46,17 @@ Describe(cmatrix_equality)
             firstTwoByTwoMatrix(1, 0) = 3.0; secondTwoByTwoMatrix(1, 0) = -3.0;
             firstTwoByTwoMatrix(1, 1) = 4.0; secondTwoByTwoMatrix(1, 1) =  4.0;
 
-            Assert::That(firstTwoByTwoMatrix.equal(secondTwoByTwoMatrix), IsFalse());
-            Assert::That(firstTwoByTwoMatrix == secondTwoByTwoMatrix, IsFalse());
-            Assert::That(firstTwoByTwoMatrix != secondTwoByTwoMatrix, IsTrue());
-        }
-    };
+            THEN("the matrices are not equal") {
+                CHECK_FALSE(firstTwoByTwoMatrix.equal(secondTwoByTwoMatrix));
+                CHECK_FALSE(firstTwoByTwoMatrix == secondTwoByTwoMatrix);
+            }
 
-    Describe(Equals_another_matrix)
-    {
-        It(with_same_row_count_and_column_count_and_same_elements_in_same_position)
-        {
+            THEN("the matrices are unequal") {
+                CHECK(firstTwoByTwoMatrix != secondTwoByTwoMatrix);
+            }
+        }
+
+        WHEN("compared with a matrix with same number of rows and columns and equal elements in same position") {
             Matrix<double> firstTwoByTwoMatrix(2, 2);
             Matrix<double> secondTwoByTwoMatrix(2, 2);
 
@@ -60,16 +65,21 @@ Describe(cmatrix_equality)
             firstTwoByTwoMatrix(1, 0) = 3.0; secondTwoByTwoMatrix(1, 0) = 3.0;
             firstTwoByTwoMatrix(1, 1) = 4.0; secondTwoByTwoMatrix(1, 1) = 4.0;
 
-            Assert::That(firstTwoByTwoMatrix.equal(secondTwoByTwoMatrix), IsTrue());
-            Assert::That(firstTwoByTwoMatrix == secondTwoByTwoMatrix, IsTrue());
-            Assert::That(firstTwoByTwoMatrix != secondTwoByTwoMatrix, IsFalse());
-        }
-    };
+            THEN("the matrices are equal") {
+                CHECK(firstTwoByTwoMatrix.equal(secondTwoByTwoMatrix));
+                CHECK(firstTwoByTwoMatrix == secondTwoByTwoMatrix);
+            }
 
-    Describe(Matrix_Of_Matrices)
-    {
-        It(equals_another_matrix_of_matrices_when_all_component_matrices_are_equal)
-        {
+            THEN("the matrices are not unequal") {
+                CHECK_FALSE(firstTwoByTwoMatrix != secondTwoByTwoMatrix);
+            }
+        }
+    }
+}
+
+SCENARIO("cmatrix::Matrix<cmatrix::Matrix<double>> equality") {
+    GIVEN("matrix of matrix of doubles") {
+        WHEN("compared with a matrix of matrix of doubles with all component matrices equal") {
             Matrix<Matrix <double> > firstMatrix(1, 2);
             Matrix<Matrix <double> > secondMatrix(1, 2);
 
@@ -83,11 +93,12 @@ Describe(cmatrix_equality)
             firstMatrix(0, 0) = firstMatrix0x0; secondMatrix(0, 0) = secondMatrix0x0;
             firstMatrix(0, 1) = firstMatrix0x1; secondMatrix(0, 1) = secondMatrix0x1;
 
-            Assert::That(firstMatrix == secondMatrix), IsTrue();
+            THEN("the matrices are equal") {
+                CHECK(firstMatrix == secondMatrix);
+            }
         }
 
-        It(does_not_equal_another_matrix_of_matrices_when_one_component_matrix_is_not_equal)
-        {
+        WHEN("compared with a matrix of matrix of doubles with all component except one matrices equal and one is different") {
             Matrix<Matrix <double> > firstMatrix(1, 2);
             Matrix<Matrix <double> > secondMatrix(1, 2);
 
@@ -101,9 +112,11 @@ Describe(cmatrix_equality)
             firstMatrix(0, 0) = firstMatrix0x0; secondMatrix(0, 0) = secondMatrix0x0;
             firstMatrix(0, 1) = firstMatrix0x1; secondMatrix(0, 1) = secondMatrix0x1;
 
-            Assert::That(firstMatrix != secondMatrix, IsTrue());
+            THEN("the matrix are not equal") {
+                CHECK(firstMatrix != secondMatrix);
+            }
         }
-    };
-};
+    }
+}
 
 } // namespace cmatrix
