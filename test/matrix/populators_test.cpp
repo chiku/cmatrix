@@ -39,6 +39,6 @@ SCENARIO("cmatrix::Matrix<double> populators") {
             }
         }
     }
-};
+}
 
 } // namespace cmatrix

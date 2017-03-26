@@ -68,7 +68,7 @@ SCENARIO("cmatrix::Matrix<double> equality with tolerance") {
                 CHECK(firstTwoByTwoMatrix.equalWithTolerance(secondTwoByTwoMatrix, 0.1));
             }
         }
-    };
-};
+    }
+}
 
 } // namespace cmatrix
