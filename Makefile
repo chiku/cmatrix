@@ -14,7 +14,7 @@ INCLUDE_FILES += -Isrc
 TEST_INCLUDE_FILES += -Itest-igloo/vendor
 
 SOURCE_FILES = $(find src -name *.h  -o -name *.cpp)
-TEST_IGLOO_OBJ_FILES = $(shell ls test-igloo/*_test.cpp test-igloo/*/*_test.cpp | sed 's/.cpp/.o/g')
+TEST_IGLOO_OBJ_FILES = $(shell ls test-igloo/*/*_test.cpp | sed 's/.cpp/.o/g')
 TEST_OBJ_FILES = $(shell ls test/*_test.cpp test/*/*_test.cpp | sed 's/.cpp/.o/g')
 DEMO_OBJ_FILES = $(shell ls demo/*_demo.cpp | sed 's/.cpp/.o/g')
 
@@ -27,7 +27,7 @@ compile:
 test-igloo: build/bin/test/matrix_test_igloo
 	./build/bin/test/matrix_test_igloo
 
-test: test-igloo build/bin/test/matrix_test
+test: build/bin/test/matrix_test test-igloo
 	./build/bin/test/matrix_test
 
 demo: build/bin/demo/io_demo
