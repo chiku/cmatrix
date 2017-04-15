@@ -86,7 +86,7 @@ SCENARIO("cmatrix::Matrix<double> inversion") {
         singularMatrix(1, 0) = 0.0; singularMatrix(1, 1) = 0.0;
 
         WHEN("inverted") {
-            THEN("as exception is thrown") {
+            THEN("an exception is thrown") {
                 std::string expectedMessage = "Cannot invert a singular matrix";
                 // AssertThrows(Exception::InversionNotPossible, singularMatrix.invert());
                 // Assert::That(LastException<Exception::InversionNotPossible>().what(), Equals(expectedMessage));

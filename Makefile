@@ -67,8 +67,7 @@ coverage: clean test generate.coverage.report
 
 generate.coverage.report:
 	$(LCOV) --capture --directory test --output-file coverage.info
-	$(LCOV) --capture --directory test-igloo --output-file coverage-igloo.info
-	$(LCOV) --extract coverage.info --extract coverage-igloo.info "$(PWD)/src/*" -o coverage.filtered.info
+	$(LCOV) --extract coverage.info "$(PWD)/src/*" -o coverage.filtered.info
 	$(GENHTML) coverage.filtered.info --output-directory coverage
 
 clean:
