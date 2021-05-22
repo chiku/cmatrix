@@ -43,17 +43,13 @@ SCENARIO("cmatrix::Matrix<double> accessor") {
 
         WHEN("rows is negative during creation") {
             THEN("it throws an exception") {
-                std::string expectedMessage = "Invalid attempt to set rows to -1 and columns to 0";
-                // AssertThrows(Exception::InvalidSizeSet, Matrix<double> bad0x0Matrix(-1, 0));
-                // CHECK(LastException<Exception::InvalidSizeSet>().what() == expectedMessage);
+                CHECK_THROWS_WITH_AS(Matrix<double> bad0x0Matrix(-1, 0), "Invalid attempt to set rows to -1 and columns to 0", Exception::InvalidSizeSet);
             }
         }
 
         WHEN("columns is negative during creation") {
             THEN("it throws an exception") {
-                std::string expectedMessage = "Invalid attempt to set rows to 0 and columns to -1";
-                // AssertThrows(Exception::InvalidSizeSet, Matrix<double> bad0x0Matrix(0, -1));
-                // CHECK(LastException<Exception::InvalidSizeSet>().what() == expectedMessage);
+                CHECK_THROWS_WITH_AS(Matrix<double> bad0x0Matrix(0, -1), "Invalid attempt to set rows to 0 and columns to -1", Exception::InvalidSizeSet);
             }
         }
 
@@ -86,18 +82,14 @@ SCENARIO("cmatrix::Matrix<double> accessor") {
 
         WHEN("rows is negative while resizing after creation") {
             THEN("it throws an exception") {
-                std::string expectedMessage = "Invalid attempt to set rows to -1 and columns to 0";
-                // AssertThrows(Exception::InvalidSizeSet, Matrix<double> bad0x0Matrix(-1, 0));
-                // CHECK(LastException<Exception::InvalidSizeSet>().what() == expectedMessage);
+                CHECK_THROWS_WITH_AS(Matrix<double> bad0x0Matrix(-1, 0), "Invalid attempt to set rows to -1 and columns to 0", Exception::InvalidSizeSet);
             }
         }
 
         WHEN("columns is negative while resizing after creation") {
             THEN("it throws an exception") {
                 Matrix<double> bad0x0Matrix;
-                std::string expectedMessage = "Invalid attempt to set rows to 1 and columns to -1";
-                // AssertThrows(Exception::InvalidSizeSet, bad0x0Matrix.setSize(1, -1));
-                // CHECK(LastException<Exception::InvalidSizeSet>().what() == expectedMessage);
+                CHECK_THROWS_WITH_AS(bad0x0Matrix.setSize(1, -1), "Invalid attempt to set rows to 1 and columns to -1", Exception::InvalidSizeSet);
             }
         }
 
@@ -113,54 +105,42 @@ SCENARIO("cmatrix::Matrix<double> accessor") {
         WHEN("resetting rows to different row from original size") {
             THEN("it throws an exception") {
                 Matrix<double> a1x1Matrix(1, 1);
-                std::string expectedMessage = "Invalid attempt to reset rows to 2 and columns to 2 from [1, 1]";
-                // AssertThrows(Exception::InvalidSizeReset, a1x1Matrix.setSize(2, 2));
-                // CHECK(LastException<Exception::InvalidSizeReset>().what() == expectedMessage);
+                CHECK_THROWS_WITH_AS(a1x1Matrix.setSize(2, 2), "Invalid attempt to reset rows to 2 and columns to 2 from [1, 1]", Exception::InvalidSizeReset);
             }
         }
 
         WHEN("resetting columns to different column from original size") {
             THEN("it throws an exception") {
                 Matrix<double> a1x1Matrix(1, 1);
-                std::string expectedMessage = "Invalid attempt to reset rows to 2 and columns to 0 from [1, 1]";
-                // AssertThrows(Exception::InvalidSizeReset, a1x1Matrix.setSize(2, 0));
-                // CHECK(LastException<Exception::InvalidSizeReset>().what() == expectedMessage);
+                CHECK_THROWS_WITH_AS(a1x1Matrix.setSize(2, 0), "Invalid attempt to reset rows to 2 and columns to 0 from [1, 1]", Exception::InvalidSizeReset);
             }
         }
 
         WHEN("accessing outside row bounds") {
             THEN("an exception is thrown") {
                 Matrix<double> oneByTwoMatrix(1, 2);
-                std::string expectedMessage = "Invalid attempt to access (1, 1) which lies outside bounds [1, 2]";
-                // AssertThrows(Exception::AccessOutOfBound, oneByTwoMatrix(1, 1));
-                // CHECK(LastException<Exception::AccessOutOfBound>().what() == expectedMessage);
+                CHECK_THROWS_WITH_AS(oneByTwoMatrix(1, 1), "Invalid attempt to access (1, 1) which lies outside bounds [1, 2]", Exception::AccessOutOfBound);
             }
         }
 
         WHEN("assigning outside row bounds") {
             THEN("an exception is thrown") {
                 Matrix<double> oneByTwoMatrix(1, 2);
-                std::string expectedMessage = "Invalid attempt to access (1, 1) which lies outside bounds [1, 2]";
-                // AssertThrows(Exception::AccessOutOfBound, oneByTwoMatrix(1, 1) = 5);
-                // CHECK(LastException<Exception::AccessOutOfBound>().what() == expectedMessage);
+                CHECK_THROWS_WITH_AS(oneByTwoMatrix(1, 1) = 5, "Invalid attempt to access (1, 1) which lies outside bounds [1, 2]", Exception::AccessOutOfBound);
             }
         }
 
         WHEN("accessing outside column bounds") {
             THEN("an exception is thrown") {
                 Matrix<double> oneByTwoMatrix(1, 2);
-                std::string expectedMessage = "Invalid attempt to access (0, 2) which lies outside bounds [1, 2]";
-                // AssertThrows(Exception::AccessOutOfBound, oneByTwoMatrix(0, 2));
-                // CHECK(LastException<Exception::AccessOutOfBound>().what() == expectedMessage);
+                CHECK_THROWS_WITH_AS(oneByTwoMatrix(0, 2), "Invalid attempt to access (0, 2) which lies outside bounds [1, 2]", Exception::AccessOutOfBound);
             }
         }
 
         WHEN("assigning outside column bounds") {
             THEN("an exception is thrown") {
                 Matrix<double> oneByTwoMatrix(1, 2);
-                std::string expectedMessage = "Invalid attempt to access (0, 2) which lies outside bounds [1, 2]";
-                // AssertThrows(Exception::AccessOutOfBound, oneByTwoMatrix(0, 2) = 5);
-                // CHECK(LastException<Exception::AccessOutOfBound>().what() == expectedMessage);
+                CHECK_THROWS_WITH_AS(oneByTwoMatrix(0, 2) = 5, "Invalid attempt to access (0, 2) which lies outside bounds [1, 2]", Exception::AccessOutOfBound);
             }
         }
     }

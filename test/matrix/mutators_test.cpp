@@ -141,9 +141,7 @@ SCENARIO("cmatrix::Matrix<double> mutation") {
 		WHEN("adding an element at negative boundary") {
 			THEN("an exception is thrown") {
 				Matrix<double> matrix(2, 2);
-	            std::string expectedMessage = "Invalid attempt to add element at negative row (-2) or column (2) to matrix [2, 2]";
-	            // AssertThrows(Exception::InvalidSizeReset, matrix.mutateToInclude(0.0, -2, 2));
-	            // CHECK(LastException<Exception::InvalidSizeReset>().what() == expectedMessage);
+				CHECK_THROWS_WITH_AS(matrix.mutateToInclude(0.0, -2, 2), "Invalid attempt to add element at negative row (-2) or column (2) to matrix [2, 2]", Exception::InvalidSizeReset);
 			}
 		}
 	}

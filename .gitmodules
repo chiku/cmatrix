@@ -1,3 +1,0 @@
-[submodule "test-igloo/vendor"]
-	path = test-igloo/vendor
-	url = https://github.com/joakimkarlsson/igloo.git

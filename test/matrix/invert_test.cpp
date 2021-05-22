@@ -73,9 +73,7 @@ SCENARIO("cmatrix::Matrix<double> inversion") {
 
         WHEN("inverted") {
             THEN("as exception is thrown") {
-                std::string expectedMessage = "Cannot invert a non-square matrix [2, 3]";
-                // AssertThrows(Exception::InversionNotPossible, nonSquareMatrix.invert());
-                // Assert::That(LastException<Exception::InversionNotPossible>().what(), Equals(expectedMessage));
+                CHECK_THROWS_WITH_AS(nonSquareMatrix.invert(), "Cannot invert a non-square matrix [2, 3]", Exception::InversionNotPossible);
             }
         }        
     }
@@ -87,9 +85,7 @@ SCENARIO("cmatrix::Matrix<double> inversion") {
 
         WHEN("inverted") {
             THEN("an exception is thrown") {
-                std::string expectedMessage = "Cannot invert a singular matrix";
-                // AssertThrows(Exception::InversionNotPossible, singularMatrix.invert());
-                // Assert::That(LastException<Exception::InversionNotPossible>().what(), Equals(expectedMessage));
+                CHECK_THROWS_WITH_AS(singularMatrix.invert(), "Cannot invert a singular matrix", Exception::InversionNotPossible);
             }        
         }
     }

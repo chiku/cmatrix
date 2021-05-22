@@ -44,10 +44,7 @@ SCENARIO("cmatrix::Matrix<double> addition") {
             THEN("an an exception is thrown") {
                 Matrix<double> oneByTwoMatrix(1, 2);
                 Matrix<double> twoByOneMatrix(2, 1);
-
-                std::string expectedMessage = "Cannot add [1, 2] and [2, 1]";
-                // AssertThrows(Exception::IncompatibleAddition, oneByTwoMatrix + twoByOneMatrix);
-                // Assert::That(LastException<Exception::IncompatibleAddition>().what(), Equals(expectedMessage));
+                CHECK_THROWS_WITH_AS(oneByTwoMatrix + twoByOneMatrix, "Cannot add [1, 2] and [2, 1]", Exception::IncompatibleAddition);
             }
         }
 
@@ -80,10 +77,7 @@ SCENARIO("cmatrix::Matrix<double> addition") {
             THEN("an exception is thrown") {
                 Matrix<double> oneByTwoMatrix(1, 2);
                 Matrix<double> twoByOneMatrix(2, 1);
-
-                std::string expectedMessage = "Cannot add [1, 2] and [2, 1]";
-                // AssertThrows(Exception::IncompatibleAddition, oneByTwoMatrix += twoByOneMatrix);
-                // Assert::That(LastException<Exception::IncompatibleAddition>().what(), Equals(expectedMessage));
+                CHECK_THROWS_WITH_AS(oneByTwoMatrix += twoByOneMatrix, "Cannot add [1, 2] and [2, 1]", Exception::IncompatibleAddition);
             }
         }
     }
@@ -127,9 +121,7 @@ SCENARIO("cmatrix::Matrix<double> subtraction") {
                 Matrix<double> oneByTwoMatrix(1, 2);
                 Matrix<double> oneByOneMatrix(1, 1);
                 std::string expectedMessage = "Cannot subtract [1, 1] from [1, 2]";
-
-                // AssertThrows(Exception::IncompatibleSubtraction, oneByTwoMatrix - oneByOneMatrix);
-                // Assert::That(LastException<Exception::IncompatibleSubtraction>().what(), Equals(expectedMessage));
+                CHECK_THROWS_WITH_AS(oneByTwoMatrix - oneByOneMatrix, "Cannot subtract [1, 1] from [1, 2]", Exception::IncompatibleSubtraction);
             }
         }
 
@@ -161,10 +153,7 @@ SCENARIO("cmatrix::Matrix<double> subtraction") {
             THEN("an exception is thrown") {
                 Matrix<double> oneByTwoMatrix(1, 2);
                 Matrix<double> twoByOneMatrix(2, 1);
-
-                std::string expectedMessage = "Cannot subtract [2, 1] from [1, 2]";
-                // AssertThrows(Exception::IncompatibleSubtraction, oneByTwoMatrix -= twoByOneMatrix);
-                // Assert::That(LastException<Exception::IncompatibleSubtraction>().what(), Equals(expectedMessage));
+                CHECK_THROWS_WITH_AS(oneByTwoMatrix -= twoByOneMatrix, "Cannot subtract [2, 1] from [1, 2]", Exception::IncompatibleSubtraction);
             }
         }
     }
@@ -221,10 +210,7 @@ SCENARIO("cmatrix::Matrix<double> multiplication") {
             THEN("an exception is thrown") {
                 Matrix<double> oneByTwoMatrix(1, 2);
                 Matrix<double> oneByOneMatrix(1, 1);
-
-                std::string expectedMessage = "Cannot multiply [1, 2] with [1, 1]";
-                // AssertThrows(Exception::IncompatibleMultiplication, oneByTwoMatrix * oneByOneMatrix);
-                // Assert::That(LastException<Exception::IncompatibleMultiplication>().what(), Equals(expectedMessage));
+                CHECK_THROWS_WITH_AS(oneByTwoMatrix * oneByOneMatrix, "Cannot multiply [1, 2] with [1, 1]", Exception::IncompatibleMultiplication);
             }
         }
     }
