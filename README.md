@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/chiku/cmatrix.png?branch=master)](https://travis-ci.org/chiku/cmatrix)
+![Build Status](https://github.com/chiku/cmatrix/actions/workflows/build.yml/badge.svg)
 
 A simple matrix implementation in C++.
 
