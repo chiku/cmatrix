@@ -19,8 +19,8 @@ jobs:
           CXX: "g++"
         - name: "Ubuntu Clang"
           os: "ubuntu-latest"
-          CC: "gcc"
-          CXX: "g++"
+          CC: "clangcc"
+          CXX: "clang++"
 
     steps:
       - uses: actions/checkout@v2
