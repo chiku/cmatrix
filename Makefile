@@ -61,7 +61,6 @@ generate.coverage.report:
 clean:
 	rm -rf build/
 	rm -rf $(TEST_OBJ_FILES) $(DEMO_OBJ_FILES) test/test_runner.o test/*_test demo/*_demo *.info coverage
-	rm -rf $(TEST_IGLOO_OBJ_FILES)
 	find . -name "*.gcda" -delete
 	find . -name "*.gcno" -delete
 
