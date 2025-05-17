@@ -12,26 +12,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        config:
-        - name: "Ubuntu GCC"
-          os: "ubuntu-latest"
-          CC: "gcc"
-          CXX: "g++"
-        - name: "Ubuntu Clang"
-          os: "ubuntu-latest"
-          CC: "clangcc"
-          CXX: "clang++"
+        include:
+          - compiler: gcc
+            cc: gcc
+            cxx: g++
+          - compiler: clang
+            cc: clang
+            cxx: clang++
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Environment
-        run: |
-          echo github.event.action: ${{ github.event.action }}
-          echo github.event_name: ${{ github.event_name }}
-          echo cc: ${{ matrix.config.cc }}
-          echo cxx: ${{ matrix.config.cxx }}
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y build-essential clang
 
-      - name: Test
-        shell: bash
+      - name: Set compiler
+        run: |
+          echo "CC=${{ matrix.cc }}" >> $GITHUB_ENV
+          echo "CXX=${{ matrix.cxx }}" >> $GITHUB_ENV
+
+      - name: Build
         run: make all
